@@ -1,1 +1,4 @@
 .DS_Store
+past_elections/presidential_2014/raw/FineReaderOCR_CC.xlsx
+*.gsheet
+past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv
