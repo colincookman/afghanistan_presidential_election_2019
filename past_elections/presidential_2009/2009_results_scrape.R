@@ -507,7 +507,311 @@ final_ps_lite <- all_pcs_data %>% dplyr::select(ps_code, candidate_code, votes)
 
 write.csv(final_ps_lite, "./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009_lite.csv", row.names = F)
 
-# UPDATE PC KEY WITH REPORTING STATUS ----------------------------------------
+all_data <- all_pcs_data
 
-# COMPLETENESS CHECKS AND SUMMARY STATS --------------------------------------
+ps_count <- all_data %>% group_by(province_code) %>% summarize(
+  pc_count = length(unique(pc_code)),
+  ps_count = length(unique(ps_code)),
+  candidate_count = length(unique(candidate_code)),
+  vote_count = sum(votes, na.rm = TRUE)
+)
+
+write.csv(ps_count, "./past_elections/presidential_2009/validity_checks/final_pc_ps_candidate_vote_counts.csv", row.names = F)
+
+
+
+#-----------------------------------------------------------------------------------
+# RE-AGGREGATION OF RESULTS
+rm(list = ls())
+
+all_data <- read.csv("./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv", stringsAsFactors = F)
+
+# PC level
+all_data_pcs <- all_data %>% group_by(election_date, results_date, election_type, results_status, province_code, province_name_eng, province_name_dari,
+  district_code, district_name_eng, district_name_dari, district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+  pc_code, pc_name_eng, pc_name_dari,
+  candidate_code, ballot_position, candidate_name_eng, candidate_name_dari, candidate_gender, party_name_dari, past_winner, final_winner) %>% 
+  summarize(male_ps_votes = sum(votes[ps_type == "M"], na.rm = T),
+            fem_ps_votes = sum(votes[ps_type == "F"], na.rm = T),
+            kuchi_ps_votes = sum(votes[ps_type == "K"], na.rm = T),
+            votes = sum(votes, na.rm = T)
+            ) %>% arrange(results_status, province_code, district_code, pc_code, ballot_position)
+
+write.csv(all_data_pcs, "./past_elections/presidential_2009/results_data/final_af_candidate_pc_data_2009.csv", row.names = F)
+
+all_data_pcs_lite <- all_data_pcs %>% dplyr::select(pc_code, candidate_code, votes) %>% 
+  group_by(pc_code, candidate_code) %>% summarize(votes = sum(votes))
+
+write.csv(all_data_pcs_lite, "./past_elections/presidential_2009/results_data/final_af_candidate_pc_data_2009_lite.csv", row.names = F)
+
+# District level
+all_data_districts <- all_data %>% group_by(election_date, results_date, election_type, results_status, province_code, province_name_eng, province_name_dari,
+  district_code, district_name_eng, district_name_dari, district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+  candidate_code, ballot_position, candidate_name_eng, candidate_name_dari, candidate_gender, party_name_dari, past_winner, final_winner) %>% 
+  summarize(male_ps_votes = sum(votes[ps_type == "M"], na.rm = T),
+            fem_ps_votes = sum(votes[ps_type == "F"], na.rm = T),
+            kuchi_ps_votes = sum(votes[ps_type == "K"], na.rm = T),
+            votes = sum(votes, na.rm = T)
+            ) %>% arrange(results_status, province_code, district_code, ballot_position)
+
+write.csv(all_data_districts, "./past_elections/presidential_2009/results_data/final_af_candidate_district_data_2009.csv", row.names = F)
+
+# Province level
+all_data_provinces <- all_data %>% group_by(election_date, results_date, election_type, results_status, province_code, province_name_eng, province_name_dari,
+  candidate_code, ballot_position, candidate_name_eng, candidate_name_dari, candidate_gender, party_name_dari, past_winner, final_winner) %>% 
+  summarize(male_ps_votes = sum(votes[ps_type == "M"], na.rm = T),
+            fem_ps_votes = sum(votes[ps_type == "F"], na.rm = T),
+            kuchi_ps_votes = sum(votes[ps_type == "K"], na.rm = T),
+            votes = sum(votes, na.rm = T)
+            ) %>% arrange(results_status, province_code, ballot_position)
+
+write.csv(all_data_provinces, "./past_elections/presidential_2009/results_data/final_af_candidate_province_data_2009.csv", row.names = F)
+
+# GAP INVESTIGATIONS, PS KEY, REPORTING STATUS -------------------------------
+rm(list = ls())
+
+all_data <- read.csv("./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv", stringsAsFactors = F)
+candidate_key <- read.csv("./past_elections/presidential_2009/keyfiles/candidate_key_2009.csv", stringsAsFactors = F)
+pc_key <- read.csv("./past_elections/presidential_2009/keyfiles/pc_key_2009.csv", stringsAsFactors = F)
+
+all_data$pc_code <- as.character(str_pad(all_data$pc_code, 7, pad = "0", side = "left"))
+
+
+ps_reporting <- all_data %>% dplyr::select(pc_code, ps_code) %>% unique() %>% mutate(
+  final_results_reporting = "YES"
+)
+
+pc_key_check <- pc_key %>% rowwise %>% mutate(
+  ps_check = ifelse(ps_planned_count != sum(c(ps_male, ps_fem, ps_kuchi), na.rm = TRUE), "ERROR", "OK")
+  )
+
+pc_key_errors <- pc_key %>% filter(ps_check == "ERROR")
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "2707147"] <- 1
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "2707152"] <- 1
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "2707153"] <- 1
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "2707154"] <- 1
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718247"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718248"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718249"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718250"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718251"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718252"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718253"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718254"] <- 5
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718255"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718256"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718257"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718258"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718259"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718260"] <- 2
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718261"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718262"] <- 2
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718263"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718264"] <- 2
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718265"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718266"] <- 2
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718303"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "718304"] <- 2
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719267"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719268"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719269"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719270"] <- 5
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719271"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719272"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719273"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719274"] <- 2
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719275"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719276"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719277"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719278"] <- 3
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719279"] <- as.numeric(NA)
+pc_key_errors$ps_fem[pc_key_errors$pc_code == "719280"] <- 4
+
+pc_key_corrected <- pc_key %>% filter(ps_check != "ERROR") %>% full_join(pc_key_errors) %>% dplyr::select(-ps_check) %>%
+  arrange(province_code, district_code, pc_code)
+
+# write.csv(pc_key_corrected, "./past_elections/presidential_2009/keyfiles/pc_key_2009.csv", row.names = F)
+
+# pc reporting
+
+pc_reporting <- all_data %>% dplyr::select(pc_code) %>% unique() %>% mutate(final_results_reporting = "YES")
+pc_reporting$pc_code <- as.character(str_pad(pc_reporting$pc_code, 7, pad = "0", side = "left"))
+pc_key_reporting_status <- left_join(pc_key, pc_reporting)
+
+ps_reporting_count <- all_data %>% group_by(pc_code) %>% summarize(
+  ps_reporting_count = length(unique(ps_code))
+)
+ps_reporting_count$pc_code <- as.character(str_pad(ps_reporting_count$pc_code, 7, pad = "0", side = "left"))
+
+pc_key_reporting_status <- pc_key_reporting_status %>% left_join(ps_reporting_count) %>% dplyr::select(
+  province_code, province_name_eng, province_name_dari,
+  district_code, district_name_eng, district_name_dari,
+  district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital, 
+  pc_code, pc_name_eng, pc_name_dari,
+  final_results_reporting, ps_count, ps_reporting_count, ps_male, ps_fem, ps_kuchi, est_voters, access_notes
+) %>% rename(ps_planned_count = ps_count) %>% arrange(province_code, district_code, pc_code)
+
+# write.csv(pc_key_reporting_status, "./past_elections/presidential_2009/keyfiles/pc_key_2009.csv", row.names = F)
+
+# errors here
+
+pc_key <- read.csv("./past_elections/presidential_2009/keyfiles/pc_key_2009.csv", stringsAsFactors = F)
+pc_key_fixes <- pc_key %>% rename(province_name_eng = ps_planned_count) %>% left_join(dplyr::select(pc_key_old, pc_code, ps_count)) %>%
+  rename(ps_planned_count = ps_count)
+
+pc_key_fixes <- pc_key_fixes %>% dplyr::select(
+  province_code, province_name_eng, province_name_dari,
+  district_code, district_name_eng, district_name_dari,
+  district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital, 
+  pc_code, pc_name_eng, pc_name_dari,
+  final_results_reporting, ps_planned_count, ps_reporting_count, ps_male, ps_fem, ps_kuchi, est_voters, access_notes
+)
+pc_key_fixes$final_results_reporting[is.na(pc_key_fixes$final_results_reporting)] <- "NO"
+
+# write.csv(pc_key_fixes, "./past_elections/presidential_2009/keyfiles/pc_key_2009.csv", row.names = F)
+pc_key <- read.csv("./past_elections/presidential_2009/keyfiles/pc_key_2009.csv", stringsAsFactors = F)
+
+pc_key$pc_code <- as.character(str_pad(pc_key$pc_code, 7, pad = "0", side = "left"))
+ps_reporting$pc_code <- as.character(str_pad(ps_reporting$pc_code, 7, pad = "0", side = "left"))
+pc_key$ps_reporting_count[pc_key$final_results_reporting == "NO"] <- 0
+ 
+ps_planned <- data.frame()
+for(i in 1:length(pc_key$pc_code)){
+  pc_code = as.character(pc_key$pc_code[i])
+  ps_count = pc_key$ps_planned_count[i]
+  ps_male = pc_key$ps_male[i]
+  ps_fem = pc_key$ps_fem[i]
+  ps_kuchi = pc_key$ps_kuchi[i]
+  row_out <- data.frame()
+  
+  if(!is.na(ps_male) & ps_male > 0){
+  for(j in 1:ps_male){
+    ps_code = as.character(paste0(pc_code, "-", as.character(str_pad(j, 2, pad = "0", side = "left"))))
+    ps_type = "M"
+    row = data.frame(pc_code, ps_code, ps_type)
+    row_out <- rbind(row_out, row)
+  }} else {NULL}
+  
+  if(!is.na(ps_fem) & ps_fem > 0){
+  for(k in 1:ps_fem){
+    ps_code = as.character(paste0(pc_code, "-", as.character(str_pad(sum(k, as.numeric(ps_male), na.rm = T), 2, pad = "0", side = "left"))))
+    ps_type = "F"
+    row = data.frame(pc_code, ps_code, ps_type)
+    row_out <- rbind(row_out, row)
+  }} else {NULL}
+  
+  if(!is.na(ps_kuchi) & ps_kuchi > 0){  
+  for(l in 1:ps_kuchi){
+    ps_code = as.character(paste0(pc_code, "-", as.character(str_pad(sum(l, as.numeric(ps_male), as.numeric(ps_fem), na.rm = T), 2, pad = "0", side = "left"))))
+    ps_type = "K"
+    row = data.frame(pc_code, ps_code, ps_type)
+    row_out <- rbind(row_out, row)
+  }} else {NULL}
+  
+  ps_planned <- rbind(ps_planned, row_out)
+}
+
+ps_planned$pc_code <- as.character(ps_planned$pc_code)
+ps_planned$ps_code <- as.character(ps_planned$ps_code)
+ps_planned$ps_type <- as.character(ps_planned$ps_type)
+
+ps_reporting_status <- ps_planned %>% left_join(ps_reporting)
+ps_reporting_status$final_results_reporting[is.na(ps_reporting_status$final_results_reporting)] <- "NO"
+
+ps_reporting_not_planned <- all_data %>% dplyr::select(pc_code, ps_code) %>% unique() %>% anti_join(ps_planned) %>% mutate(
+  final_results_reporting = "YES",
+  planned_ps = "NO"
+)
+
+ps_reporting_status_with_new <- full_join(ps_reporting_status, ps_reporting_not_planned) %>% arrange(pc_code, ps_code)
+ps_reporting_status_with_new$planned_ps[is.na(ps_reporting_status_with_new$planned_ps)] <- "YES"
+ps_reporting_status_with_new$ps_type[is.na(ps_reporting_status_with_new$ps_type)] <- "UNKNOWN"
+
+# duplicated_ps <- ps_reporting_status_with_new[duplicated(ps_reporting_status_with_new$ps_code), ]
+# setdiff(unique(all_data$ps_code), ps_reporting_status_with_new$ps_code)
+
+write.csv(ps_reporting_status_with_new, "./past_elections/presidential_2009/keyfiles/ps_key_2009.csv", row.names = F)
+
+all_data_with_ps_type <- left_join(all_data, ps_reporting_status_with_new) %>% dplyr::select(
+  election_date, results_date, election_type, results_status, province_code, province_name_eng, province_name_dari,
+  district_code, district_name_eng, district_name_dari, district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+  pc_code, pc_name_eng, pc_name_dari, ps_code, ps_type, planned_ps,
+  candidate_code, ballot_position, candidate_name_eng, candidate_name_dari, candidate_gender, party_name_dari, past_winner, votes, final_winner) %>% arrange(
+    province_code, district_code, pc_code, ps_code, ballot_position
+  )
+
+write.csv(all_data_with_ps_type, "./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv", row.names = F)
+
+# ADD PS DISQUALIFICATION INFO
+rm(list = ls())
+ps_key <- read.csv("./past_elections/presidential_2009/keyfiles/ps_key_2009.csv", stringsAsFactors = F)
+all_data <- read.csv("./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv", stringsAsFactors = F)
+
+disqualifed_by_ecc <- pdf_text("./past_elections/presidential_2009/raw/20091021_PollingStations_Disqualified_ByECCBasedOnComplaints.pdf")
+disq_ecc_text <- toString(disqualifed_by_ecc)
+disq_ecc_lines <- read_lines(disq_ecc_text)
+disq_ecc_codes <- disq_ecc_lines[-(1:4)]
+disq_ecc_codes <- Reduce(rbind, strsplit(trimws(disq_ecc_codes), " "))
+ecc_codes <- disq_codes[grepl("\\d{9}", disq_ecc_codes)]
+
+disqualified_ps_by_ecc <- tibble(paste0(str_sub(ecc_codes, 1, 7), "-", str_sub(ecc_codes, 8,9)))
+colnames(disqualified_ps_by_ecc) <- "ps_code"
+disqualified_ps_by_ecc <- disqualified_ps_by_ecc %>% mutate(ps_status = "Disqualifed as a results of ECC decisions on complaints")
+
+disqualified_by_iec_and_ecc <- pdf_text("./past_elections/presidential_2009/raw/20091021_PollingStations_QuarintinedAndDisqualified.pdf")
+disq_iec_text <- toString(disqualified_by_iec_and_ecc)
+disq_iec_lines <- read_lines(disq_iec_text)
+disq_iec_codes <- disq_iec_lines[-(1:3)]
+disq_iec_codes <- gsub(",", "", disq_iec_codes)
+disq_iec_codes <- trimws(disq_iec_codes)
+disq_iec_codes <- Reduce(rbind, strsplit(trimws(disq_iec_codes), "\\s{1,}"))
+iec_codes <- data.frame(disq_iec_codes) %>% dplyr::select(X2)
+iec_codes$X2 <- as.character(iec_codes$X2)
+iec_codes$X2 <- as.character(str_pad(iec_codes$X2, 9, pad = "0", side = "left"))
+
+disqualified_ps_by_iec_and_ecc <- tibble(paste0(str_sub(iec_codes$X2, 1, 7), "-", str_sub(iec_codes$X2, 8,9)))
+colnames(disqualified_ps_by_iec_and_ecc) <- "ps_code"
+disqualified_ps_by_iec_and_ecc <- disqualified_ps_by_iec_and_ecc %>% mutate(ps_status = "Quarintined by IEC and Disqualified by ECC")
+
+ps_key_with_ecc_disq <- left_join(ps_key, disqualified_ps_by_ecc) %>% filter(!is.na(ps_status))
+ps_key_with_iec_disq <- left_join(ps_key, disqualified_ps_by_iec_and_ecc) %>% filter(!is.na(ps_status))
+ps_key_with_disq <- ps_key %>% anti_join(ps_key_with_ecc_disq) %>% anti_join(ps_key_with_iec_disq) %>% 
+  full_join(ps_key_with_ecc_disq) %>% full_join(ps_key_with_iec_disq) %>% arrange(pc_code, ps_code)
+ps_key_with_disq$ps_status[is.na(ps_key_with_disq$ps_status)] <- "PS Validated"
+
+write.csv(ps_key_with_disq, "./past_elections/presidential_2009/keyfiles/ps_key_2009.csv", row.names = F)
+
+results_with_disq <- left_join(all_data, ps_key_with_disq) %>% dplyr::select(
+  election_date, results_date, election_type, results_status, 
+  province_code, province_name_eng, province_name_dari, 
+  district_code, district_name_eng, district_name_dari, district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+  pc_code, pc_name_eng, pc_name_dari, ps_code, ps_type, planned_ps, ps_status,
+  candidate_code, ballot_position, candidate_name_eng, candidate_name_dari, candidate_gender, party_name_dari, past_winner, votes, final_winner)
+
+write.csv(results_with_disq, "./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv", row.names = F)
+
+# TABULATION CHECK -------------------------
+rm(list = ls())
+
+all_data <- read.csv("./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv", stringsAsFactors = F)
+candidate_key <- read.csv("./past_elections/presidential_2009/keyfiles/candidate_key_2009.csv", stringsAsFactors = F)
+
+national_sums <- all_data %>% group_by(candidate_code, ballot_position) %>% summarize(votes = sum(votes, na.rm = TRUE))
+iec_totals <- read.csv("./past_elections/presidential_2009/raw/final_results_candidates.csv", stringsAsFactors = F)
+
+# correct IEC ballot positions, which are wrong on the web
+iec_totals$ballot_position <- c(1, 3:14, 16:18, 20:21, 23:25, 27, 30:33, 35, 37:41)
+
+tabulation_check <- left_join(iec_totals, national_sums)
+tabulation_check$error <- ifelse(tabulation_check$votes != tabulation_check$total_votes, "ERROR", "OK")
+tabulation_check <- tabulation_check %>% filter(error == "ERROR")
+tabulation_check <- select(tabulation_check, candidate_code, candidate_name_eng, total_votes, votes)
+tabulation_check <- tabulation_check %>% rename(
+  iec_vote_total = total_votes,
+  calculated_vote_total = votes
+)
+tabulation_check <- tabulation_check %>% mutate(difference = calculated_vote_total - iec_vote_total)
+tabulation_check <- tabulation_check %>% dplyr::select(candidate_code, candidate_name_eng, everything())
+
+write.csv(tabulation_check, "./past_elections/presidential_2009/validity_checks/final_iec_tabulation_check.csv", row.names = F)
 
