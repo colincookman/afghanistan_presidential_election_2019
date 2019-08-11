@@ -7,8 +7,8 @@ library(pdftools)
 library(readr)
 library(tabulizer)
 library(gsheet)
-library(tesseract)
-tesseract_download("fas")
+# library(tesseract)
+# tesseract_download("fas")
 setwd("~/Google Drive/GitHub/afghanistan_presidential_election_2019")
 
 # CREATE CANDIDATE KEY --------------------------------------------------------
