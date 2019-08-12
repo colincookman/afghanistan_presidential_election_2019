@@ -16,13 +16,13 @@ pc_url <- "http://www.iec.org.af/en/polling-center"
 province_list <- list()
 pc_list <- list()
 
-# settings for silent background browsing
-#eCaps <- list(chromeOptions = list(
-#  args = c('--headless', '--disable-gpu', '--window-size=1280,800')
-#))
+#settings for silent background browsing
+eCaps <- list(chromeOptions = list(
+  args = c('--headless', '--disable-gpu', '--window-size=1280,800')
+))
 
 driver <- rsDriver(browser="chrome", port = 4444L, chromever="76.0.3809.68", verbose = FALSE
-#                     , extraCapabilities = eCaps
+                     , extraCapabilities = eCaps
                    )
 driver$client$navigate(pc_url)
   
@@ -88,47 +88,6 @@ pc_master_list <- pc_master_list %>% rename(
 
 pc_master_list$pc_code <- as.character(str_pad(pc_master_list$pc_code, 7, pad = "0", side = "left"))
 
-# NEW - check to see if there was an update in late July / early August
-
-pre_election_pc_list <- read_csv("./raw/pre_election_pc_list.csv")
-
-not_in_new_pc_list <- setdiff(pre_election_pc_list$pc_code, pc_master_list$pc_code)
-not_in_new_pc_list <- as.data.frame(not_in_new_pc_list) %>% mutate(planned_2019 = "NO") %>% 
-  rename(pc_code = not_in_new_pc_list)
-
-new_pc_plan_2019 <- pre_election_pc_list %>% left_join(not_in_new_pc_list)
-new_pc_plan_2019$planned_2019[is.na(new_pc_plan_2019$planned_2019)] <- "YES"
-
-af_pc_vr_comparison_18_19 <- read_csv("Google Drive/GitHub/afghanistan_presidential_election_2019/raw/af_pc_vr_comparison_18_19.csv")
-
-vr_and_2018 <- af_pc_vr_comparison_18_19 %>% dplyr::select(
-  pc_code, planned_18, prelim_results_18, final_results_18, 
-  vr_prelim_total_18, vr_final_total_18, vr_male_18, vr_fem_18, vr_kuchi_18, vr_sikh_18,
-  vr_prelim_total_19, vr_male_19, vr_fem_19, vr_kuchi_19, vr_sikh_19
-)
-
-new_pc_plan_2019 <- new_pc_plan_2019 %>% left_join(vr_and_2018) %>% rename(planned_2018 = planned_18)
-
-pc_key_2018 <- read_csv("./pc_plan/pc_key_2018.csv")
-
-new_pc_plan_2019 <- new_pc_plan_2019 %>% left_join(dplyr::select(
-  pc_key_2018, pc_code, district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari,
-  provincial_capital, prelim_ps_count, final_ps_count)) %>% rename(prelim_ps_count_18 = prelim_ps_count, final_ps_count_18 = final_ps_count) %>%
-  dplyr::select(province_code, province_name_eng, province_name_dari, 
-                district_code, district_name_eng, district_name_dari, 
-                district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari,
-                provincial_capital, 
-                pc_code, pc_name_eng, pc_name_dari, pc_name_pashto,
-                pc_location_eng, pc_location_dari, pc_location_pashto,
-                planned_2019, planned_2018, prelim_results_18, final_results_18,
-                prelim_ps_count_18, final_ps_count_18,
-                vr_prelim_total_19, vr_male_19, vr_fem_19, vr_kuchi_19, vr_sikh_19,
-                vr_prelim_total_18, vr_final_total_18, vr_male_18, vr_fem_18, vr_kuchi_18, vr_sikh_18) %>% 
-  arrange(province_code, district_code, pc_code)
-
-write.csv(new_pc_plan_2019, "./keyfiles/pc_key_2019.csv", row.names = F)
-
-# OLD INITIAL SCRAPE AND CLEANUP TO GET ORIGINAL UNIVERSE OF PCS --------------
 # GET THE DARI NAMES ----------------------------------------------------------
 
 pc_url <- "http://www.iec.org.af/prs/pc-lists-prs"
@@ -140,7 +99,7 @@ eCaps <- list(chromeOptions = list(
   args = c('--headless', '--disable-gpu', '--window-size=1280,800')
 ))
 
-driver <- rsDriver(browser="chrome", port = 4444L, chromever="74.0.3729.6", verbose = FALSE
+driver <- rsDriver(browser="chrome", port = 4444L, chromever="76.0.3809.68", verbose = FALSE
                      , extraCapabilities = eCaps
                    )
 driver$client$navigate(pc_url)
@@ -215,7 +174,7 @@ eCaps <- list(chromeOptions = list(
   args = c('--headless', '--disable-gpu', '--window-size=1280,800')
 ))
 
-driver <- rsDriver(browser="chrome", port = 4444L, chromever="74.0.3729.6", verbose = FALSE
+driver <- rsDriver(browser="chrome", port = 4444L, chromever="76.0.3809.68", verbose = FALSE
                      , extraCapabilities = eCaps
                    )
 driver$client$navigate(pc_url)
@@ -431,3 +390,78 @@ missing_pc_final_corrected$pc_code <- as.character(str_pad(missing_pc_final_corr
 
 pc_key_final_final <- pc_key_final_new %>% anti_join(missing_pc_final) %>% full_join(missing_pc_final_corrected) %>% arrange(pc_code)
 write.csv(pc_key_final_final, "./data/keyfiles/pc_key.csv", row.names = F)
+
+# CREATE PC KEY BASED ON NEW FINAL (?) LIST OF PLANNED PCS --------------------
+
+planned_2019 <- pc_master_list_combined
+
+pre_election_pc_list <- read_csv("./raw/pre_election_pc_list.csv")
+pc_key_2018 <- read_csv("./pc_plan/pc_key_2018.csv")
+af_pc_vr_comparison_18_19 <- read_csv("./raw/af_pc_vr_comparison_18_19.csv")
+vr_and_2018 <- af_pc_vr_comparison_18_19 %>% dplyr::select(
+  pc_code, planned_18, prelim_results_18, final_results_18, 
+  vr_prelim_total_18, vr_final_total_18, vr_male_18, vr_fem_18, vr_kuchi_18, vr_sikh_18,
+  vr_prelim_total_19, vr_male_19, vr_fem_19, vr_kuchi_19, vr_sikh_19
+)
+
+planned_pcs <- planned_2019 %>% dplyr::select(pc_code) %>% mutate(planned_2019 = "YES")
+
+new_pcs_in_final <- setdiff(planned_2019$pc_code, vr_and_2018$pc_code)
+new_pcs_in_final <- planned_2019 %>% filter(pc_code %in% new_pcs_in_final)
+new_pcs_in_final <- new_pcs_in_final %>% rowwise %>% mutate(
+  pc_name_eng = trimws(str_split(pc_name_eng, "-")[[1]][2]),
+  pc_name_dari = trimws(str_split(pc_name_dari, "-")[[1]][2]),
+  pc_name_pashto = trimws(str_split(pc_name_pashto, "-")[[1]][2]),
+  planned_2019 = "YES",
+  district_sub_code = district_code,
+  district_or_subdivision_name_eng = district_name_eng,
+  district_or_subdivision_name_dari = district_name_dari,
+  district_or_subdivision_name_pashto = district_name_pashto,
+  provincial_capital = "NO"
+)
+
+new_pcs_in_final <- new_pcs_in_final %>% dplyr::select(
+  province_code, province_name_eng,
+  district_code, district_name_eng, district_name_dari, district_name_pashto,
+  district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, district_or_subdivision_name_pashto,
+  provincial_capital, 
+  pc_code, pc_name_eng, pc_name_dari, pc_name_pashto, planned_2019
+)
+
+new_pc_plan_2019 <- pc_key_2018 %>% dplyr::select(
+  province_code, province_name_eng, 
+  district_code, district_name_eng, district_name_dari, district_name_pashto,
+  district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, district_or_subdivision_name_pashto,
+  provincial_capital,
+  pc_code, pc_name_eng, pc_name_dari, pc_name_pashto,
+  pc_location_eng, pc_location_dari, pc_location_pashto,
+  prelim_ps_count, final_ps_count
+  ) %>% left_join(planned_pcs) %>%
+  rename(
+    prelim_ps_count_2018 = prelim_ps_count,
+    final_ps_count_2018 = final_ps_count
+  )
+new_pc_plan_2019 <- new_pc_plan_2019 %>% full_join(new_pcs_in_final)
+
+new_pc_plan_2019$planned_2019[is.na(new_pc_plan_2019$planned_2019)] <- "NO"
+
+pc_plan_19_with_vr <- new_pc_plan_2019 %>% left_join(vr_and_2018) %>% rename(planned_2018 = planned_18)
+
+new_pc_plan_2019_final <- pc_plan_19_with_vr %>%
+  dplyr::select(province_code, province_name_eng, 
+                district_code, district_name_eng, district_name_dari, 
+                district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari,
+                provincial_capital, 
+                pc_code, pc_name_eng, pc_name_dari, pc_name_pashto,
+                pc_location_eng, pc_location_dari, pc_location_pashto,
+                planned_2019, planned_2018, prelim_results_18, final_results_18,
+                prelim_ps_count_2018, final_ps_count_2018,
+                vr_prelim_total_19, vr_male_19, vr_fem_19, vr_kuchi_19, vr_sikh_19,
+                vr_prelim_total_18, vr_final_total_18, vr_male_18, vr_fem_18, vr_kuchi_18, vr_sikh_18) %>% 
+  arrange(province_code, district_code, pc_code) %>% rename(
+    prelim_results_2018 = prelim_results_18,
+    final_results_2018 = final_results_18
+  )
+
+write.csv(new_pc_plan_2019_final, "./keyfiles/pc_key_2019.csv", row.names = F)
+
