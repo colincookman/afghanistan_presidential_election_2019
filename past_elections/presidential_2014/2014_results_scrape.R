@@ -382,6 +382,8 @@ colnames(post_audit) <- c("province_name_eng", "province_name_dari", "district_n
                           "total_valid", "discrepancy", "status", "PA_results_barcode", "PA_invalid_ballots", "PA_unused_ballots", "PA_new_unused_ballots",
                           "PA_spoiled_ballots", "PA_AA_votes", "PA_AG_votes", "PA_total_valid", "PA_discrepancy", "PA_status_detail", "PA_status")
 
+# Preliminary runoff results --------------------------------------------------
+
 runoff_prelim <- post_audit %>% 
   dplyr::select(
     province_name_eng, province_name_dari, district_name_eng,
@@ -458,7 +460,7 @@ write.csv(runoff_prelim_lite,
           row.names = F)
 
 
-# ------------------------------------------------------------------------------
+# Post-audit runoff results ---------------------------------------------------
 
 runoff_post_audit <- post_audit %>% dplyr::select(province_name_eng, province_name_dari, district_name_eng,
                                               pc_code, pc_name_eng, pc_name_dari, ps_number, ps_code, ps_type, PA_status, PA_results_barcode,
@@ -478,23 +480,102 @@ runoff_post_audit <- post_audit %>% dplyr::select(province_name_eng, province_na
   arrange(province_code, district_code, pc_code, ps_code)
 
 
-
 all_out <- data.frame()
-row_out <- data.frame()
-for(i in 1:length(runoff_post_audit$ps_code)){
- metadata <- runoff_prelim[i, 1:16]
- vote_names <- c("Total Valid", "Dr. Abdullah Abdullah", "Mohammad Ashraf Ghani Ahmadzai", "Unused Ballots", "Spoiled Ballots",
+vote_names <- c("Total Valid", "Dr. Abdullah Abdullah", "Mohammad Ashraf Ghani Ahmadzai", "Unused Ballots", "Spoiled Ballots",
                  "Invalid Ballots", "Discrepancy")
+
+for(i in 1:length(runoff_post_audit$ps_code)){
+ metadata <- runoff_post_audit[i, 1:15]
  for(j in 1:7){
-  votes = as.numeric(runoff_prelim[i, j+16])
+  row_out <- data.frame()
+  votes = as.numeric(runoff_post_audit[i, j+15])
   candidate_name_eng = vote_names[j]
   row_out <- data.frame(c(metadata, candidate_name_eng, votes))
-  colnames(row_out) <- c("results_status", "election_type", "election_date", "results_date", "province_code", "province_name_eng", "province_name_dari",
+  colnames(row_out) <- c("results_status", "election_type", "election_date", 
+                         "province_code", "province_name_eng", "province_name_dari",
                          "district_code", "district_name_eng", "pc_code", "pc_name_eng", "pc_name_dari", "ps_code", "ps_type",
                          "status", "results_barcode", "candidate_name_eng", "votes")
   all_out <- rbind(all_out, row_out)
   }
 }
+
+runoff_post_audit_output <- all_out
+runoff_post_audit_output[] <- lapply(all_out, as.character)
+runoff_post_audit_output$votes <- as.numeric(runoff_post_audit_output$votes)
+runoff_post_audit_output <- runoff_post_audit_output %>% left_join(candidate_key_2014) %>% filter(!is.na(ballot_position))
+
+runoff_post_audit_output <- runoff_post_audit_output %>% dplyr::select(
+  election_type, election_date, results_status,
+  province_code, province_name_eng, province_name_dari, district_code, district_name_eng,
+  pc_code, pc_name_eng, pc_name_dari,
+  ps_code, ps_type, results_barcode, status,
+  ballot_position, candidate_code, candidate_name_eng, candidate_name_dari, party_name_dari, candidate_gender,
+  votes, first_round_winner, run_off_winner, past_winners, results_barcode
+) %>% rename(post_audit_status = status) %>% 
+  arrange(province_code, district_code, pc_code, ps_code, ballot_position)
+
+write.csv(runoff_post_audit_output, 
+          "./past_elections/presidential_2014/results_data/run_off_final_results/final_af_candidate_ps_data_run_off_2014.csv", 
+          row.names = F)
+
+runoff_final_lite <- runoff_post_audit_output %>% dplyr::select(ps_code, post_audit_status, candidate_code, votes)
+
+write.csv(runoff_final_lite, 
+          "./past_elections/presidential_2014/results_data/run_off_final_results/final_af_candidate_ps_data_run_off_2014_lite.csv", 
+          row.names = F)
+
+# get final results from published pdf to confirm -----------------------------
+
+target <- ("./past_elections/presidential_2014/raw/runoff_final_VotesByPollingStation.pdf")
+final_runoff_import <- pdf_text(target)
+pdf_string <- toString(final_runoff_import)
+pdf_lines <- read_lines(pdf_string)
+
+header_start <- grep("Votes By Polling Stations", pdf_lines)
+header_end <- grep("Barcode", pdf_lines)
+headers <- list()
+for(j in 1:length(header_start)){
+  distance <- header_start[j]:header_end[j]
+  headers <- c(headers, distance)
+}
+headers <- unlist(headers)
+footer_row <- grep("Page ", pdf_lines)
+
+pdf_text <- pdf_lines[- c(headers, footer_row)]
+
+pdf_trimmed <- gsub("[^0-9 ]", "", pdf_text)
+
+data <- Reduce(rbind, strsplit(trimws(pdf_trimmed), "\\s{2,}"))
+rownames(data) <- 1:dim(data)[1]
+data <- as.data.frame(data)
+colnames(data) <- c("pc_code", "ps_number", "barcode_number", "votes")
+
+runoff_post_audit_pdf <- data
+runoff_post_audit_pdf$pc_code <- as.character(runoff_post_audit_pdf$pc_code)
+runoff_post_audit_pdf$ps_number <- as.numeric(as.character(runoff_post_audit_pdf$ps_number))
+runoff_post_audit_pdf$barcode_number <- NULL
+runoff_post_audit_pdf$votes <- as.numeric(as.character(runoff_post_audit_pdf$votes))
+runoff_post_audit_pdf$ps_code = paste0(runoff_post_audit_pdf$pc_code, "-", 
+                                       str_pad(runoff_post_audit_pdf$ps_number, width = 2, side = "left", pad = "0"))
+
+setdiff(runoff_post_audit$ps_code, runoff_post_audit_pdf$ps_code)
+# discrepancy check ------
+#all_out <- data.frame()
+#row_out <- data.frame()
+#for(i in 1:length(runoff_post_audit$ps_code)){
+# metadata <- runoff_prelim[i, 1:16]
+# vote_names <- c("Total Valid", "Dr. Abdullah Abdullah", "Mohammad Ashraf Ghani Ahmadzai", "Unused Ballots", "Spoiled Ballots",
+#                 "Invalid Ballots", "Discrepancy")
+# for(j in 1:7){
+#  votes = as.numeric(runoff_prelim[i, j+16])
+#  candidate_name_eng = vote_names[j]
+#  row_out <- data.frame(c(metadata, candidate_name_eng, votes))
+#  colnames(row_out) <- c("results_status", "election_type", "election_date", "results_date", "province_code", "province_name_eng", "province_name_dari",
+#                         "district_code", "district_name_eng", "pc_code", "pc_name_eng", "pc_name_dari", "ps_code", "ps_type",
+#                         "status", "results_barcode", "candidate_name_eng", "votes")
+#  all_out <- rbind(all_out, row_out)
+#  }
+#}
 
 # UPDATE PC KEY WITH REPORTING STATUS -----------------------------------------
 rm(list = ls())
