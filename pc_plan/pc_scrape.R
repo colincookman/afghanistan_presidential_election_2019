@@ -465,3 +465,168 @@ new_pc_plan_2019_final <- pc_plan_19_with_vr %>%
 
 write.csv(new_pc_plan_2019_final, "./keyfiles/pc_key_2019.csv", row.names = F)
 
+# PARSE NEW (FINAL?) PC / PS LISTS PUBLISHED 08-19-19 -------------------------
+rm(list = ls())
+
+pc_key_2019 <- read.csv("./keyfiles/pc_key_2019.csv", stringsAsFactors = F)
+
+# PC list is slightly messier so leaving for now ------------------------------
+# target <- ("./raw/081919 PC List.pdf")
+# final_pc_list <- pdf_text(target)
+# pdf_string <- toString(final_pc_list)
+# pdf_lines <- read_lines(pdf_string)
+#
+# header_start <- grep("None 400", pdf_lines)
+# header_end <- grep("STATION    STATION", pdf_lines)
+# headers <- list()
+# for(j in 1:length(header_start)){
+#  distance <- header_start[j]:header_end[j]
+#  headers <- c(headers, distance)
+#}
+#headers <- unlist(headers)
+#footer_row <- grep("Page ", pdf_lines)
+#
+#pdf_trimmed <- pdf_lines[- c(headers, footer_row)]
+#pdf_numbers_only <- gsub("[^0-9 ]", "", pdf_trimmed)
+# pdf_trimmed <- gsub(" ", "  ", pdf_trimmed)
+#
+#data <- Reduce(rbind, strsplit(trimws(pdf_numbers_only), "\\s{2,}"))
+#rownames(data) <- 1:dim(data)[1]
+#data <- as.data.frame(data)
+#colnames(data) <- c("pc_code", "ps_number", "barcode_number", "votes")
+#
+# PS list ---------------------------------------------------------------------
+target <- ("./raw/081919 PS List.pdf")
+final_ps_list <- pdf_text(target)
+pdf_string <- toString(final_ps_list)
+pdf_lines <- read_lines(pdf_string)
+
+headers <- grep("Province District", pdf_lines)
+footer_row <- grep("Page ", pdf_lines)
+
+pdf_trimmed <- pdf_lines[- c(headers, footer_row)]
+
+trimmed <- str_match(pdf_trimmed, "(\\d{6,7})(.*)")[,1]
+trimmed <- gsub(" M", "  M", trimmed)
+trimmed <- gsub(" F", "  F", trimmed)
+trimmed <- gsub(" ", "  ", trimmed)
+data <- Reduce(rbind, strsplit(trimws(trimmed), "\\s{2,}"))
+rownames(data) <- 1:dim(data)[1]
+data <- as.data.frame(data)
+data <- data %>% filter(!is.na(V1))
+
+colnames(data) <- c("pc_code", "vr_final_total_19", "vr_final_male_19", "vr_final_fem_19", "vr_final_kuchi_19",
+                    "ps_type", "ps_number", "ps_est_voters")
+
+final_ps_list_df <- data
+final_ps_list_df$pc_code <- as.character(final_ps_list_df$pc_code)
+final_ps_list_df$ps_type <- as.character(final_ps_list_df$ps_type)
+final_ps_list_df$vr_final_total_19 <- as.numeric(as.character(final_ps_list_df$vr_final_total_19))
+final_ps_list_df$vr_final_male_19 <- as.numeric(as.character(final_ps_list_df$vr_final_male_19))
+final_ps_list_df$vr_final_fem_19 <- as.numeric(as.character(final_ps_list_df$vr_final_fem_19))
+final_ps_list_df$vr_final_kuchi_19 <- as.numeric(as.character(final_ps_list_df$vr_final_kuchi_19))
+final_ps_list_df$ps_number <- as.numeric(as.character(final_ps_list_df$ps_number))
+final_ps_list_df$ps_est_voters <- as.numeric(as.character(final_ps_list_df$ps_est_voters))
+
+final_ps_list_df$pc_code <- as.character(str_pad(final_ps_list_df$pc_code, 7, pad = "0", side = "left"))
+
+final_ps_list_pcs <- unique(final_ps_list_df$pc_code)
+
+final_ps_list_df <- final_ps_list_df %>% mutate(
+  ps_code = paste0(pc_code, "-", str_pad(ps_number, 2, pad = "0", "left")),
+  province_code = str_sub(pc_code, 1, 2),
+  district_code = str_sub(pc_code, 1, 4)
+  ) %>% arrange(pc_code, ps_code)
+
+final_pc_list <- final_ps_list_df %>% group_by(pc_code) %>% summarize(
+  ps_planned_count = length(ps_code)) %>% 
+  right_join(dplyr::select(final_ps_list_df,
+                           pc_code, vr_final_total_19, vr_final_male_19, vr_final_fem_19, vr_final_kuchi_19)) %>%
+  unique() %>% 
+  dplyr::select(pc_code, ps_planned_count,
+                vr_final_total_19, vr_final_male_19, vr_final_fem_19, vr_final_kuchi_19) %>%
+  arrange(pc_code) %>% mutate(final_planned_19 = "YES")
+
+final_against_key <- pc_key_2019 %>% left_join(final_pc_list) %>%
+  dplyr::select(
+    province_code, province_name_eng, 
+    district_code, district_name_eng, district_name_dari,
+    district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari,
+    provincial_capital,
+    pc_code, pc_name_eng, pc_name_dari, pc_name_pashto,
+    pc_location_eng, pc_location_dari, pc_location_pashto,
+    final_planned_19, planned_2018, prelim_results_2018, final_results_2018,
+    ps_planned_count, prelim_ps_count_2018, final_ps_count_2018,
+    vr_final_total_19, vr_final_male_19, vr_final_fem_19, vr_final_kuchi_19,
+    vr_prelim_total_19, vr_male_19, vr_fem_19, vr_kuchi_19, vr_sikh_19,
+    vr_final_total_18, vr_male_18, vr_fem_18, vr_kuchi_18, vr_sikh_18,
+    vr_prelim_total_18
+  ) %>% rename(
+    planned_2019 = final_planned_19,
+    planned_ps_count_2019 = ps_planned_count,
+    vr_prelim_male_19 = vr_male_19,
+    vr_prelim_fem_19 = vr_fem_19,
+    vr_prelim_kuchi_19 = vr_kuchi_19,
+    vr_prelim_sikh_19 = vr_sikh_19,
+    vr_final_male_18 = vr_male_18,
+    vr_final_fem_18 = vr_fem_18,
+    vr_final_kuchi_18 = vr_kuchi_18,
+    vr_final_sikh_18 = vr_sikh_18
+  ) %>% arrange(province_code, district_code, district_sub_code, pc_code)
+
+final_against_key$planned_2019[is.na(final_against_key$planned_2019)] <- "NO"
+final_against_key$province_code <- as.character(str_pad(final_against_key$province_code, 2, pad = "0", side = "left"))
+final_against_key$district_code <- as.character(str_pad(final_against_key$district_code, 4, pad = "0", side = "left"))
+
+final_against_key$district_sub_code[final_against_key$pc_code == "0101555"] <- "0101-12"
+final_against_key$district_sub_code[final_against_key$pc_code == "0101556"] <- "0101-12"
+final_against_key$district_sub_code[final_against_key$pc_code == "0101559"] <- "0101-22"
+final_against_key$district_or_subdivision_name_eng[final_against_key$pc_code == "0101555"] <- "KABUL CITY NAHIA 12"
+final_against_key$district_or_subdivision_name_eng[final_against_key$pc_code == "0101556"] <- "KABUL CITY NAHIA 12"
+final_against_key$district_or_subdivision_name_eng[final_against_key$pc_code == "0101559"] <- "KABUL CITY NAHIA 22"
+final_against_key$district_or_subdivision_name_dari[final_against_key$pc_code == "0101555"] <- "كابل ناحیه 12"
+final_against_key$district_or_subdivision_name_dari[final_against_key$pc_code == "0101556"] <- "كابل ناحیه 12"
+final_against_key$district_or_subdivision_name_dari[final_against_key$pc_code == "0101559"] <- "كابل ناحیه 22"
+
+pc_key_update <- final_against_key %>% arrange(pc_code)
+
+pc_key_vr_change  <- pc_key_update %>% mutate(
+  vr_2019_net_change = vr_final_total_19 - vr_prelim_total_19,
+  vr_2019_pct_change = vr_2019_net_change / vr_prelim_total_19, 
+  vr_2018_2019_net_change = vr_final_total_19 - vr_final_total_18,
+  vr_2018_2019_pct_change = vr_2018_2019_net_change / vr_final_total_18
+)
+
+district_vr_change  <- pc_key_update %>% 
+  group_by(province_code, province_name_eng, district_sub_code, district_or_subdivision_name_eng) %>%
+  summarize(
+  vr_total_final_19 = sum(vr_final_total_19, na.rm = T),
+  vr_total_prelim_19 = sum(vr_prelim_total_19, na.rm = T),
+  vr_total_final_18 = sum(vr_final_total_18, na.rm = T),
+  vr_2019_net_change = vr_total_final_19 - vr_total_prelim_19,
+  vr_2019_pct_change = vr_2019_net_change / vr_total_prelim_19, 
+  vr_2018_2019_net_change = vr_total_final_19 - sum(vr_final_total_18, na.rm = T),
+  vr_2018_2019_pct_change = vr_2018_2019_net_change / vr_total_final_18
+)
+
+
+province_vr_change  <- pc_key_update %>% 
+  group_by(province_code, province_name_eng) %>%
+  summarize(
+  vr_total_final_19 = sum(vr_final_total_19, na.rm = T),
+  vr_total_prelim_19 = sum(vr_prelim_total_19, na.rm = T),
+  vr_total_final_18 = sum(vr_final_total_18, na.rm = T),
+  vr_2019_net_change = vr_total_final_19 - vr_total_prelim_19,
+  vr_2019_pct_change = vr_2019_net_change / vr_total_prelim_19, 
+  vr_2018_2019_net_change = vr_total_final_19 - sum(vr_final_total_18, na.rm = T),
+  vr_2018_2019_pct_change = vr_2018_2019_net_change / vr_total_final_18
+)
+
+write.csv(district_vr_change, "./pc_plan/district_final_vr_net_change.csv", row.names = F)
+write.csv(province_vr_change, "./pc_plan/province_final_vr_net_change.csv", row.names = F)
+
+write.csv(pc_key_update, "./keyfiles/pc_key_2019.csv", row.names = F)
+
+ps_key <- final_ps_list_df %>% dplyr::select(pc_code, ps_code, ps_type, ps_est_voters)
+
+write.csv(ps_key, "./keyfiles/ps_key_2019.csv", row.names = F)

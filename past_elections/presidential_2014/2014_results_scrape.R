@@ -526,39 +526,65 @@ write.csv(runoff_final_lite,
 
 # get final results from published pdf to confirm -----------------------------
 
-target <- ("./past_elections/presidential_2014/raw/runoff_final_VotesByPollingStation.pdf")
-final_runoff_import <- pdf_text(target)
-pdf_string <- toString(final_runoff_import)
-pdf_lines <- read_lines(pdf_string)
+#target <- ("./past_elections/presidential_2014/raw/runoff_final_VotesByPollingStation.pdf")
+#final_runoff_import <- pdf_text(target)
+#pdf_string <- toString(final_runoff_import)
+#pdf_lines <- read_lines(pdf_string)
+#
+#header_start <- grep("Votes By Polling Stations", pdf_lines)
+#header_end <- grep("Barcode", pdf_lines)
+#headers <- list()
+#for(j in 1:length(header_start)){
+#  distance <- header_start[j]:header_end[j]
+#  headers <- c(headers, distance)
+#}
+#headers <- unlist(headers)
+#footer_row <- grep("Page ", pdf_lines)
+#
+#pdf_text <- pdf_lines[- c(headers, footer_row)]
+#
+#pdf_trimmed <- gsub("[^0-9 ]", "", pdf_text)
+#pdf_trimmed <- gsub(" ", "  ", pdf_trimmed)
+#
+#data <- Reduce(rbind, strsplit(trimws(pdf_trimmed), "\\s{2,}"))
+#rownames(data) <- 1:dim(data)[1]
+#data <- as.data.frame(data)
+##colnames(data) <- c("pc_code", "ps_number", "barcode_number", "votes")
+#
+#runoff_post_audit_pdf <- data
+#runoff_post_audit_pdf$pc_code <- as.character(runoff_post_audit_pdf$pc_code)
+#runoff_post_audit_pdf$ps_number <- as.numeric(as.character(runoff_post_audit_pdf$ps_number))
+#runoff_post_audit_pdf$barcode_number <- NULL
+#runoff_post_audit_pdf$votes <- as.numeric(as.character(runoff_post_audit_pdf$votes))
+#runoff_post_audit_pdf$ps_code = paste0(runoff_post_audit_pdf$pc_code, "-", 
+#                                       str_pad(runoff_post_audit_pdf$ps_number, width = 2, side = "left", pad = "0"))
+#
+# runoff_post_audit_pdf$candidate_code <- NA
+# runoff_post_audit_pdf$candidate_code[seq(from = 1, to = length(runoff_post_audit_pdf$ps_code), by = 2)] <- "101_1_1"
+# runoff_post_audit_pdf$candidate_code[is.na(runoff_post_audit_pdf$candidate_code)] <-  "101_1_13"
 
-header_start <- grep("Votes By Polling Stations", pdf_lines)
-header_end <- grep("Barcode", pdf_lines)
-headers <- list()
-for(j in 1:length(header_start)){
-  distance <- header_start[j]:header_end[j]
-  headers <- c(headers, distance)
-}
-headers <- unlist(headers)
-footer_row <- grep("Page ", pdf_lines)
+# unable to properly parse, using tabulizer to read pdf instead
 
-pdf_text <- pdf_lines[- c(headers, footer_row)]
+tabula_runoff_final_VotesByPollingStation <- read_csv("past_elections/presidential_2014/raw/tabula-runoff_final_VotesByPollingStation.csv")
+colnames(tabula_runoff_final_VotesByPollingStation) <- c("province_name_eng", "province_name_dari", 
+                                                         "district_name_eng", "district_name_dari",
+                                                         "pc_code", "pc_name_eng", "pc_name_dari",
+                                                         "candidate_name_dari", "ps_type",
+                                                         "ps_type_dari", "ps_number", "results_barcode",
+                                                         "votes")
+header_rows <- grep("Province", tabula_runoff_final_VotesByPollingStation$province_name_eng)
+pdf_results <- tabula_runoff_final_VotesByPollingStation[- header_rows, ]
+pdf_results$pc_code <- str_pad(pdf_results$pc_code, 7, pad = "0", "left")
+pdf_results$ps_code <- paste0(pdf_results$pc_code, "-", str_pad(pdf_results$ps_number, 2, pad = "0", "left"))
 
-pdf_trimmed <- gsub("[^0-9 ]", "", pdf_text)
+post_audit_ps_invalidated <- unique(runoff_post_audit_output$ps_code[runoff_post_audit_output$post_audit_status == "Invalidated"])
+post_audit_ps_not_invalidated <- unique(runoff_post_audit_output$ps_code[runoff_post_audit_output$post_audit_status != "Invalidated"])
+pdf_ps <- unique(pdf_results$ps_code)
 
-data <- Reduce(rbind, strsplit(trimws(pdf_trimmed), "\\s{2,}"))
-rownames(data) <- 1:dim(data)[1]
-data <- as.data.frame(data)
-colnames(data) <- c("pc_code", "ps_number", "barcode_number", "votes")
+setdiff(pdf_ps, post_audit_ps_not_invalidated)
 
-runoff_post_audit_pdf <- data
-runoff_post_audit_pdf$pc_code <- as.character(runoff_post_audit_pdf$pc_code)
-runoff_post_audit_pdf$ps_number <- as.numeric(as.character(runoff_post_audit_pdf$ps_number))
-runoff_post_audit_pdf$barcode_number <- NULL
-runoff_post_audit_pdf$votes <- as.numeric(as.character(runoff_post_audit_pdf$votes))
-runoff_post_audit_pdf$ps_code = paste0(runoff_post_audit_pdf$pc_code, "-", 
-                                       str_pad(runoff_post_audit_pdf$ps_number, width = 2, side = "left", pad = "0"))
+# confirmed that published PDF matches dataset (but only reports non-invalidated PS)
 
-setdiff(runoff_post_audit$ps_code, runoff_post_audit_pdf$ps_code)
 # discrepancy check ------
 #all_out <- data.frame()
 #row_out <- data.frame()
@@ -577,9 +603,258 @@ setdiff(runoff_post_audit$ps_code, runoff_post_audit_pdf$ps_code)
 #  }
 #}
 
+# CREATE A DISTRICT KEY -------------------------------------------------------
+
+district_list <- pc_key_2014 %>% 
+  dplyr::select(province_code, district_code, district_name_dari,
+                district_sub_code, district_or_subdivision_name_dari, provincial_capital) %>%
+  unique()
+
+
+english_names <- final_post_audit %>% dplyr::select(province_code, province_name_eng, province_name_dari,
+                                                    district_code, district_name_eng) %>% unique()
+english_names <- rbind(english_names, c("02", 
+                                        "Kapisa", 
+                                        "کاپیسا",
+                                        "0207",
+                                        "Alasay"))
+
+district_list <- district_list %>% left_join(english_names)
+
+# fix nonstandardized district names
+
+dupe_errors <- district_list[duplicated(district_list$district_code), ]
+
+district_list$district_name_dari[district_list$district_code == "0206"] <- "تكاب"
+district_list$district_name_dari[district_list$district_code == "0103"] <- "جهار اسياب"
+district_list$district_name_dari[district_list$district_code == "0304"] <- "سشدخلل"
+district_list$district_name_dari[district_list$district_code == "0306"] <- "سالنكة"
+district_list$district_name_dari[district_list$district_code == "0405"] <- "سيد اباد"
+district_list$district_name_dari[district_list$district_code == "0407"] <- "حصه اول بهسود"
+district_list$district_name_dari[district_list$district_code == "0409"] <- "مركز بهسود"
+district_list$district_name_dari[district_list$district_code == "0502"] <- "بركىبرك"
+district_list$district_name_dari[district_list$district_code == "0504"] <- "خوشى"
+district_list$district_name_dari[district_list$district_code == "0505"] <- "محمد اغه"
+district_list$district_name_dari[district_list$district_code == "0601"] <- "جلال آباد"
+district_list$district_name_dari[district_list$district_code == "0602"] <- "بهسود"
+district_list$district_name_dari[district_list$district_code == "0604"] <- "چپرهار"
+district_list$district_name_dari[district_list$district_code == "0605"] <- "کامه"
+district_list$district_name_dari[district_list$district_code == "0606"] <- "کوز کنړ"
+district_list$district_name_dari[district_list$district_code == "0608"] <- "خوګیاڼي"
+district_list$district_name_dari[district_list$district_code == "0609"] <- "بټي کوټ"
+district_list$district_name_dari[district_list$district_code == "0611"] <- "پچیر و اګام"
+district_list$district_name_dari[district_list$district_code == "0613"] <- "كوت"
+district_list$district_name_dari[district_list$district_code == "0616"] <- "شینوار"
+district_list$district_name_dari[district_list$district_code == "0618"] <- "لعل پور"
+district_list$district_name_dari[district_list$district_code == "0702"] <- "قرغه یي"
+district_list$district_name_dari[district_list$district_code == "0703"] <- "علیشنګ"
+district_list$district_name_dari[district_list$district_code == "0808"] <- "آبشار"
+district_list$district_name_dari[district_list$district_code == "0909"] <- "جلگه"
+district_list$district_name_dari[district_list$district_code == "0913"] <- "خوست و فرنگ"
+district_list$district_name_dari[district_list$district_code == "1002"] <- "شیبر"
+district_list$district_name_dari[district_list$district_code == "1005"] <- "یکاولنگ"
+district_list$district_name_dari[district_list$district_code == "1106"] <- "جغتو"
+district_list$district_name_dari[district_list$district_code == "1113"] <- "آب بند"
+district_list$district_name_dari[district_list$district_code == "1201"] <- "شرن"
+district_list$district_name_dari[district_list$district_code == "1203"] <- "یوسف خیل"
+district_list$district_name_dari[district_list$district_code == "1204"] <- "یحی خیل"
+district_list$district_name_dari[district_list$district_code == "1205"] <- "سروضه"
+district_list$district_name_dari[district_list$district_code == "1212"] <- "زیړوک"
+district_list$district_name_dari[district_list$district_code == "1302"] <- "احمد آبا"
+district_list$district_name_dari[district_list$district_code == "1303"] <- "زرمت"
+district_list$district_name_dari[district_list$district_code == "1306"] <- "سید کرم"
+district_list$district_name_dari[district_list$district_code == "1401"] <- "خوست"
+district_list$district_name_dari[district_list$district_code == "1404"] <- "تڼي"
+district_list$district_name_dari[district_list$district_code == "1411"] <- "سپیره"
+district_list$district_name_dari[district_list$district_code == "1413"] <- "ځاځي میدان"
+district_list$district_name_dari[district_list$district_code == "1501"] <- "اسعد آباد"
+district_list$district_name_dari[district_list$district_code == "1506"] <- "شيكل و شيلتن"
+district_list$district_name_dari[district_list$district_code == "1511"] <- "غازی آباد"
+district_list$district_name_dari[district_list$district_code == "1601"] <- "پارون"
+district_list$district_name_dari[district_list$district_code == "1701"] <- "فیض آباد"
+district_list$district_name_dari[district_list$district_code == "1703"] <- "ارغنجخواه"
+district_list$district_name_dari[district_list$district_code == "1704"] <- "یفتل سفلا"
+district_list$district_name_dari[district_list$district_code == "1713"] <- "شهر بزرگ"
+district_list$district_name_dari[district_list$district_code == "1716"] <- "وردوج"
+district_list$district_name_dari[district_list$district_code == "1717"] <- "تگاب"
+district_list$district_name_dari[district_list$district_code == "1721"] <- "کوف آب"
+district_list$district_name_dari[district_list$district_code == "1801"] <- "تالقان"
+district_list$district_name_dari[district_list$district_code == "1806"] <- "نمک آب"
+district_list$district_name_dari[district_list$district_code == "1812"] <- "دشت قلعه"
+district_list$district_name_dari[district_list$district_code == "1815"] <- "درقد"
+district_list$district_name_dari[district_list$district_code == "1816"] <- "چا آب"
+district_list$district_name_dari[district_list$district_code == "1903"] <- "علی آباد"
+district_list$district_name_dari[district_list$district_code == "1904"] <- "خان آباد"
+district_list$district_name_dari[district_list$district_code == "2005"] <- "روی دوآب"
+district_list$district_name_dari[district_list$district_code == "2112"] <- "شور تیپه"
+district_list$district_name_dari[district_list$district_code == "2206"] <- "گوسفندی"
+district_list$district_name_dari[district_list$district_code == "2301"] <- "چغچران"
+district_list$district_name_dari[district_list$district_code == "2305"] <- "پسابند"
+district_list$district_name_dari[district_list$district_code == "2306"] <- "شهرک"
+district_list$district_name_dari[district_list$district_code == "2406"] <- "کیتی"
+district_list$district_name_dari[district_list$district_code == "2408"] <- "سنگ تخت"
+district_list$district_name_dari[district_list$district_code == "2503"] <- "چوره"
+district_list$district_name_dari[district_list$district_code == "2504"] <- "شهید حساس"
+district_list$district_name_dari[district_list$district_code == "2601"] <- "قلات"
+district_list$district_name_dari[district_list$district_code == "2602"] <- "ترنک و جلدک"
+district_list$district_name_dari[district_list$district_code == "2603"] <- "شینکې"
+district_list$district_name_dari[district_list$district_code == "2607"] <- "دایچوپان"
+district_list$district_name_dari[district_list$district_code == "2610"] <- "شملزائی"
+district_list$district_name_dari[district_list$district_code == "2704"] <- "پنجوایې"
+district_list$district_name_dari[district_list$district_code == "2705"] <- "ژیړی"
+district_list$district_name_dari[district_list$district_code == "2711"] <- "سپین بولدک"
+district_list$district_name_dari[district_list$district_code == "2801"] <- "شبرغان"
+district_list$district_name_dari[district_list$district_code == "2805"] <- "قوش تیپه"
+district_list$district_name_dari[district_list$district_code == "2806"] <- "خم آب"
+district_list$district_name_dari[district_list$district_code == "2807"] <- "آقچه"
+district_list$district_name_dari[district_list$district_code == "2808"] <- "فیض آباد"
+district_list$district_name_dari[district_list$district_code == "2810"] <- "قرقین"
+district_list$district_name_dari[district_list$district_code == "2811"] <- "درز آب"
+district_list$district_name_dari[district_list$district_code == "2902"] <- "پشتون کوت"
+district_list$district_name_dari[district_list$district_code == "2905"] <- "بل چراغ"
+district_list$district_name_dari[district_list$district_code == "2907"] <- "قیصار"
+district_list$district_name_dari[district_list$district_code == "2909"] <- "دولت آباد"
+district_list$district_name_dari[district_list$district_code == "3008"] <- "سنگین قلعه"
+district_list$district_name_dari[district_list$district_code == "3011"] <- "ریگ خانشین"
+district_list$district_name_dari[district_list$district_code == "3101"] <- "قلعه نو"
+district_list$district_name_dari[district_list$district_code == "3102"] <- "آبکمری"
+district_list$district_name_dari[district_list$district_code == "3206"] <- "پشتون زرغون"
+district_list$district_name_dari[district_list$district_code == "3208"] <- "گلران"
+district_list$district_name_dari[district_list$district_code == "3210"] <- "کشک کهنه"
+district_list$district_name_dari[district_list$district_code == "3214"] <- "شیندند"
+district_list$district_name_dari[district_list$district_code == "3215"] <- "فرسی"
+district_list$district_name_dari[district_list$district_code == "3216"] <- "چشت شریف"
+district_list$district_name_dari[district_list$district_code == "3303"] <- "خاک سفید"
+district_list$district_name_dari[district_list$district_code == "3305"] <- "شیب کوه"
+district_list$district_name_dari[district_list$district_code == "3311"] <- "پرچمن"
+  
+district_list <- district_list %>% 
+  dplyr::select(- district_or_subdivision_name_dari) %>% 
+  unique()
+
+district_list_with_subdivisions <- district_list %>% left_join(
+  pc_key_2014 %>% filter(district_code == "0101") %>%
+  dplyr::select(district_sub_code, district_or_subdivision_name_dari) %>% unique()
+)
+
+district_list_with_subdivisions$district_or_subdivision_name_dari[is.na(district_list_with_subdivisions$district_or_subdivision_name_dari)] <- 
+  district_list_with_subdivisions$district_name_dari[is.na(district_list_with_subdivisions$district_or_subdivision_name_dari)]
+
+kabul_subdivisions <- district_list_with_subdivisions %>% filter(district_code == "0101") %>% rowwise %>%
+  mutate(
+    district_or_subdivision_name_eng = paste0("Kabul Nahia ", str_split(district_sub_code, "-")[[1]][2]))
+
+district_key <- district_list_with_subdivisions %>% filter(district_code != "0101") %>%
+  full_join(kabul_subdivisions) %>% arrange(province_code, district_code, district_sub_code) %>% dplyr::select(
+    province_code, province_name_eng, province_name_dari,
+    district_code, district_name_eng, district_name_dari,
+    district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, 
+    provincial_capital
+  ) %>% 
+  mutate(province_name_eng = str_to_upper(province_name_eng),
+         district_name_eng = str_to_upper(district_name_eng),
+         district_or_subdivision_name_eng = str_to_upper(district_or_subdivision_name_eng))
+
+district_key$district_or_subdivision_name_eng[is.na(district_key$district_or_subdivision_name_eng)] <-
+  district_key$district_name_eng[is.na(district_key$district_or_subdivision_name_eng)]
+
+write.csv(district_key, "./past_elections/presidential_2014/keyfiles/district_key_2014.csv", row.names = F)
+
+# CREATE A PROVINCE KEY
+
+province_key <- district_key %>% dplyr::select(province_code, province_name_eng, province_name_dari) %>% unique()
+write.csv(province_key, "./past_elections/presidential_2014/keyfiles/province_key_2014.csv", row.names = F)
+
 # UPDATE PC KEY WITH REPORTING STATUS -----------------------------------------
 rm(list = ls())
 
+district_key_2014 <- read.csv("./past_elections/presidential_2014/keyfiles/district_key_2014.csv", stringsAsFactors = F)
+district_key_2014$district_code <- str_pad(district_key_2014$district_code, 4, pad = "0", "left")
+district_key_2014$province_code <- str_pad(district_key_2014$province_code, 2, pad = "0", "left")
+
+pc_key_2014 <- read.csv("./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", stringsAsFactors = F)
+pc_key_2014$pc_code <- str_pad(pc_key_2014$pc_code, 7, pad = "0", "left")
+pc_key_2014$district_code <- str_pad(pc_key_2014$district_code, 4, pad = "0", "left")
+pc_key_2014$province_code <- str_pad(pc_key_2014$province_code, 2, pad = "0", "left")
+
+final_post_audit <- read.csv("./past_elections/presidential_2014/results_data/run_off_final_results/final_af_candidate_ps_data_run_off_2014.csv", stringsAsFactors = F)
+final_post_audit$pc_code <- str_pad(final_post_audit$pc_code, 7, pad = "0", "left")
+final_post_audit$district_code <- str_pad(final_post_audit$district_code, 4, pad = "0", "left")
+final_post_audit$province_code <- str_pad(final_post_audit$province_code, 2, pad = "0", "left")
+
+prelim_post_audit <- read.csv("./past_elections/presidential_2014/results_data/run_off_preliminary_results/prelim_af_candidate_ps_data_run_off_2014.csv", stringsAsFactors = F)
+prelim_post_audit$pc_code <- str_pad(prelim_post_audit$pc_code, 7, pad = "0", "left")
+prelim_post_audit$district_code <- str_pad(prelim_post_audit$district_code, 4, pad = "0", "left")
+prelim_post_audit$province_code <- str_pad(prelim_post_audit$province_code, 2, pad = "0", "left")
+
+final_round_one <- read.csv("./past_elections/presidential_2014/results_data/first_round_final_results/final_af_candidate_ps_data_first_round_2014.csv", stringsAsFactors = F)
+final_round_one$pc_code <- str_pad(final_round_one$pc_code, 7, pad = "0", "left")
+final_round_one$district_code <- str_pad(final_round_one$district_code, 4, pad = "0", "left")
+final_round_one$province_code <- str_pad(final_round_one$province_code, 2, pad = "0", "left")
+
+prelim_round_one <- read.csv("./past_elections/presidential_2014/results_data/first_round_preliminary_results/prelim_af_candidate_ps_data_first_round_2014.csv", stringsAsFactors = F)
+prelim_round_one$pc_code <- str_pad(prelim_round_one$pc_code, 7, pad = "0", "left")
+prelim_round_one$district_code <- str_pad(prelim_round_one$district_code, 4, pad = "0", "left")
+prelim_round_one$province_code <- str_pad(prelim_round_one$province_code, 2, pad = "0", "left")
+
+aodp_first_round_pcs <- read.csv("https://2014.afghanistanelectiondata.org/data/polling/2014_iec_polling_center_locations_all_march31.csv", stringsAsFactors = F)
+colnames(aodp_first_round_pcs) <- c("closed", "district_name_eng", "district_number", "province_number", "lat", "lon",
+                                    "map_accuracy", "pc_code", "pc_location_eng", "pc_name_eng", "province_name_eng",
+                                    "ps_fem", "ps_male", "ps_planned_count", "verification_note")
+aodp_first_round_pcs$pc_code <- str_pad(aodp_first_round_pcs$pc_code, 7, pad = "0", "left")
+
+aodp_runoff_pcs <- read.csv("https://2014.afghanistanelectiondata.org/data/polling/iec_runoff_polling_centers_en_jun2014.csv", stringsAsFactors = F)
+colnames(aodp_runoff_pcs) <- c("lon", "lat", "ps_male", "pc_name_eng", "pc_code", "province_name_eng", "ps_planned_count",
+                               "district_name_eng", "ps_fem", "pc_location_eng", "province_number", "map_accuracy", "district_number")
+aodp_runoff_pcs$pc_code <- str_pad(aodp_runoff_pcs$pc_code, 7, pad = "0", "left")
+
+post_audit_import <- gsheet2tbl("https://docs.google.com/spreadsheets/d/1DfakTAyfrgEsPB7qgPzy2NV4FTUb9mG5kMFi3T9Z7h4/edit?usp=sharing")
+
+
+prelim_first_pcs <- unique(prelim_round_one$pc_code)
+final_first_pcs <- unique(final_round_one$pc_code)
+prelim_runoff_pcs <- unique(prelim_post_audit$pc_code)
+final_runoff_pcs <- unique(final_post_audit$pc_code)
+current_pc_key <- unique(pc_key_2014$pc_code)
+
+prelim_first_not_in_key <- setdiff(prelim_first_pcs, current_pc_key)
+final_first_not_in_key <- setdiff(final_first_pcs, current_pc_key)
+prelim_runoff_not_in_key <- setdiff(prelim_runoff_pcs, current_pc_key)
+final_runoff_not_in_key <- setdiff(final_runoff_pcs, current_pc_key)
+
+missing_from_key <- unique(c(prelim_first_not_in_key, final_first_not_in_key, prelim_runoff_not_in_key, final_runoff_not_in_key))
+
+missing_in_final <- final_post_audit %>%
+  dplyr::select(province_code, district_code, district_name_eng, pc_code, pc_name_dari) %>% unique() %>%
+  filter(pc_code %in% missing_from_key)
+
+# FILL IN MISSING PC KEY INFO
+
+missing_in_final <- missing_in_final %>% mutate(district_sub_code = district_code) %>% 
+  dplyr::select(- c(province_code, district_code, district_name_eng))
+
+new_pc_key <- pc_key_2014 %>% dplyr::select(district_sub_code, pc_code, pc_name_dari, pc_location_dari,
+                                            ps_planned_count, ps_male, ps_fem) %>% full_join(missing_in_final) %>% 
+  arrange(pc_code)
+
+new_pc_key <- left_join(new_pc_key, district_key_2014)
+
+known_pc_names <- final_post_audit %>% dplyr::select(pc_code, pc_name_eng, pc_name_dari) %>% unique()
+missing_names_pc <- setdiff(new_pc_key$pc_code, known_pc_names$pc_code)
+missing_pc_names <- known_pc_names %>% filter(pc_code %in% missing_names_pc)
+
+new_pc_key_with_known_names <- new_pc_key %>% rename(pdf_name_dari = pc_name_dari) %>% left_join(known_pc_names)
+new_pc_key_with_known_names$pc_name_dari[is.na(new_pc_key_with_known_names$pc_name_dari)] <- 
+  new_pc_key_with_known_names$pc_name_dari[is.na(new_pc_key_with_known_names$pc_name_dari)]
+
+still_missing_pc_names <- new_pc_key_with_known_names %>% filter(is.na(pc_name_eng) | is.na(pc_name_dari))
+
+from_prelim <- aodp_first_round_pcs %>% filter(pc_code %in% still_missing_pc_names$pc_code) %>% dplyr::select(
+  pc_code, pc_name_eng
+)
+
+aodp_pcs <- unique(c(aodp_first_round_pcs$pc_code, aodp_runoff_pcs$pc_code))
+aodp_not_in_results <- setdiff(aodp_pcs, new_pc_key_with_known_names$pc_code)
 
 # COMPLETENESS CHECKS AND SUMMARY STATS ---------------------------------------
 rm(list = ls())
