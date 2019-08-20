@@ -630,3 +630,22 @@ write.csv(pc_key_update, "./keyfiles/pc_key_2019.csv", row.names = F)
 ps_key <- final_ps_list_df %>% dplyr::select(pc_code, ps_code, ps_type, ps_est_voters)
 
 write.csv(ps_key, "./keyfiles/ps_key_2019.csv", row.names = F)
+
+
+# a bit more analysis of 2019 VR data
+
+target <- ("./raw/VRtopuppc.pdf")
+topup_pcs <- pdf_text(target)
+pdf_string <- toString(topup_pcs)
+pdf_lines <- read_lines(pdf_string)
+
+pc_codes <- str_match(pdf_lines, "(\\d{6,7})")[,1]
+pc_codes <- as.data.frame(pc_codes) %>% filter(!is.na(pc_codes)) %>% mutate(vr_topup_location = "YES") %>% rename(pc_code = pc_codes)
+pc_codes$pc_code <- as.character(pc_codes$pc_code)
+
+pc_key_with_topup <- pc_key_2019 %>% left_join(pc_codes)
+pc_key_with_topup$vr_topup_location[is.na(pc_key_with_topup$vr_topup_location)] <- "NO"
+
+pc_key_with_topup <- pc_key_with_topup %>% dplyr::select(names(pc_key_2019)[1:23], vr_top_up_location, everything())
+  
+)
