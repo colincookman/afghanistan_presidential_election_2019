@@ -646,6 +646,42 @@ pc_codes$pc_code <- as.character(pc_codes$pc_code)
 pc_key_with_topup <- pc_key_2019 %>% left_join(pc_codes)
 pc_key_with_topup$vr_topup_location[is.na(pc_key_with_topup$vr_topup_location)] <- "NO"
 
-pc_key_with_topup <- pc_key_with_topup %>% dplyr::select(names(pc_key_2019)[1:23], vr_top_up_location, everything())
-  
+pc_key_with_topup_resort <- pc_key_with_topup %>% dplyr::select(names(pc_key_2019)[1:23], vr_topup_location, everything())
+
+write.csv(pc_key_with_topup_resort, "./keyfiles/pc_key_2019.csv", row.names = F)
+
+pc_key <- pc_key_with_topup_resort
+
+pc_key <- pc_key %>% mutate(
+  vr_2019_net_change = vr_final_total_19 - vr_prelim_total_19,
+  vr_2019_pct_change = vr_2019_net_change / vr_prelim_total_19, 
+  vr_2018_2019_net_change = vr_final_total_19 - vr_final_total_18,
+  vr_2018_2019_pct_change = vr_2018_2019_net_change / vr_final_total_18,
 )
+
+pc_key <- pc_key %>% group_by(district_sub_code) %>% mutate(
+  district_threshold = quantile(vr_final_total_19, .75, na.rm = T)
+)
+pc_key <- pc_key %>% group_by(province_code) %>% mutate(
+  province_threshold = quantile(vr_final_total_19, .75, na.rm = T)
+)
+
+pc_key <- pc_key %>% mutate(
+  district_outlier = ifelse(vr_final_total_19 >= district_threshold, "YES", "NO"),
+  province_outlier = ifelse(vr_final_total_19 >= province_threshold, "YES", "NO"),
+  prelim_turnout_18 = prelim_total_votes_2018 / vr_final_total_18,
+  final_turnout_18 = final_total_votes_2018 / vr_final_total_18
+)
+
+ggplot(data = subset(pc_key, prelim_turnout_18 <= 1 & vr_2018_2019_pct_change <= 1 & vr_topup_location == "YES"),
+       aes(x = prelim_turnout_18, y = vr_2018_2019_pct_change)) +
+  geom_point() +
+  geom_point(alpha = 0.65) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Total Preliminary Votes Recorded in 2018 Parliamentary Election\nas a Share of Total Voter Registration (\"Turnout\")",
+       y = "Percent Increase in Total Voter Registration Between 2018 and 2019",
+       title = "2018 Turnout and 2019 Voter Registration",
+       subtitle = "Author: Colin Cookman (Twitter: @colincookman)\n\nPoints are polling centers where the IEC conducted a June 2019 voter registration \"top-up\" exercise.\nExcludes polling centers with greater than 100% turnout or greater than 100% increase in voter registration. (n = 10)",
+       caption = "Data Source: Afghanistan Independent Election Commission\nCaveat: No guarantees are made as to underlying accuracy of this data.")
+

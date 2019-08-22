@@ -853,11 +853,227 @@ from_prelim <- aodp_first_round_pcs %>% filter(pc_code %in% still_missing_pc_nam
   pc_code, pc_name_eng
 )
 
-aodp_pcs <- unique(c(aodp_first_round_pcs$pc_code, aodp_runoff_pcs$pc_code))
-aodp_not_in_results <- setdiff(aodp_pcs, new_pc_key_with_known_names$pc_code)
+new_pc_key_with_more_names <- new_pc_key_with_known_names %>% filter(pc_code %in% from_prelim$pc_code) %>% 
+  dplyr::select(- c(pc_name_eng)) %>%
+  left_join(from_prelim) %>%
+  mutate(pc_name_dari = pdf_name_dari)
 
-# COMPLETENESS CHECKS AND SUMMARY STATS ---------------------------------------
+new_additions <- new_pc_key_with_more_names$pc_code
+already_known <- new_pc_key_with_known_names$pc_code[!(new_pc_key_with_known_names$pc_code %in% new_additions)]
+
+updated_new_pc_key <- new_pc_key_with_known_names %>% filter(pc_code %in% already_known) %>%
+  full_join(new_pc_key_with_more_names) %>% arrange(pc_code)
+
+updated_new_pc_key$pc_name_eng[updated_new_pc_key$pc_code == "2301040"] <- "Istarman Mosque"
+updated_new_pc_key$pc_name_dari[updated_new_pc_key$pc_code == "2301040"] <- "مسجد استرمان"
+
+updated_new_pc_key <- updated_new_pc_key %>% dplyr::select(
+  province_code, province_name_eng, province_name_dari,
+  district_code, district_name_eng, district_name_dari,
+  district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, 
+  provincial_capital, 
+  pc_code, pc_name_eng, pc_name_dari, pc_location_dari, 
+  ps_planned_count, ps_male, ps_fem
+) %>% arrange(pc_code)
+
+prelim_first_pcs <- data.frame(prelim_first_pcs) %>% mutate(prelim_first_round_results_reporting = "YES") %>%
+  rename(pc_code = prelim_first_pcs)
+
+final_first_pcs <- data.frame(final_first_pcs) %>% mutate(final_first_round_results_reporting = "YES") %>%
+  rename(pc_code = final_first_pcs)
+
+prelim_runoff_pcs <- data.frame(prelim_runoff_pcs) %>% mutate(prelim_run_off_results_reporting = "YES") %>%
+  rename(pc_code = prelim_runoff_pcs)
+
+final_runoff_pcs <- data.frame(final_runoff_pcs) %>% mutate(final_run_off_results_reporting = "YES") %>%
+  rename(pc_code = final_runoff_pcs)
+
+updated_new_pc_key <- updated_new_pc_key %>% left_join(prelim_first_pcs) %>%
+  left_join(final_first_pcs) %>% left_join(prelim_runoff_pcs) %>% left_join(final_runoff_pcs)
+
+updated_new_pc_key$prelim_first_round_results_reporting[is.na(updated_new_pc_key$prelim_first_round_results_reporting)] <- "NO"
+updated_new_pc_key$final_first_round_results_reporting[is.na(updated_new_pc_key$final_first_round_results_reporting)] <- "NO"
+updated_new_pc_key$prelim_run_off_results_reporting[is.na(updated_new_pc_key$prelim_run_off_results_reporting)] <- "NO"
+updated_new_pc_key$final_run_off_results_reporting[is.na(updated_new_pc_key$final_run_off_results_reporting)] <- "NO"
+
+write.csv(updated_new_pc_key, "./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", row.names = F)
+
+IEC_reported_closed <- read_lines(toString(pdf_text("./past_elections/presidential_2014/raw/runoff_closedPollingStations.pdf")))
+
+IEC_reported_closed_PCs <- as.data.frame(str_match(IEC_reported_closed, "(\\d{6,7})")[,1]) %>% filter(!is.na(.)) %>% unique()
+colnames(IEC_reported_closed_PCs) <- "pc_code"
+
+setdiff(IEC_reported_closed_PCs$pc_code, updated_new_pc_key$pc_code[updated_new_pc_key$prelim_run_off_results_reporting == "NO" | 
+                                                                      updated_new_pc_key$final_run_off_results_reporting == "NO"])
+
+closed_runoff_PCs_not_in_key <- setdiff(IEC_reported_closed_PCs$pc_code, updated_new_pc_key$pc_code)
+closed_runoff_PCs_not_in_key <- data.frame(closed_runoff_PCs_not_in_key)
+closed_runoff_PCs_not_in_key$pc_name_eng <- c("Saparay Secondary School", "New Balady School", "Masmod Village Mosque",
+                                              "Mosque", "Sarigul", "Khenj Mosque", "Khwaja Gawhar", "Ghalbala", 
+                                              "Hotaki Mosque", "Khwaja Aspalan Mosque", "Sharshar Village", "Nagharah Khan Village",
+                                              "Kabulzai", "Tarnawe", "Dara Bast Mosque", "Sangbar Mosque")
+closed_runoff_PCs_not_in_key$pc_name_dari <- c(
+  "ری متوسطه",
+  "نيو بالا دی مکتب",
+  "د ماسمود د کلي جومات",
+  "مسجد",
+  "اريگل مسجد",
+  "مسجد خينج",
+  "خواجه گوهر",
+  "غلبله",
+  "مسجد هوتکی",
+  "مسجد خواجه اسپلان",
+  "قريه شرشر",
+  "قريه نغاره خان",
+  "کابل زی",
+  "ترناوی",
+  "مسجد دره بست",
+  "مسجد سنگبر"
+)
+# closed_runoff_PCs_not_in_key$pc_location_dari
+
+closed_runoff_PCs_not_in_key$ps_planned_count <- c(2, 2, 3, 3, 2, 3, 4, 3, 2, 5, 2, 3, 2, 2, 3, 3)
+closed_runoff_PCs_not_in_key$ps_male <- c(1, 1, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 1, 1, 2, 1)
+closed_runoff_PCs_not_in_key$ps_fem <- c(1, 1, 1, 1, 1, 1, 2, 1, 1, 3, 1, 1, 1, 1, 1, 2)
+closed_runoff_PCs_not_in_key$prelim_first_round_results_reporting <- "NO"
+closed_runoff_PCs_not_in_key$final_first_round_results_reporting <- "NO"
+closed_runoff_PCs_not_in_key$prelim_run_off_results_reporting <- "NO"
+closed_runoff_PCs_not_in_key$final_run_off_results_reporting <- "NO"
+
+pc_key <- read.csv("./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", stringsAsFactors = F)
+pc_key$pc_code <- str_pad(pc_key$pc_code, 7, pad = "0", "left")
+pc_key$district_code <- str_pad(pc_key$district_code, 4, pad = "0", "left")
+pc_key$province_code <- str_pad(pc_key$province_code, 2, pad = "0", "left")
+
+# correct ps number errors from pdf scan
+
+pc_key$ps_male[pc_key$pc_code == "1101034"] <- 7
+pc_key$ps_male[pc_key$pc_code == "1114341"] <- 9
+pc_key$ps_male[pc_key$pc_code == "2701003"] <- 9
+pc_key$ps_male[pc_key$pc_code == "2701018"] <- 7
+pc_key$ps_male[pc_key$pc_code == "2801002"] <- 7
+pc_key$ps_male[pc_key$pc_code == "3001010"] <- 7
+pc_key$ps_fem[pc_key$pc_code == "0601002"] <- 7
+pc_key$ps_fem[pc_key$pc_code == "0601004"] <- 7
+pc_key$ps_fem[pc_key$pc_code == "0601010"] <- 7
+pc_key$ps_fem[pc_key$pc_code == "0601011"] <- 7
+pc_key$ps_fem[pc_key$pc_code == "2701029"] <- 7
+pc_key$ps_fem[pc_key$pc_code == "3201431"] <- 7
+pc_key$ps_planned_count[pc_key$ps_planned_count == "٦"] <- 7
+bad_nine <- pc_key$ps_planned_count[pc_key$pc_code == "0101087"]
+pc_key$ps_planned_count[pc_key$ps_planned_count == bad_nine] <- 9
+
+pc_key$ps_planned_count <- as.numeric(pc_key$ps_planned_count)
+pc_key$ps_male <- as.numeric(pc_key$ps_male)
+pc_key$ps_fem <- as.numeric(pc_key$ps_fem)
+
+pc_key_with_closed <- pc_key %>% 
+  full_join(
+    rename(closed_runoff_PCs_not_in_key, pc_code = closed_runoff_PCs_not_in_key) %>%
+      mutate(
+        province_code = str_sub(pc_code, 1,2),
+        district_code = str_sub(pc_code, 1,4)
+        ) %>% left_join(district_key_2014)
+    ) %>% arrange(pc_code)
+
+write.csv(pc_key_with_closed, "./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", row.names = F)
+
+# check list of disqualified PS to make sure no ommitted PCs
+
+disqualified_ps <- read_lines(toString(pdf_text("./past_elections/presidential_2014/raw/runoff_PS-Disqualified-By-IEC-&-IECC-Segragated-By-Gender.pdf")))
+disqualified_PCs <- as.data.frame(str_match(disqualified_ps, "(\\d{6,7})")[,1]) %>% filter(!is.na(.)) %>% unique()
+colnames(disqualified_PCs) <- "pc_code"
+disqualified_PCs <- disqualified_PCs %>% arrange(pc_code)
+
+disqualified_not_in_key <- setdiff(disqualified_PCs$pc_code, pc_key_with_closed$pc_code)
+
+# check against Afghan Open Elections Data lists
 rm(list = ls())
+pc_key <- read.csv("./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", stringsAsFactors = F)
+pc_key$pc_code <- str_pad(pc_key$pc_code, 7, pad = "0", "left")
+pc_key$district_code <- str_pad(pc_key$district_code, 4, pad = "0", "left")
+pc_key$province_code <- str_pad(pc_key$province_code, 2, pad = "0", "left")
+
+aodp_first_round_pcs <- read.csv("https://2014.afghanistanelectiondata.org/data/polling/2014_iec_polling_center_locations_all_march31.csv", stringsAsFactors = F)
+colnames(aodp_first_round_pcs) <- c("closed", "district_name_eng", "district_number", "province_number", "lat", "lon",
+                                    "map_accuracy", "pc_code", "pc_location_eng", "pc_name_eng", "province_name_eng",
+                                    "ps_fem", "ps_male", "ps_planned_count", "verification_note")
+aodp_first_round_pcs$pc_code <- str_pad(aodp_first_round_pcs$pc_code, 7, pad = "0", "left")
+
+aodp_runoff_pcs <- read.csv("https://2014.afghanistanelectiondata.org/data/polling/iec_runoff_polling_centers_en_jun2014.csv", stringsAsFactors = F)
+colnames(aodp_runoff_pcs) <- c("lon", "lat", "ps_male", "pc_name_eng", "pc_code", "province_name_eng", "ps_planned_count",
+                               "district_name_eng", "ps_fem", "pc_location_eng", "province_number", "map_accuracy", "district_number")
+aodp_runoff_pcs$pc_code <- str_pad(aodp_runoff_pcs$pc_code, 7, pad = "0", "left")
+
+aodp_pcs <- unique(c(aodp_first_round_pcs$pc_code, aodp_runoff_pcs$pc_code))
+
+AODP_open_not_in_keyfile <- setdiff(aodp_pcs[(aodp_pcs %in% aodp_first_round_pcs$pc_code[aodp_first_round_pcs$closed != "1"])],
+                                    pc_key$pc_code)
+
+AODP_closed_not_in_keyfile <- setdiff(aodp_pcs[(aodp_pcs %in% aodp_first_round_pcs$pc_code[aodp_first_round_pcs$closed == "1"])],
+                                    pc_key$pc_code)
+
+
+# AODP missing polling centers came from a now inactive ARCGIS map - probably dropped in security review / pre-election planning
+# process as these do not seem to appear in other IEC files, at least that are publicly accessible at this point.
+# https://github.com/developmentseed/aodp-data/tree/master/data/2014_president_election/polling-center-locations/first-round/original
+
+# add lat / lon for known PCs
+
+first_gis <- aodp_first_round_pcs %>% dplyr::select(pc_code, lat, lon)
+runoff_gis <- aodp_runoff_pcs %>% filter(!(pc_code %in% first_gis$pc_code)) %>% dplyr::select(pc_code, lat, lon)
+all_gis <- full_join(first_gis, runoff_gis) %>% arrange(pc_code)
+
+pc_key_with_gis <- left_join(pc_key, all_gis)
+
+write.csv(pc_key_with_gis, "./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", row.names = F)
+
+# PS KEY AND REPORTING / DISQUALIFICATION STATUS ------------------------------------
+rm(list = ls())
+pc_key_2014 <- read_csv("past_elections/presidential_2014/keyfiles/pc_key_2014.csv")
+
+ps_planned <- data.frame()
+for(i in 1:length(pc_key_2014$pc_code)){
+  pc_code = as.character(pc_key_2014$pc_code[i])
+  ps_planned_count = pc_key_2014$ps_planned_count[i]
+  ps_male = pc_key_2014$ps_male[i]
+  ps_fem = pc_key_2014$ps_fem[i]
+  row_out <- data.frame()
+  
+  if(!is.na(ps_male) & ps_male > 0){
+  for(j in 1:ps_male){
+    ps_code = as.character(paste0(pc_code, "-", as.character(str_pad(j, 2, pad = "0", side = "left"))))
+    ps_type = "M"
+    row = data.frame(pc_code, ps_code, ps_type)
+    row_out <- rbind(row_out, row)
+  }} else {NULL}
+  
+  if(!is.na(ps_fem) & ps_fem > 0){
+  for(k in 1:ps_fem){
+    ps_code = as.character(paste0(pc_code, "-", as.character(str_pad(sum(k, as.numeric(ps_male), na.rm = T), 2, pad = "0", side = "left"))))
+    ps_type = "F"
+    row = data.frame(pc_code, ps_code, ps_type)
+    row_out <- rbind(row_out, row)
+  }} else {NULL}
+  
+  ps_planned <- rbind(ps_planned, row_out)
+}
+
+# FINAL COMPLETENESS CHECKS AND SUMMARY STATS ---------------------------------------
+
+
+ps_count <- all_data %>% group_by(province_code) %>% summarize(
+  pc_count = length(unique(pc_code)),
+  ps_count = length(unique(ps_code)),
+  candidate_count = length(unique(candidate_code)),
+  vote_count = sum(votes, na.rm = TRUE)
+)
+
+write.csv(ps_count, "./past_elections/presidential_2014/validity_checks/first_round_pc_ps_candidate_vote_counts.csv", row.names = F)
+write.csv(ps_count, "./past_elections/presidential_2014/validity_checks/run_off_pc_ps_candidate_vote_counts.csv", row.names = F)
+
+
+
 
 
 # quick comparison of 2014 and 2018 coordinates - not matching ------------------
