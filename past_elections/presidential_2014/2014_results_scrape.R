@@ -1059,8 +1059,64 @@ for(i in 1:length(pc_key_2014$pc_code)){
   ps_planned <- rbind(ps_planned, row_out)
 }
 
-# FINAL COMPLETENESS CHECKS AND SUMMARY STATS ---------------------------------------
+write.csv(ps_planned, "./past_elections/presidential_2014/keyfiles/ps_key_2014.csv", row.names = F)
 
+
+final_post_audit <- read.csv("./past_elections/presidential_2014/results_data/run_off_final_results/final_af_candidate_ps_data_run_off_2014.csv", stringsAsFactors = F)
+final_post_audit$pc_code <- str_pad(final_post_audit$pc_code, 7, pad = "0", "left")
+final_post_audit$district_code <- str_pad(final_post_audit$district_code, 4, pad = "0", "left")
+final_post_audit$province_code <- str_pad(final_post_audit$province_code, 2, pad = "0", "left")
+
+prelim_post_audit <- read.csv("./past_elections/presidential_2014/results_data/run_off_preliminary_results/prelim_af_candidate_ps_data_run_off_2014.csv", stringsAsFactors = F)
+prelim_post_audit$pc_code <- str_pad(prelim_post_audit$pc_code, 7, pad = "0", "left")
+prelim_post_audit$district_code <- str_pad(prelim_post_audit$district_code, 4, pad = "0", "left")
+prelim_post_audit$province_code <- str_pad(prelim_post_audit$province_code, 2, pad = "0", "left")
+
+final_round_one <- read.csv("./past_elections/presidential_2014/results_data/first_round_final_results/final_af_candidate_ps_data_first_round_2014.csv", stringsAsFactors = F)
+final_round_one$pc_code <- str_pad(final_round_one$pc_code, 7, pad = "0", "left")
+final_round_one$district_code <- str_pad(final_round_one$district_code, 4, pad = "0", "left")
+final_round_one$province_code <- str_pad(final_round_one$province_code, 2, pad = "0", "left")
+# correct ps coding error
+
+final_round_one <- final_round_one %>% rowwise %>%
+  mutate(ps_code = paste0(pc_code, "-", str_pad(str_split(ps_code, "-")[[1]][2], 2, pad = "0", "left")))
+
+write.csv(final_round_one, "./past_elections/presidential_2014/results_data/first_round_final_results/final_af_candidate_ps_data_first_round_2014.csv", row.names = F)
+
+prelim_round_one <- read.csv("./past_elections/presidential_2014/results_data/first_round_preliminary_results/prelim_af_candidate_ps_data_first_round_2014.csv", stringsAsFactors = F)
+prelim_round_one$pc_code <- str_pad(prelim_round_one$pc_code, 7, pad = "0", "left")
+prelim_round_one$district_code <- str_pad(prelim_round_one$district_code, 4, pad = "0", "left")
+prelim_round_one$province_code <- str_pad(prelim_round_one$province_code, 2, pad = "0", "left")
+
+ps_reporting <- ps_planned %>% left_join(
+  dplyr::select(prelim_round_one, ps_code) %>% unique() %>%
+    mutate(prelim_first_round_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(final_round_one, ps_code) %>% unique() %>%
+      mutate(final_first_round_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(prelim_post_audit, ps_code) %>% unique() %>%
+      mutate(prelim_run_off_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(final_post_audit, ps_code, post_audit_status, results_barcode) %>% unique() %>%
+      mutate(final_run_off_results_reporting = "YES")
+  )
+
+ps_reporting$prelim_first_round_results_reporting[is.na(ps_reporting$prelim_first_round_results_reporting)] <- "NO"
+ps_reporting$final_first_round_results_reporting[is.na(ps_reporting$final_first_round_results_reporting)] <- "NO"
+ps_reporting$prelim_run_off_results_reporting[is.na(ps_reporting$prelim_run_off_results_reporting)] <- "NO"
+ps_reporting$final_run_off_results_reporting[is.na(ps_reporting$final_run_off_results_reporting)] <- "NO"
+
+ps_reporting <- ps_reporting %>% dplyr::select(
+  pc_code, ps_code, ps_type, 
+  prelim_first_round_results_reporting, final_first_round_results_reporting,
+  prelim_run_off_results_reporting, final_run_off_results_reporting, post_audit_status, results_barcode
+) %>% arrange(pc_code, ps_code)
+
+write.csv(ps_reporting, "./past_elections/presidential_2014/keyfiles/ps_key_2014.csv", row.names = F)
+
+# FINAL COMPLETENESS CHECKS AND SUMMARY STATS ---------------------------------------
+rm(list = ls())
 
 ps_count <- all_data %>% group_by(province_code) %>% summarize(
   pc_count = length(unique(pc_code)),
@@ -1075,9 +1131,8 @@ write.csv(ps_count, "./past_elections/presidential_2014/validity_checks/run_off_
 
 
 
-
 # quick comparison of 2014 and 2018 coordinates - not matching ------------------
-# pc_plan <- gsheet2tbl("https://docs.google.com/spreadsheets/d/12qCIIf1slwz6gDZtableqAhoehZYcODA1eLOAfrwOkA/edit?usp=sharing")
+
 # pc_plan$pc_code <- as.character(str_pad(pc_plan$pc_code, 7, pad = "0", side = "left"))
 
 # pc_2014 <- pc_plan %>% dplyr::select(pc_code, lat, lon)
