@@ -1288,7 +1288,6 @@ prelim_round_one_province <- prelim_round_one %>%
 
 write.csv(prelim_round_one_district, "./past_elections/presidential_2014/results_data/first_round_preliminary_results/prelim_af_candidate_province_data_first_round_2014.csv", row.names = F)
 
-
 # FINAL ROUND ONE -------------------------
 # PC level
 
@@ -1343,7 +1342,6 @@ final_round_one_province <- final_round_one %>%
 
 write.csv(final_round_one_province, "./past_elections/presidential_2014/results_data/first_round_final_results/final_af_candidate_province_data_first_round_2014.csv", row.names = F)
 
-
 # PRELIM RUNOFF -------------------------
 # PC level
 
@@ -1356,8 +1354,8 @@ prelim_runoff_pc <- prelim_post_audit %>%
            ballot_position, candidate_code, candidate_name_eng, candidate_name_dari,
            party_name_dari, candidate_gender, first_round_winner, run_off_winner, past_winners
            ) %>% 
-  summarize(male_ps_votes = sum(votes[ps_type == "Male"], na.rm = T),
-            fem_ps_votes = sum(votes[ps_type == "Female"], na.rm = T),
+  summarize(male_ps_votes = sum(votes[ps_type == "M"], na.rm = T),
+            fem_ps_votes = sum(votes[ps_type == "F"], na.rm = T),
             votes = sum(votes, na.rm = T)
             ) %>% arrange(province_code, district_code, pc_code, ballot_position)
 
@@ -1377,8 +1375,8 @@ prelim_runoff_district <- prelim_post_audit %>%
            ballot_position, candidate_code, candidate_name_eng, candidate_name_dari,
            party_name_dari, candidate_gender, first_round_winner, run_off_winner, past_winners
            ) %>% 
-  summarize(male_ps_votes = sum(votes[ps_type == "Male"], na.rm = T),
-            fem_ps_votes = sum(votes[ps_type == "Female"], na.rm = T),
+  summarize(male_ps_votes = sum(votes[ps_type == "M"], na.rm = T),
+            fem_ps_votes = sum(votes[ps_type == "F"], na.rm = T),
             votes = sum(votes, na.rm = T)
             ) %>% arrange(province_code, district_code, district_sub_code, ballot_position)
 
@@ -1391,34 +1389,15 @@ prelim_runoff_province <- prelim_post_audit %>%
            ballot_position, candidate_code, candidate_name_eng, candidate_name_dari,
            party_name_dari, candidate_gender, first_round_winner, run_off_winner, past_winners
            ) %>% 
-  summarize(male_ps_votes = sum(votes[ps_type == "Male"], na.rm = T),
-            fem_ps_votes = sum(votes[ps_type == "Female"], na.rm = T),
+  summarize(male_ps_votes = sum(votes[ps_type == "M"], na.rm = T),
+            fem_ps_votes = sum(votes[ps_type == "F"], na.rm = T),
             votes = sum(votes, na.rm = T)
             ) %>% arrange(province_code, ballot_position)
 
 write.csv(prelim_runoff_province, "./past_elections/presidential_2014/results_data/run_off_preliminary_results/prelim_af_candidate_province_data_run_off_2014.csv", row.names = F)
 
-
 # FINAL RUNOFF -------------------------
 # PC level
-
-test <- final_post_audit %>% filter(pc_code == "0101033")
-test_pc <- test %>%
-  group_by(election_type, election_date, results_status,
-           province_code, province_name_eng, province_name_dari,
-           district_code, district_name_eng, district_name_dari,
-           district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
-           pc_code, pc_name_eng, pc_name_dari, 
-           ballot_position, candidate_code, candidate_name_eng, candidate_name_dari,
-           party_name_dari, candidate_gender, first_round_winner, run_off_winner, past_winners
-           ) %>% 
-  summarize(male_ps_valid_votes = sum(ifelse(ps_type == "Male" & post_audit_status != "Invalidated", votes, 0), na.rm = T),
-            fem_ps_valid_votes = sum(ifelse(ps_type == "Female" & post_audit_status != "Invalidated", votes, 0), na.rm = T),
-            male_ps_invalid_votes = sum(ifelse(ps_type == "Male" & post_audit_status == "Invalidated", votes, 0), na.rm = T),
-            fem_ps_invalid_votes = sum(ifelse(ps_type == "Female" & post_audit_status == "Invalidated", votes, 0), na.rm = T),
-            votes = sum(c(male_ps_valid_votes, fem_ps_valid_votes)),
-            total_invalid_votes = sum(c(male_ps_invalid_votes, fem_ps_invalid_votes), na.rm = T)
-            ) %>% arrange(province_code, district_code, district_sub_code, pc_code, ballot_position)
 
 final_runoff_pc <- final_post_audit %>% 
   group_by(election_type, election_date, results_status,
@@ -1429,10 +1408,10 @@ final_runoff_pc <- final_post_audit %>%
            ballot_position, candidate_code, candidate_name_eng, candidate_name_dari,
            party_name_dari, candidate_gender, first_round_winner, run_off_winner, past_winners
            ) %>% 
-  summarize(male_ps_valid_votes = sum(ifelse(ps_type == "Male" & post_audit_status != "Invalidated", votes, 0), na.rm = T),
-            fem_ps_valid_votes = sum(ifelse(ps_type == "Female" & post_audit_status != "Invalidated", votes, 0), na.rm = T),
-            male_ps_invalid_votes = sum(ifelse(ps_type == "Male" & post_audit_status == "Invalidated", votes, 0), na.rm = T),
-            fem_ps_invalid_votes = sum(ifelse(ps_type == "Female" & post_audit_status == "Invalidated", votes, 0), na.rm = T),
+  summarize(male_ps_valid_votes = sum(ifelse(ps_type == "M" & post_audit_status != "Invalidated", votes, 0), na.rm = T),
+            fem_ps_valid_votes = sum(ifelse(ps_type == "F" & post_audit_status != "Invalidated", votes, 0), na.rm = T),
+            male_ps_invalid_votes = sum(ifelse(ps_type == "M" & post_audit_status == "Invalidated", votes, 0), na.rm = T),
+            fem_ps_invalid_votes = sum(ifelse(ps_type == "F" & post_audit_status == "Invalidated", votes, 0), na.rm = T),
             votes = sum(c(male_ps_valid_votes, fem_ps_valid_votes)),
             total_invalid_votes = sum(c(male_ps_invalid_votes, fem_ps_invalid_votes), na.rm = T)
             ) %>% arrange(province_code, district_code, district_sub_code, pc_code, ballot_position)
@@ -1453,10 +1432,10 @@ final_runoff_district <- final_post_audit %>%
            ballot_position, candidate_code, candidate_name_eng, candidate_name_dari,
            party_name_dari, candidate_gender, first_round_winner, run_off_winner, past_winners
            ) %>% 
-  summarize(male_ps_valid_votes = sum(votes[ps_type == "Male" & post_audit_status != "Invalidated"], na.rm = T),
-            fem_ps_valid_votes = sum(votes[ps_type == "Female" & post_audit_status != "Invalidated"], na.rm = T),
-            male_ps_invalid_votes = sum(votes[ps_type == "Male" & post_audit_status == "Invalidated"], na.rm = T),
-            fem_ps_invalid_votes = sum(votes[ps_type == "Female" & post_audit_status == "Invalidated"], na.rm = T),
+  summarize(male_ps_valid_votes = sum(votes[ps_type == "M" & post_audit_status != "Invalidated"], na.rm = T),
+            fem_ps_valid_votes = sum(votes[ps_type == "F" & post_audit_status != "Invalidated"], na.rm = T),
+            male_ps_invalid_votes = sum(votes[ps_type == "M" & post_audit_status == "Invalidated"], na.rm = T),
+            fem_ps_invalid_votes = sum(votes[ps_type == "F" & post_audit_status == "Invalidated"], na.rm = T),
             votes = sum(c(male_ps_valid_votes, fem_ps_valid_votes)),
             total_invalid_votes = sum(c(male_ps_invalid_votes, fem_ps_invalid_votes), na.rm = T)
             ) %>% arrange(province_code, district_code, district_sub_code, ballot_position)
@@ -1470,20 +1449,192 @@ final_runoff_province <- final_post_audit %>%
            ballot_position, candidate_code, candidate_name_eng, candidate_name_dari,
            party_name_dari, candidate_gender, first_round_winner, run_off_winner, past_winners
            ) %>% 
-  summarize(male_ps_valid_votes = sum(votes[ps_type == "Male" & post_audit_status != "Invalidated"], na.rm = T),
-            fem_ps_valid_votes = sum(votes[ps_type == "Female" & post_audit_status != "Invalidated"], na.rm = T),
-            male_ps_invalid_votes = sum(votes[ps_type == "Male" & post_audit_status == "Invalidated"], na.rm = T),
-            fem_ps_invalid_votes = sum(votes[ps_type == "Female" & post_audit_status == "Invalidated"], na.rm = T),
+  summarize(male_ps_valid_votes = sum(votes[ps_type == "M" & post_audit_status != "Invalidated"], na.rm = T),
+            fem_ps_valid_votes = sum(votes[ps_type == "F" & post_audit_status != "Invalidated"], na.rm = T),
+            male_ps_invalid_votes = sum(votes[ps_type == "M" & post_audit_status == "Invalidated"], na.rm = T),
+            fem_ps_invalid_votes = sum(votes[ps_type == "F" & post_audit_status == "Invalidated"], na.rm = T),
             votes = sum(c(male_ps_valid_votes, fem_ps_valid_votes)),
             total_invalid_votes = sum(c(male_ps_invalid_votes, fem_ps_invalid_votes), na.rm = T)
             ) %>% arrange(province_code, ballot_position)
 
 write.csv(final_runoff_province, "./past_elections/presidential_2014/results_data/run_off_final_results/final_af_candidate_province_data_run_off_2014.csv", row.names = F)
 
-# UPDATE THE PS KEY -----------------------------------------------------------------
+# UPDATE AND CORRECT THE PS KEY -----------------------------------------------------------------
 
-all_ps <- c(final_post_audit$ps_code, final_round_one$ps_code, prelim_post_audit$ps_code, prelim_round_one$ps_code) %>% unique()
-missing_from_key <- all_ps[!(all_ps %in% ps_key_2014$ps_code)]
+# correct errors in prelim round one
+
+prelim_round_one_corrected <- prelim_round_one %>% rowwise %>% 
+  mutate(ps_code = paste0(pc_code, "-", str_pad(str_split(ps_code, "-")[[1]][2], width = 2, side = "left", pad = "0"))) %>% 
+  dplyr::select(- ps_type) %>%
+  left_join(dplyr::select(ps_key_2014, ps_code, ps_type)) %>% dplyr::select(
+    election_type, election_date, results_status, results_date,
+    province_code, province_name_eng, province_name_dari,
+    district_code, district_name_eng, district_name_dari,
+    district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+    pc_code, pc_name_eng, pc_name_dari,
+    ps_code, ps_type, everything()
+  )
+
+missing_type <- prelim_round_one_corrected %>% dplyr::filter(is.na(ps_type)) %>% dplyr::select(ps_code) %>% unique()
+missing_type$planned_ps <- "NO"
+missing_type <- missing_type %>% rowwise() %>% mutate(pc_code = str_split(ps_code, "-")[[1]][1])
+ps_key_2014_with_added <- ps_key_2014 %>% full_join(missing_type) %>% dplyr::select(pc_code, ps_code, planned_ps, everything())
+ps_key_2014_with_added$planned_ps[is.na(ps_key_2014_with_added$planned_ps)] <- "YES"
+
+
+ps_key_2014_updated_reporting <- ps_key_2014_with_added %>% 
+  dplyr::select(- c(prelim_first_round_results_reporting, final_first_round_results_reporting,
+                    prelim_run_off_results_reporting, final_run_off_results_reporting)) %>%
+  left_join(
+  dplyr::select(prelim_round_one, ps_code) %>% unique() %>%
+    mutate(prelim_first_round_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(final_round_one, ps_code) %>% unique() %>%
+      mutate(final_first_round_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(prelim_post_audit, ps_code) %>% unique() %>%
+      mutate(prelim_run_off_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(final_post_audit, ps_code, post_audit_status, results_barcode) %>% unique() %>%
+      mutate(final_run_off_results_reporting = "YES")
+  )
+
+ps_key_2014_updated_reporting$prelim_first_round_results_reporting[is.na(ps_key_2014_updated_reporting$prelim_first_round_results_reporting)] <- "NO"
+ps_key_2014_updated_reporting$final_first_round_results_reporting[is.na(ps_key_2014_updated_reporting$final_first_round_results_reporting)] <- "NO"
+ps_key_2014_updated_reporting$prelim_run_off_results_reporting[is.na(ps_key_2014_updated_reporting$prelim_run_off_results_reporting)] <- "NO"
+ps_key_2014_updated_reporting$final_run_off_results_reporting[is.na(ps_key_2014_updated_reporting$final_run_off_results_reporting)] <- "NO"
+
+# nope! still wrong / gaps
+
+type_and_status_from_audit <- final_post_audit %>% dplyr::select(ps_code, ps_type, post_audit_status, results_barcode) %>% unique()
+type_and_status_from_audit$ps_type <- gsub("Male", "M", type_and_status_from_audit$ps_type)
+type_and_status_from_audit$ps_type <- gsub("Female", "F", type_and_status_from_audit$ps_type)
+type_and_status_from_audit <- type_and_status_from_audit %>% rowwise() %>% mutate(pc_code = str_split(ps_code, "-")[[1]][1])
+
+new_key <- ps_key_2014_updated_reporting %>% dplyr::select(pc_code, ps_code, ps_type, post_audit_status, results_barcode) %>%
+  filter(!(ps_code %in% type_and_status_from_audit$ps_code)) %>%
+  full_join(type_and_status_from_audit) %>% arrange(pc_code, ps_code)
+
+new_key_with_reporting <- new_key %>% 
+  left_join(
+  dplyr::select(prelim_round_one, ps_code) %>% unique() %>%
+    mutate(prelim_first_round_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(final_round_one, ps_code) %>% unique() %>%
+      mutate(final_first_round_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(prelim_post_audit, ps_code) %>% unique() %>%
+      mutate(prelim_run_off_results_reporting = "YES")) %>%
+  left_join(
+    dplyr::select(final_post_audit, ps_code, post_audit_status, results_barcode) %>% unique() %>%
+      mutate(final_run_off_results_reporting = "YES")
+  )
+
+new_key_with_reporting$prelim_first_round_results_reporting[is.na(new_key_with_reporting$prelim_first_round_results_reporting)] <- "NO"
+new_key_with_reporting$final_first_round_results_reporting[is.na(new_key_with_reporting$final_first_round_results_reporting)] <- "NO"
+new_key_with_reporting$prelim_run_off_results_reporting[is.na(new_key_with_reporting$prelim_run_off_results_reporting)] <- "NO"
+new_key_with_reporting$final_run_off_results_reporting[is.na(new_key_with_reporting$final_run_off_results_reporting)] <- "NO"
+
+ps_planned <- data.frame()
+for(i in 1:length(pc_key_2014$pc_code)){
+  pc_code = as.character(pc_key_2014$pc_code[i])
+  ps_planned_count = pc_key_2014$ps_planned_count[i]
+  ps_male = pc_key_2014$ps_male[i]
+  ps_fem = pc_key_2014$ps_fem[i]
+  row_out <- data.frame()
+  
+  if(!is.na(ps_male) & ps_male > 0){
+  for(j in 1:ps_male){
+    ps_code = as.character(paste0(pc_code, "-", as.character(str_pad(j, 2, pad = "0", side = "left"))))
+    ps_type = "M"
+    row = data.frame(pc_code, ps_code, ps_type)
+    row_out <- rbind(row_out, row)
+  }} else {NULL}
+  
+  if(!is.na(ps_fem) & ps_fem > 0){
+  for(k in 1:ps_fem){
+    ps_code = as.character(paste0(pc_code, "-", as.character(str_pad(sum(k, as.numeric(ps_male), na.rm = T), 2, pad = "0", side = "left"))))
+    ps_type = "F"
+    row = data.frame(pc_code, ps_code, ps_type)
+    row_out <- rbind(row_out, row)
+  }} else {NULL}
+  
+  ps_planned <- rbind(ps_planned, row_out)
+}
+
+new_key_with_reporting <- new_key_with_reporting %>% left_join(
+  dplyr::select(ps_planned, ps_code) %>% mutate(planned_ps = "YES")
+)
+new_key_with_reporting$planned_ps[is.na(new_key_with_reporting$planned_ps)] <- "NO"
+
+new_key_with_reporting <- new_key_with_reporting %>% dplyr::select(
+  pc_code, ps_code, ps_type, planned_ps, everything()) %>%
+  rename(ps_planned_before_first_round = planned_ps)
+
+write.csv(new_key_with_reporting, "./past_elections/presidential_2014/keyfiles/ps_key_2014.csv", row.names = F)
+
+# FIX THE PS TYPE INFO IN PS-LEVEL FILES -------------------------------------------------
+
+prelim_round_one_corrected_again <- prelim_round_one_corrected %>% 
+  dplyr::select(- ps_type) %>%
+  left_join(dplyr::select(new_key_with_reporting, ps_code, ps_type)) %>%
+  left_join(dplyr::select(ps_key_2014, ps_code, ps_type)) %>% dplyr::select(
+    election_type, election_date, results_status, results_date,
+    province_code, province_name_eng, province_name_dari,
+    district_code, district_name_eng, district_name_dari,
+    district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+    pc_code, pc_name_eng, pc_name_dari,
+    ps_code, ps_type, everything()
+  )
+
+write.csv(prelim_round_one_corrected_again, "./past_elections/presidential_2014/results_data/first_round_preliminary_results/prelim_af_candidate_ps_data_first_round_2014.csv", row.names = F)
+
+final_round_one_corrected <- final_round_one %>% 
+  dplyr::select(- ps_type) %>%
+  left_join(dplyr::select(new_key_with_reporting, ps_code, ps_type)) %>%
+  left_join(dplyr::select(ps_key_2014, ps_code, ps_type)) %>% dplyr::select(
+    election_type, election_date, results_status, results_date,
+    province_code, province_name_eng, province_name_dari,
+    district_code, district_name_eng, district_name_dari,
+    district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+    pc_code, pc_name_eng, pc_name_dari,
+    ps_code, ps_type, everything()
+  )
+
+write.csv(final_round_one_corrected, "./past_elections/presidential_2014/results_data/first_round_final_results/final_af_candidate_ps_data_first_round_2014.csv", row.names = F)
+
+prelim_runoff_corrected <- prelim_post_audit %>% 
+  dplyr::select(- ps_type) %>%
+  left_join(dplyr::select(new_key_with_reporting, ps_code, ps_type)) %>%
+  left_join(dplyr::select(ps_key_2014, ps_code, ps_type)) %>% dplyr::select(
+    election_type, election_date, results_status, results_date,
+    province_code, province_name_eng, province_name_dari,
+    district_code, district_name_eng, district_name_dari,
+    district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+    pc_code, pc_name_eng, pc_name_dari,
+    ps_code, ps_type, everything()
+  )
+
+write.csv(prelim_runoff_corrected, "./past_elections/presidential_2014/results_data/run_off_preliminary_results/prelim_af_candidate_ps_data_run_off_2014.csv", row.names = F)
+
+final_runoff_corrected <- final_post_audit %>% 
+  dplyr::select(- ps_type) %>%
+  left_join(dplyr::select(new_key_with_reporting, ps_code, ps_type)) %>%
+  left_join(dplyr::select(ps_key_2014, ps_code, ps_type)) %>% dplyr::select(
+    election_type, election_date, results_status,
+    province_code, province_name_eng, province_name_dari,
+    district_code, district_name_eng, district_name_dari,
+    district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari, provincial_capital,
+    pc_code, pc_name_eng, pc_name_dari,
+    ps_code, ps_type, everything()
+  )
+
+write.csv(final_runoff_corrected, "./past_elections/presidential_2014/results_data/run_off_final_results/final_af_candidate_ps_data_run_off_2014.csv", row.names = F)
+
+
+# RE-AGGREGATE THE RESULTS AGAIN, PER ABOVE
+
+
 
 # FINAL COMPLETENESS CHECKS AND SUMMARY STATS ---------------------------------------
 rm(list = ls())
@@ -1542,19 +1693,72 @@ ps_count_run_off <- all_data %>% filter(election_type == "PRESIDENTIAL RUNOFF") 
 write.csv(ps_count_first_round, "./past_elections/presidential_2014/validity_checks/first_round_pc_ps_candidate_vote_counts.csv", row.names = F)
 write.csv(ps_count_run_off, "./past_elections/presidential_2014/validity_checks/run_off_pc_ps_candidate_vote_counts.csv", row.names = F)
 
-national_sums <- all_data %>% group_by(candidate_code, ballot_position) %>% summarize(votes = sum(votes, na.rm = TRUE))
-iec_totals <- read.csv( , stringsAsFactors = F)
+# tabulation check
+
+iec_final_first_round <- data.frame(read_html("http://www.iec.org.af/results_2014/en/finalresults/presidential/2") %>% 
+  html_nodes(".table-striped") %>% html_table(fill = TRUE, trim = TRUE, header = TRUE))
+colnames(iec_final_first_round) <- c("ballot_position", "candidate_name_eng", "votes", "pct")
+write.csv(iec_final_first_round, "./past_elections/presidential_2014/raw/iec_final_first_round_totals.csv", row.names = F)
+
+iec_prelim_first_round <- data.frame(read_html("http://www.iec.org.af/results_2014/en/elections/presidential/2") %>% 
+  html_nodes(".table-striped") %>% html_table(fill = TRUE, trim = TRUE, header = TRUE))
+colnames(iec_prelim_first_round) <- c("ballot_position", "candidate_name_eng", "votes", "pct")
+write.csv(iec_prelim_first_round, "./past_elections/presidential_2014/raw/iec_prelim_first_round_totals.csv", row.names = F)
+
+iec_final_runoff <- data.frame(read_html("http://www.iec.org.af/results_2014/en/final_runoff") %>% 
+  html_nodes(".table-striped") %>% html_table(fill = TRUE, trim = TRUE, header = TRUE))
+colnames(iec_final_runoff) <- c("province_name_eng", "AG_votes", "AG_pct", "AA_votes", "AA_pct")
+iec_final_runoff <- iec_final_runoff[-1, ]
+write.csv(iec_final_runoff, "./past_elections/presidential_2014/raw/iec_final_run_off_totals.csv", row.names = F)
+
+iec_prelim_runoff <- data.frame(read_html("http://www.iec.org.af/results_2014/en/runoff") %>% 
+  html_nodes(".table-striped") %>% html_table(fill = TRUE, trim = TRUE, header = TRUE))
+colnames(iec_prelim_runoff) <- c("province_name_eng", "AA_votes", "AA_pct", "AG_votes", "AG_pct")
+iec_prelim_runoff <- iec_prelim_runoff[-1, ]
+write.csv(iec_prelim_runoff, "./past_elections/presidential_2014/raw/iec_prelim_run_off_totals.csv", row.names = F)
+
+national_sums <- all_data %>% group_by(election_type, results_status, candidate_code, ballot_position) %>% 
+  summarize(votes = sum(votes, na.rm = TRUE))
+
+iec_final_runoff_totals <- tibble(
+  ballot_position = as.character(c(1, 5)),
+  votes = c(sum(as.numeric(iec_final_runoff$AA_votes)), sum(as.numeric(iec_final_runoff$AG_votes))),
+  election_type = "PRESIDENTIAL RUNOFF",
+  results_status = "FINAL"
+)
+
+iec_prelim_runoff_totals <- tibble(
+  ballot_position = as.character(c(1, 5)),
+  votes = c(sum(as.numeric(iec_prelim_runoff$AA_votes)), sum(as.numeric(iec_prelim_runoff$AG_votes))),
+  election_type = "PRESIDENTIAL RUNOFF",
+  results_status = "PRELIMINARY"
+)
+
+iec_totals <- iec_final_first_round %>% 
+  dplyr::select(ballot_position, votes) %>% 
+  filter(!is.na(as.numeric(as.character(ballot_position)))) %>% 
+  mutate(election_type = "PRESIDENTIAL", results_status = "FINAL") %>%
+  full_join(
+    dplyr::select(iec_prelim_first_round, ballot_position, votes) %>%
+      filter(!is.na(as.numeric(as.character(ballot_position)))) %>% 
+      mutate(election_type = "PRESIDENTIAL", results_status = "PRELIMINARY")
+    ) %>%
+  full_join(iec_prelim_runoff_totals) %>%
+  full_join(iec_final_runoff_totals)
+
+iec_totals$ballot_position <- as.numeric(iec_totals$ballot_position)
+iec_totals <- iec_totals %>% rename(iec_vote_total = votes)
+national_sums <- national_sums %>% rename(calculated_vote_total = votes)
+
+# NOTE IEC DID NOT REPORT TOTAL RESULTS FOR WARDAK, KARZAI, OR NAEEM DESPITE THEIR RECEIVING VOTES
 
 tabulation_check <- left_join(iec_totals, national_sums)
-tabulation_check$error <- ifelse(tabulation_check$votes != tabulation_check$total_votes, "ERROR", "OK")
-tabulation_check <- tabulation_check %>% filter(error == "ERROR")
-tabulation_check <- select(tabulation_check, candidate_code, candidate_name_eng, total_votes, votes)
-tabulation_check <- tabulation_check %>% rename(
-  iec_vote_total = total_votes,
-  calculated_vote_total = votes
-)
+tabulation_check <- tabulation_check %>% dplyr::select(- candidate_code) %>% 
+  left_join(dplyr::select(candidate_key_2014, ballot_position, candidate_code, candidate_name_eng)) %>%
+  dplyr::select(election_type, results_status, ballot_position, candidate_code, candidate_name_eng, calculated_vote_total, iec_vote_total)
+
+tabulation_check$error <- ifelse(tabulation_check$calculated_vote_total != tabulation_check$iec_vote_total, "ERROR", "OK")
 tabulation_check <- tabulation_check %>% mutate(difference = calculated_vote_total - iec_vote_total)
-tabulation_check <- tabulation_check %>% dplyr::select(candidate_code, candidate_name_eng, everything())
 
 write.csv(tabulation_check, "./past_elections/presidential_2014/validity_checks/iec_tabulation_check.csv", row.names = F)
 

@@ -1,0 +1,21 @@
+"election_type","results_status","ballot_position","candidate_code","candidate_name_eng","calculated_vote_total","iec_vote_total","error","difference"
+"PRESIDENTIAL","FINAL",1,"100_1_1","Dr. Abdullah Abdullah",2972126,2972141,"ERROR",-15
+"PRESIDENTIAL","FINAL",2,"101_1_19","Mohammad Daoud Sultanzoy",30683,30685,"ERROR",-2
+"PRESIDENTIAL","FINAL",5,"101_1_13","Mohammad Ashraf Ghani Ahmadzai",2084509,2084547,"ERROR",-38
+"PRESIDENTIAL","FINAL",7,"100_1_24","Zalmai Rasul",750977,750997,"ERROR",-20
+"PRESIDENTIAL","FINAL",8,"100_1_7","Eng. Qutbudin Hilal",181826,181827,"ERROR",-1
+"PRESIDENTIAL","FINAL",9,"100_1_28","Mohammad Sahfiq Gul Agha Sherzai",103636,103636,"OK",0
+"PRESIDENTIAL","FINAL",10,"100_1_4","Abdul Rab Rasul Sayaf",465205,465207,"ERROR",-2
+"PRESIDENTIAL","FINAL",11,"100_1_37","Hedayat Amin Arsala",15506,15506,"OK",0
+"PRESIDENTIAL","PRELIMINARY",1,"100_1_1","Dr. Abdullah Abdullah",2973706,2973706,"OK",0
+"PRESIDENTIAL","PRELIMINARY",2,"101_1_19","Mohammad Daoud Sultanzoy",30737,30737,"OK",0
+"PRESIDENTIAL","PRELIMINARY",5,"101_1_13","Mohammad Ashraf Ghani Ahmadzai",2082417,2082417,"OK",0
+"PRESIDENTIAL","PRELIMINARY",7,"100_1_24","Zalmai Rasul",759540,759540,"OK",0
+"PRESIDENTIAL","PRELIMINARY",8,"100_1_7","Eng. Qutbudin Hilal",180859,180859,"OK",0
+"PRESIDENTIAL","PRELIMINARY",9,"100_1_28","Mohammad Sahfiq Gul Agha Sherzai",106673,106673,"OK",0
+"PRESIDENTIAL","PRELIMINARY",10,"100_1_4","Abdul Rab Rasul Sayaf",468340,468340,"OK",0
+"PRESIDENTIAL","PRELIMINARY",11,"100_1_37","Hedayat Amin Arsala",15394,15394,"OK",0
+"PRESIDENTIAL RUNOFF","PRELIMINARY",1,"100_1_1","Dr. Abdullah Abdullah",3461639,3461639,"OK",0
+"PRESIDENTIAL RUNOFF","PRELIMINARY",5,"101_1_13","Mohammad Ashraf Ghani Ahmadzai",4485888,4485888,"OK",0
+"PRESIDENTIAL RUNOFF","FINAL",1,"100_1_1","Dr. Abdullah Abdullah",3185018,3185018,"OK",0
+"PRESIDENTIAL RUNOFF","FINAL",5,"101_1_13","Mohammad Ashraf Ghani Ahmadzai",3935567,3935567,"OK",0
