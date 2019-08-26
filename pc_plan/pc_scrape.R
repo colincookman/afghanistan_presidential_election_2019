@@ -685,3 +685,41 @@ ggplot(data = subset(pc_key, prelim_turnout_18 <= 1 & vr_2018_2019_pct_change <=
        subtitle = "Author: Colin Cookman (Twitter: @colincookman)\n\nPoints are polling centers where the IEC conducted a June 2019 voter registration \"top-up\" exercise.\nExcludes polling centers with greater than 100% turnout or greater than 100% increase in voter registration. (n = 10)",
        caption = "Data Source: Afghanistan Independent Election Commission\nCaveat: No guarantees are made as to underlying accuracy of this data.")
 
+
+pc_results <- all_data_all_results %>% group_by(pc_code) %>% 
+  summarize(prelim_votes_2018 = sum(votes[results_status == "PRELIMINARY"], na.rm = T),
+            final_votes_2018 = sum(votes[results_status == "FINAL"], na.rm = T),
+            winner_prelim_votes_2018 = sum(votes[results_status == "PRELIMINARY" & winner == "YES"]),
+            winner_pct_prelim_2018 = winner_prelim_votes_2018 / prelim_votes_2018,
+            winner_final_votes_2018 = sum(votes[results_status == "FINAL" & winner == "YES"]),
+            winner_pct_final_2018 = winner_final_votes_2018 / final_votes_2018,
+            net_vote_change_2018 = final_votes_2018 - prelim_votes_2018,
+            net_change_pct_prelim = net_vote_change_2018 / prelim_votes_2018
+            )
+
+pc_analysis <- pc_key_2019 %>% 
+  dplyr::select(
+    pc_code, planned_2019, planned_2018, prelim_results_2018, final_results_2018,
+    planned_ps_count_2019, prelim_ps_count_2018, final_ps_count_2018,
+    vr_topup_location,
+    vr_final_total_19, vr_prelim_total_19, vr_final_total_18, vr_prelim_total_18) %>% 
+  mutate(
+    vr_2019_net_change = vr_final_total_19 - vr_prelim_total_19,
+    vr_2019_pct_change = vr_2019_net_change / vr_prelim_total_19, 
+    vr_2018_2019_net_change = vr_final_total_19 - vr_final_total_18,
+    vr_2018_2019_pct_change = vr_2018_2019_net_change / vr_final_total_18) %>% 
+  left_join(pc_results)
+
+
+ggplot(data = subset(pc_analysis, vr_2018_2019_pct_change <= 1),
+       aes(y = vr_2018_2019_pct_change, x = winner_pct_prelim_2018)) +
+  geom_point() +
+  geom_point(alpha = 0.65) +
+  scale_x_continuous(labels = scales::percent) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Percentage of 2018 Vote for Winning Candidates (Preliminary Results)",
+       y = "Percent Increase in Total Voter Registration Between 2018 and 2019",
+       title = "2018 Share for Winning Candidates and 2019 Voter Registration",
+       subtitle = "Author: Colin Cookman (Twitter: @colincookman)\n\nPoints are polling centers; excludes polling centers with greater than 100%.",
+       caption = "Data Source: Afghanistan Independent Election Commission\nCaveat: No guarantees are made as to underlying accuracy of this data.")
+
