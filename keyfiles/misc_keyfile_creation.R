@@ -1,3 +1,15 @@
+library(XML)
+library(tidyverse)
+library(rvest)
+library(wdman)
+library(lubridate)
+library(pdftools)
+library(readr)
+library(tabulizer)
+library(gsheet)
+
+setwd("~/Google Drive/GitHub/afghanistan_presidential_election_2019")
+
 # CANDIDATE KEY ---------------------------------------------------------------
 
 candidate_key_2019 <- tibble(
@@ -81,9 +93,24 @@ district_code_keyfile_2018 <- read_csv("~/Google Drive/GitHub/afghanistan_electi
 
 district_code_keyfile_2019 <- district_code_keyfile_2018 %>% dplyr::select(
   `2018_IEC_province_code`, `2012_AGCHO_province_code`, `2010_IEC_province_code`,
-  `2018_IEC_district_name_eng`, `2018_IEC_district_code`, 
-  matched_to_2012_AGCHO_district_code,
-  `2010_IEC_district_name_eng`
-)
+  `2018_IEC_district_code`, `2018_IEC_district_name_eng`,
+  matched_to_2012_AGCHO_district_code, `2012_AGCHO_district_code`, `2012_AGCHO_district_name_eng`,
+  matched_to_2010_IEC_district_code, `2010_IEC_district_code`, `2010_IEC_district_name_eng`, district_name_dari) %>%
+  arrange(`2018_IEC_district_code`)
 
+district_code_keyfile_2019$`2018_IEC_province_code` <- str_pad(district_code_keyfile_2019$`2018_IEC_province_code`, width = 2, side = "left", pad = "0")
+district_code_keyfile_2019$`2012_AGCHO_province_code` <- str_pad(district_code_keyfile_2019$`2012_AGCHO_province_code`, width = 2, side = "left", pad = "0")
+district_code_keyfile_2019$`2010_IEC_province_code` <- str_pad(district_code_keyfile_2019$`2010_IEC_province_code`, width = 2, side = "left", pad = "0")
 
+district_code_keyfile_2019$`2018_IEC_district_code` <- str_pad(district_code_keyfile_2019$`2018_IEC_district_code`, width = 4, side = "left", pad = "0")
+district_code_keyfile_2019$`2012_AGCHO_district_code` <- str_pad(district_code_keyfile_2019$`2012_AGCHO_district_code`, width = 4, side = "left", pad = "0")
+district_code_keyfile_2019$`2010_IEC_district_code` <- str_pad(district_code_keyfile_2019$`2010_IEC_district_code`, width = 4, side = "left", pad = "0")
+district_code_keyfile_2019$matched_to_2012_AGCHO_district_code <- str_pad(district_code_keyfile_2019$matched_to_2012_AGCHO_district_code, width = 4, side = "left", pad = "0")
+district_code_keyfile_2019$matched_to_2010_IEC_district_code <- str_pad(district_code_keyfile_2019$matched_to_2010_IEC_district_code, width = 4, side = "left", pad = "0")
+district_code_keyfile_2019$`2018_IEC_district_name_eng` <- str_to_upper(district_code_keyfile_2019$`2018_IEC_district_name_eng`)
+district_code_keyfile_2019$`2012_AGCHO_district_name_eng` <- str_to_upper(district_code_keyfile_2019$`2012_AGCHO_district_name_eng`)
+district_code_keyfile_2019$`2010_IEC_district_name_eng` <- str_to_upper(district_code_keyfile_2019$`2010_IEC_district_name_eng`)
+
+write.csv(district_code_keyfile_2019, "./district_data/district_code_keyfile_2019.csv", row.names = F)
+
+# manual fixes in final

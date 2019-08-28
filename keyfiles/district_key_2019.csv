@@ -1,482 +1,480 @@
-"province_code","province_name_eng","district_code","district_name_eng","district_name_dari","district_sub_code","district_or_subdivision_name_eng","district_or_subdivision_name_dari","provincial_capital"
-"01","KABUL","0101","KABUL CITY","كابل","0101-01","KABUL CITY NAHIA 01","كابل ناحیه 01","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-02","KABUL CITY NAHIA 02","كابل ناحیه 02","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-03","KABUL CITY NAHIA 03","كابل ناحیه 03","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-04","KABUL CITY NAHIA 04","كابل ناحیه 04","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-05","KABUL CITY NAHIA 05","كابل ناحیه 05","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-06","KABUL CITY NAHIA 06","كابل ناحیه 06","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-07","KABUL CITY NAHIA 07","كابل ناحیه 07","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-08","KABUL CITY NAHIA 08","كابل ناحیه 08","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-09","KABUL CITY NAHIA 09","كابل ناحیه 09","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-10","KABUL CITY NAHIA 10","كابل ناحیه 10","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-11","KABUL CITY NAHIA 11","كابل ناحیه 11","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-12","KABUL CITY NAHIA 12","كابل ناحیه 12","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-13","KABUL CITY NAHIA 13","كابل ناحیه 13","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-14","KABUL CITY NAHIA 14","كابل ناحیه 14","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-15","KABUL CITY NAHIA 15","كابل ناحیه 15","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-16","KABUL CITY NAHIA 16","كابل ناحیه 16","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-17","KABUL CITY NAHIA 17","كابل ناحیه 17","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-18","KABUL CITY NAHIA 18","كابل ناحیه 18","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-19","KABUL CITY NAHIA 19","كابل ناحیه 19","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-21","KABUL CITY NAHIA 21","كابل ناحیه 21","YES"
-"01","KABUL","0101","KABUL CITY","كابل","0101-22","KABUL CITY NAHIA 22","كابل ناحیه 22","YES"
-"01","KABUL","0102","PAGHMAN","پغمان","0102","PAGHMAN","پغمان","NO"
-"01","KABUL","0103","CHAHARASYAB","چهار آسیاب","0103","CHAHARASYAB","چهار آسیاب","NO"
-"01","KABUL","0104","BAGRAMI","بگرامی","0104","BAGRAMI","بگرامی","NO"
-"01","KABUL","0105","DEHSABZ","ده سبز","0105","DEHSABZ","ده سبز","NO"
-"01","KABUL","0106","SHAKARDARA","شکردره","0106","SHAKARDARA","شکردره","NO"
-"01","KABUL","0107","MOSAHI","موسهی","0107","MOSAHI","موسهی","NO"
-"01","KABUL","0108","MIRBACHAKOT","میر بچه کوت","0108","MIRBACHAKOT","میر بچه کوت","NO"
-"01","KABUL","0109","KHAKEJABAR","خاک جبار","0109","KHAKEJABAR","خاک جبار","NO"
-"01","KABUL","0110","KALAKAN","کلکان","0110","KALAKAN","کلکان","NO"
-"01","KABUL","0111","GULDARA","گلدره","0111","GULDARA","گلدره","NO"
-"01","KABUL","0112","FARZA","فرزه","0112","FARZA","فرزه","NO"
-"01","KABUL","0113","ISTALIF","استالف","0113","ISTALIF","استالف","NO"
-"01","KABUL","0114","QARABAGH","قره باغ","0114","QARABAGH","قره باغ","NO"
-"01","KABUL","0115","SUROBI","سروبی","0115","SUROBI","سروبی","NO"
-"02","KAPISA","0201","MAHMODRAQI","محمود راقی","0201","MAHMODRAQI","محمود راقی","YES"
-"02","KAPISA","0202","HISSA-E-DUWUMI KOHISTAN","حصه دوم کوهستان","0202","HISSA-E-DUWUMI KOHISTAN","حصه دوم کوهستان","NO"
-"02","KAPISA","0203","KOHBAND","کوه بند","0203","KOHBAND","کوه بند","NO"
-"02","KAPISA","0204","HESE  AWAL KOHESTAN","حصه اول کوهستان","0204","HESE  AWAL KOHESTAN","حصه اول کوهستان","NO"
-"02","KAPISA","0205","NEJRAB","نجراب","0205","NEJRAB","نجراب","NO"
-"02","KAPISA","0206","TAGAB","تگاب","0206","TAGAB","تگاب","NO"
-"02","KAPISA","0207","ALASAY","اله سای","0207","ALASAY","اله سای","NO"
-"03","PARWAN","0301","CHARIKAR","چاریکار","0301","CHARIKAR","چاریکار","YES"
-"03","PARWAN","0302","BAGRAM","بگرام","0302","BAGRAM","بگرام","NO"
-"03","PARWAN","0303","SHINWARI","شینواری","0303","SHINWARI","شینواری","NO"
-"03","PARWAN","0304","SAYDKHEL","سیدخیل","0304","SAYDKHEL","سیدخیل","NO"
-"03","PARWAN","0305","JABALUSARAJ","جبل السراج","0305","JABALUSARAJ","جبل السراج","NO"
-"03","PARWAN","0306","SALANG","سالنگ","0306","SALANG","سالنگ","NO"
-"03","PARWAN","0307","GHORBAND (SIA GERD)","سیاه گرد غوربند","0307","GHORBAND (SIA GERD)","سیاه گرد غوربند","NO"
-"03","PARWAN","0308","KOHESAFI","کوه صافی","0308","KOHESAFI","کوه صافی","NO"
-"03","PARWAN","0309","SURKH PARSA","سرخ پارسا","0309","SURKH PARSA","سرخ پارسا","NO"
-"03","PARWAN","0310","SHIKHALI","شیخ علی","0310","SHIKHALI","شیخ علی","NO"
-"04","MAYDANWARDAK","0401","MAYDANSHAHR","میدان شهر","0401","MAYDANSHAHR","میدان شهر","YES"
-"04","MAYDANWARDAK","0402","NIRKH","نرخ","0402","NIRKH","نرخ","NO"
-"04","MAYDANWARDAK","0403","JALRIZ","جلریز","0403","JALRIZ","جلریز","NO"
-"04","MAYDANWARDAK","0404","CHAK","چک وردک","0404","CHAK","چک وردک","NO"
-"04","MAYDANWARDAK","0405","SAYDABAD","سید آباد","0405","SAYDABAD","سید آباد","NO"
-"04","MAYDANWARDAK","0406","DAYMIRDAD","دایمیرداد","0406","DAYMIRDAD","دایمیرداد","NO"
-"04","MAYDANWARDAK","0407","HISE AWAL BEHSOD","حصه اول بهسود","0407","HISE AWAL BEHSOD","حصه اول بهسود","NO"
-"04","MAYDANWARDAK","0408","JAGHATO","جغتو","0408","JAGHATO","جغتو","NO"
-"04","MAYDANWARDAK","0409","MARKAZ BIHSOD","مرکز بهسود","0409","MARKAZ BIHSOD","مرکز بهسود","NO"
-"05","LOGAR","0501","PULE ALAM","پل علم","0501","PULE ALAM","پل علم","YES"
-"05","LOGAR","0502","BARAKIBARAK","برکی برک","0502","BARAKIBARAK","برکی برک","NO"
-"05","LOGAR","0503","CHARKH","چرخ","0503","CHARKH","چرخ","NO"
-"05","LOGAR","0504","KHOSHI","خوشی","0504","KHOSHI","خوشی","NO"
-"05","LOGAR","0505","MUHAMMADAGHA","محمد آغه","0505","MUHAMMADAGHA","محمد آغه","NO"
-"05","LOGAR","0506","KHARWAR","خروار","0506","KHARWAR","خروار","NO"
-"05","LOGAR","0507","AZRA","اذره","0507","AZRA","اذره","NO"
-"06","NANGARHAR","0601","JALALABAD","جلال آباد","0601-01","JALALABAD NAHIA 01","جلال آباد ناحیه 01","YES"
-"06","NANGARHAR","0601","JALALABAD","جلال آباد","0601-02","JALALABAD NAHIA 02","جلال آباد ناحیه 02","YES"
-"06","NANGARHAR","0601","JALALABAD","جلال آباد","0601-03","JALALABAD NAHIA 03","جلال آباد ناحیه 03","YES"
-"06","NANGARHAR","0601","JALALABAD","جلال آباد","0601-04","JALALABAD NAHIA 04","جلال آباد ناحیه 04","YES"
-"06","NANGARHAR","0601","JALALABAD","جلال آباد","0601-05","JALALABAD NAHIA 05","جلال آباد ناحیه 05","YES"
-"06","NANGARHAR","0601","JALALABAD","جلال آباد","0601-06","JALALABAD NAHIA 06","جلال آباد ناحیه 06","YES"
-"06","NANGARHAR","0602","BIHSOD","بهسود","0602","BIHSOD","بهسود","NO"
-"06","NANGARHAR","0603","SURKHROD","سرخرود","0603","SURKHROD","سرخرود","NO"
-"06","NANGARHAR","0604","CHAPARHAR","چپرهار","0604","CHAPARHAR","چپرهار","NO"
-"06","NANGARHAR","0605","KAMA","کامه","0605","KAMA","کامه","NO"
-"06","NANGARHAR","0606","KOZ KUNAR","کوز کنړ","0606","KOZ KUNAR","کوز کنړ","NO"
-"06","NANGARHAR","0607","RODAT","رودات","0607","RODAT","رودات","NO"
-"06","NANGARHAR","0608","KHOGYANI","خوګیاڼي","0608","KHOGYANI","خوګیاڼي","NO"
-"06","NANGARHAR","0609","BATIKOT","بټي کوټ","0609","BATIKOT","بټي کوټ","NO"
-"06","NANGARHAR","0610","DEHBALA","ده بالا","0610","DEHBALA","ده بالا","NO"
-"06","NANGARHAR","0611","PACHERAGAM","پچیر و اګام","0611","PACHERAGAM","پچیر و اګام","NO"
-"06","NANGARHAR","0612","DARA NOOR","دره نور","0612","DARA NOOR","دره نور","NO"
-"06","NANGARHAR","0613","KOT","کوټ","0613","KOT","کوټ","NO"
-"06","NANGARHAR","0614","GOSHTA","ګوشته","0614","GOSHTA","ګوشته","NO"
-"06","NANGARHAR","0615","ACHEEN","اچین","0615","ACHEEN","اچین","NO"
-"06","NANGARHAR","0616","SHINWAR","شینوار","0616","SHINWAR","شینوار","NO"
-"06","NANGARHAR","0617","MUHMAND DARA","مهمند دره","0617","MUHMAND DARA","مهمند دره","NO"
-"06","NANGARHAR","0618","LAL POOR","لعل پور","0618","LAL POOR","لعل پور","NO"
-"06","NANGARHAR","0619","SHIRZAD","شیرزاد","0619","SHIRZAD","شیرزاد","NO"
-"06","NANGARHAR","0620","NAZYAN","نازیان","0620","NAZYAN","نازیان","NO"
-"06","NANGARHAR","0621","HISARAK","حصارک","0621","HISARAK","حصارک","NO"
-"06","NANGARHAR","0622","DURBABA","در بابا","0622","DURBABA","در بابا","NO"
-"06","NANGARHAR","0623","SPIN GHAR","سپین غر","0623","SPIN GHAR","سپین غر","NO"
-"06","NANGARHAR","0623","SPIN GHAR","اسپین غر","0623","SPIN GHAR","اسپین غر","NO"
-"07","LAGHMAN","0701","MEHTARLAM","مهترلام","0701","MEHTARLAM","مهترلام","YES"
-"07","LAGHMAN","0702","QARGHAYE","قرغه یي","0702","QARGHAYE","قرغه یي","NO"
-"07","LAGHMAN","0703","ALISHENG","علیشنګ","0703","ALISHENG","علیشنګ","NO"
-"07","LAGHMAN","0704","ALINGAR","علینگار","0704","ALINGAR","علینگار","NO"
-"07","LAGHMAN","0705","DAWLATSHAH","دولت شاه","0705","DAWLATSHAH","دولت شاه","NO"
-"07","LAGHMAN","0706","BAD PAKH","بادپښ","0706","BAD PAKH","بادپښ","NO"
-"08","PANJSHIR","0801","BAZARAK","بازارک","0801","BAZARAK","بازارک","YES"
-"08","PANJSHIR","0802","RUKHA","رخه","0802","RUKHA","رخه","NO"
-"08","PANJSHIR","0803","DARA","دره","0803","DARA","دره","NO"
-"08","PANJSHIR","0804","KHENJ (HESAE AWAL)","حصه اول خنج","0804","KHENJ (HESAE AWAL)","حصه اول خنج","NO"
-"08","PANJSHIR","0805","ONABA","عنابه","0805","ONABA","عنابه","NO"
-"08","PANJSHIR","0806","SHUTUL","شتل","0806","SHUTUL","شتل","NO"
-"08","PANJSHIR","0807","PARYAN","پریان","0807","PARYAN","پریان","NO"
-"08","PANJSHIR","0808","ABSHAR","آبشار","0808","ABSHAR","آبشار","NO"
-"09","BAGHLAN","0901","PULE KHUMRI","پلخمری","0901","PULE KHUMRI","پلخمری","YES"
-"09","BAGHLAN","0902","DAHANAE GHORI","دهنه غوری","0902","DAHANAE GHORI","دهنه غوری","NO"
-"09","BAGHLAN","0903","DOSHI","دوشی","0903","DOSHI","دوشی","NO"
-"09","BAGHLAN","0904","NAHREEN","نهرین","0904","NAHREEN","نهرین","NO"
-"09","BAGHLAN","0905","BAGHLAN JADID","بغلان جدید","0905","BAGHLAN JADID","بغلان جدید","NO"
-"09","BAGHLAN","0906","KHINJAN","خنجان","0906","KHINJAN","خنجان","NO"
-"09","BAGHLAN","0907","ANDARAB","اندراب","0907","ANDARAB","اندراب","NO"
-"09","BAGHLAN","0908","DEHSALAH","ده صلاح","0908","DEHSALAH","ده صلاح","NO"
-"09","BAGHLAN","0909","KHWAJAHEJRAN","جلگه","0909","KHWAJAHEJRAN","جلگه","NO"
-"09","BAGHLAN","0910","BORKA","برکه","0910","BORKA","برکه","NO"
-"09","BAGHLAN","0911","TALA WA BARFAK","تاله و برفک","0911","TALA WA BARFAK","تاله و برفک","NO"
-"09","BAGHLAN","0912","PULE HESAR","پل حصار","0912","PULE HESAR","پل حصار","NO"
-"09","BAGHLAN","0913","KHOST WA FERENG","خوست و فرنگ","0913","KHOST WA FERENG","خوست و فرنگ","NO"
-"09","BAGHLAN","0914","GUZARGAHE NOOR","گذرگاه نور","0914","GUZARGAHE NOOR","گذرگاه نور","NO"
-"09","BAGHLAN","0915","FIRING GHARO","فرنگ و غارو","0915","FIRING GHARO","فرنگ و غارو","NO"
-"10","BAMYAN","1001","BAMYAN","بامیان","1001","BAMYAN","بامیان","YES"
-"10","BAMYAN","1002","SHEBAR","شیبر","1002","SHEBAR","شیبر","NO"
-"10","BAMYAN","1003","SAYGHAN","سیغان","1003","SAYGHAN","سیغان","NO"
-"10","BAMYAN","1004","KAHMARD","کهمرد","1004","KAHMARD","کهمرد","NO"
-"10","BAMYAN","1005","YAKAWLANG","یکاولنگ نمبر اول","1005","YAKAWLANG","یکاولنگ نمبر اول","NO"
-"10","BAMYAN","1006","PANJAB","پنجاب","1006","PANJAB","پنجاب","NO"
-"10","BAMYAN","1007","WARAS","ورس","1007","WARAS","ورس","NO"
-"10","BAMYAN","1008","YAKAWLANG NUMBER 2","یکاولنگ نمبر دوم","1008","YAKAWLANG NUMBER 2","یکاولنگ نمبر دوم","NO"
-"11","GHAZNI","1101","GHAZNI","غزنی","1101","GHAZNI","غزنی","YES"
-"11","GHAZNI","1102","WALEMUHAMMAD SHAHEED","ولی محمد شهید","1102","WALEMUHAMMAD SHAHEED","ولی محمد شهید","NO"
-"11","GHAZNI","1103","KHWAJAUMARI","خواجه عمری","1103","KHWAJAUMARI","خواجه عمری","NO"
-"11","GHAZNI","1104","WAGHAZ","واغظ","1104","WAGHAZ","واغظ","NO"
-"11","GHAZNI","1105","DEHYAK","ده یک","1105","DEHYAK","ده یک","NO"
-"11","GHAZNI","1106","JAGHATO","جغتو","1106","JAGHATO","جغتو","NO"
-"11","GHAZNI","1107","ANDAR","اندر","1107","ANDAR","اندر","NO"
-"11","GHAZNI","1108","ZANAKHAN","زنخان","1108","ZANAKHAN","زنخان","NO"
-"11","GHAZNI","1109","RASHEEDAN","رشیدان","1109","RASHEEDAN","رشیدان","NO"
-"11","GHAZNI","1110","NAWUR","ناور","1110","NAWUR","ناور","NO"
-"11","GHAZNI","1111","QARABAGH","قره باغ","1111","QARABAGH","قره باغ","NO"
-"11","GHAZNI","1112","GEERO","گیرو","1112","GEERO","گیرو","NO"
-"11","GHAZNI","1113","AB BAND","آب بند","1113","AB BAND","آب بند","NO"
-"11","GHAZNI","1114","JAGHORI","جاغوری","1114","JAGHORI","جاغوری","NO"
-"11","GHAZNI","1115","MUQUR","مقر","1115","MUQUR","مقر","NO"
-"11","GHAZNI","1116","MALESTAN","مالستان","1116","MALESTAN","مالستان","NO"
-"11","GHAZNI","1117","GELAN","گیلان","1117","GELAN","گیلان","NO"
-"11","GHAZNI","1118","AJRESTAN","اجرستان","1118","AJRESTAN","اجرستان","NO"
-"11","GHAZNI","1119","NAWA","ناوه","1119","NAWA","ناوه","NO"
-"12","PAKTIKA","1201","SHARAN","شرن","1201","SHARAN","شرن","YES"
-"12","PAKTIKA","1202","MATAKHAN","مټا خان","1202","MATAKHAN","مټا خان","NO"
-"12","PAKTIKA","1203","YOSUFKHEL","یوسف خیل","1203","YOSUFKHEL","یوسف خیل","NO"
-"12","PAKTIKA","1204","YAHYAKHEL","یحی خیل","1204","YAHYAKHEL","یحی خیل","NO"
-"12","PAKTIKA","1205","SAR RAWZA","سروضه","1205","SAR RAWZA","سروضه","NO"
-"12","PAKTIKA","1206","OMNA","اومنه","1206","OMNA","اومنه","NO"
-"12","PAKTIKA","1207","ZARGHONSHAHR","زرغون شهر","1207","ZARGHONSHAHR","زرغون شهر","NO"
-"12","PAKTIKA","1208","GOMAL","گومل","1208","GOMAL","گومل","NO"
-"12","PAKTIKA","1209","JANIKHEL","جانی خیل","1209","JANIKHEL","جانی خیل","NO"
-"12","PAKTIKA","1210","SAROBI","سروبی","1210","SAROBI","سروبی","NO"
-"12","PAKTIKA","1211","URGUN","اورگون","1211","URGUN","اورگون","NO"
-"12","PAKTIKA","1212","‌‌ZEEROK‌‎‌‎‌‎‌‎","زیړوک","1212","‌‌ZEEROK‌‎‌‎‌‎‌‎","زیړوک","NO"
-"12","PAKTIKA","1213","NEEKA‌‎‌‎‌‎‌‎","نیکه","1213","NEEKA‌‎‌‎‌‎‌‎","نیکه","NO"
-"12","PAKTIKA","1214","BARAL","برمل","1214","BARAL","برمل","NO"
-"12","PAKTIKA","1215","GYAN","گیان","1215","GYAN","گیان","NO"
-"12","PAKTIKA","1216","DELA","دیله و خوش امند","1216","DELA","دیله و خوش امند","NO"
-"12","PAKTIKA","1217","WAZAKHUA","وازه خواه","1217","WAZAKHUA","وازه خواه","NO"
-"12","PAKTIKA","1218","WORMAMAY","وړممی","1218","WORMAMAY","وړممی","NO"
-"12","PAKTIKA","1219","TURWO","تروو","1219","TURWO","تروو","NO"
-"13","PAKTYA","1301","GARDEZ","گردیز","1301","GARDEZ","گردیز","YES"
-"13","PAKTYA","1302","AHMADABA","احمد آبا","1302","AHMADABA","احمد آبا","NO"
-"13","PAKTYA","1303","ZURMAT","زرمت","1303","ZURMAT","زرمت","NO"
-"13","PAKTYA","1304","SHUWAK","شواک","1304","SHUWAK","شواک","NO"
-"13","PAKTYA","1305","ZADRAN","وزه ځدراڼ","1305","ZADRAN","وزه ځدراڼ","NO"
-"13","PAKTYA","1306","SAYEDKARAM","سید کرم","1306","SAYEDKARAM","سید کرم","NO"
-"13","PAKTYA","1307","JAJEE","جاجی","1307","JAJEE","جاجی","NO"
-"13","PAKTYA","1308","LEJA AHMADKHEL","لجه احمد خیل","1308","LEJA AHMADKHEL","لجه احمد خیل","NO"
-"13","PAKTYA","1309","JANIKHEL","جانی خیل","1309","JANIKHEL","جانی خیل","NO"
-"13","PAKTYA","1310","CHAMKANI","څمکنی","1310","CHAMKANI","څمکنی","NO"
-"13","PAKTYA","1311","DAND WA PATAN","ډنډ پټان","1311","DAND WA PATAN","ډنډ پټان","NO"
-"13","PAKTYA","1312","LEJAMANGAL","لجه منګل","1312","LEJAMANGAL","لجه منګل","NO"
-"13","PAKTYA","1313","MEARZAKA","میرزکه","1313","MEARZAKA","میرزکه","NO"
-"13","PAKTYA","1314","GARDA SIRAY","گرده څیړی","1314","GARDA SIRAY","گرده څیړی","NO"
-"13","PAKTYA","1315","ROHANI BABA","روحانی بابا","1315","ROHANI BABA","روحانی بابا","NO"
-"14","KHOST","1401","KHOST (MATON)","خوست","1401","KHOST (MATON)","خوست","YES"
-"14","KHOST","1402","MANDOZAY","مندوزی","1402","MANDOZAY","مندوزی","NO"
-"14","KHOST","1403","GURBUZ","گربز","1403","GURBUZ","گربز","NO"
-"14","KHOST","1404","TANI","تڼي","1404","TANI","تڼي","NO"
-"14","KHOST","1405","MOSAKHEL","موسی خیل","1405","MOSAKHEL","موسی خیل","NO"
-"14","KHOST","1406","NADIRSHAHKOT","نادرشاه کوت","1406","NADIRSHAHKOT","نادرشاه کوت","NO"
-"14","KHOST","1407","SABARI","صبری","1407","SABARI","صبری","NO"
-"14","KHOST","1408","TIREZAYE","علی شیر","1408","TIREZAYE","علی شیر","NO"
-"14","KHOST","1409","BAK","باک","1409","BAK","باک","NO"
-"14","KHOST","1410","QALANDAR","قلندر","1410","QALANDAR","قلندر","NO"
-"14","KHOST","1411","SPERA","سپیره","1411","SPERA","سپیره","NO"
-"14","KHOST","1412","SHAMAL","شمل","1412","SHAMAL","شمل","NO"
-"14","KHOST","1413","JAJIMAYDAN","ځاځي میدان","1413","JAJIMAYDAN","ځاځي میدان","NO"
-"15","KUNARHA","1501","ASADABAD","اسعد آباد","1501","ASADABAD","اسعد آباد","YES"
-"15","KUNARHA","1502","MARAWARA","مره وره","1502","MARAWARA","مره وره","NO"
-"15","KUNARHA","1503","WATAPOOR","واټه پور","1503","WATAPOOR","واټه پور","NO"
-"15","KUNARHA","1504","NARANG","نرنګ","1504","NARANG","نرنګ","NO"
-"15","KUNARHA","1505","SARKANI","سرکاڼو","1505","SARKANI","سرکاڼو","NO"
-"15","KUNARHA","1506","SHEGAL","شیگل","1506","SHEGAL","شیگل","NO"
-"15","KUNARHA","1507","DARAE PECH","دره پیچ","1507","DARAE PECH","دره پیچ","NO"
-"15","KUNARHA","1508","BARKUNAR","بر کنړ","1508","BARKUNAR","بر کنړ","NO"
-"15","KUNARHA","1509","SAWKAY","څوکی","1509","SAWKAY","څوکی","NO"
-"15","KUNARHA","1510","KHASKUNAR","خاص کنړ","1510","KHASKUNAR","خاص کنړ","NO"
-"15","KUNARHA","1511","GHAZIABAD","غازی آباد","1511","GHAZIABAD","غازی آباد","NO"
-"15","KUNARHA","1512","DANGAM","دانګام","1512","DANGAM","دانګام","NO"
-"15","KUNARHA","1513","CHAPADARA","چپه دره","1513","CHAPADARA","چپه دره","NO"
-"15","KUNARHA","1514","NORGAL","نور ګل","1514","NORGAL","نور ګل","NO"
-"15","KUNARHA","1515","NARI","ناړی","1515","NARI","ناړی","NO"
-"15","KUNARHA","1516","SHELTAN","شلتن","1516","SHELTAN","شلتن","NO"
-"16","NOORESTAN","1601","PAROON","پارون","1601","PAROON","پارون","YES"
-"16","NOORESTAN","1602","WAYGAL","وایگل","1602","WAYGAL","وایگل","NO"
-"16","NOORESTAN","1603","WAMA","واما","1603","WAMA","واما","NO"
-"16","NOORESTAN","1604","NOORGERAM","نورګرام","1604","NOORGERAM","نورګرام","NO"
-"16","NOORESTAN","1605","DOAB","دو آب","1605","DOAB","دو آب","NO"
-"16","NOORESTAN","1606","KAMDESH","کامدیش","1606","KAMDESH","کامدیش","NO"
-"16","NOORESTAN","1607","MANDOL","منډول","1607","MANDOL","منډول","NO"
-"16","NOORESTAN","1608","BARGEMATAL","برګ مټال","1608","BARGEMATAL","برګ مټال","NO"
-"17","BADAKHSHAN","1701","FAYZABAD","فیض آباد","1701","FAYZABAD","فیض آباد","YES"
-"17","BADAKHSHAN","1702","ARGO","ارگو","1702","ARGO","ارگو","NO"
-"17","BADAKHSHAN","1703","ARGHANCHKHWA","ارغنجخواه","1703","ARGHANCHKHWA","ارغنجخواه","NO"
-"17","BADAKHSHAN","1704","YAFTAL SUFLA","یفتل سفلا","1704","YAFTAL SUFLA","یفتل سفلا","NO"
-"17","BADAKHSHAN","1705","KHASH","خاش","1705","KHASH","خاش","NO"
-"17","BADAKHSHAN","1706","BAHARAK","بهارک","1706","BAHARAK","بهارک","NO"
-"17","BADAKHSHAN","1707","DARAYEM","درایم","1707","DARAYEM","درایم","NO"
-"17","BADAKHSHAN","1708","KOHESTAN","کوهستان","1708","KOHESTAN","کوهستان","NO"
-"17","BADAKHSHAN","1709","YAWAN","یاوان","1709","YAWAN","یاوان","NO"
-"17","BADAKHSHAN","1710","JURM","جرم","1710","JURM","جرم","NO"
-"17","BADAKHSHAN","1711","TESHKAN","تشکان","1711","TESHKAN","تشکان","NO"
-"17","BADAKHSHAN","1712","SHUHADA","شهدا","1712","SHUHADA","شهدا","NO"
-"17","BADAKHSHAN","1713","SHAHR BUZORG","شهر بزرگ","1713","SHAHR BUZORG","شهر بزرگ","NO"
-"17","BADAKHSHAN","1714","RAGHESTAN","راغستان","1714","RAGHESTAN","راغستان","NO"
-"17","BADAKHSHAN","1715","KESHEM","کشم","1715","KESHEM","کشم","NO"
-"17","BADAKHSHAN","1716","WARDOJ","وردوج","1716","WARDOJ","وردوج","NO"
-"17","BADAKHSHAN","1717","TAGAB","تگاب","1717","TAGAB","تگاب","NO"
-"17","BADAKHSHAN","1718","YAMGAN","یمگان","1718","YAMGAN","یمگان","NO"
-"17","BADAKHSHAN","1719","SHEGHNAN","شغنان","1719","SHEGHNAN","شغنان","NO"
-"17","BADAKHSHAN","1720","KHWAHAN","خواهان","1720","KHWAHAN","خواهان","NO"
-"17","BADAKHSHAN","1721","KOFAB","کوف آب","1721","KOFAB","کوف آب","NO"
-"17","BADAKHSHAN","1722","DARWAZ PAYEN (MAMAY)","درواز پائین (مایمی)","1722","DARWAZ PAYEN (MAMAY)","درواز پائین (مایمی)","NO"
-"17","BADAKHSHAN","1723","ESHKASHEM","اشکاشم","1723","ESHKASHEM","اشکاشم","NO"
-"17","BADAKHSHAN","1724","SHAKI","شکی","1724","SHAKI","شکی","NO"
-"17","BADAKHSHAN","1725","ZEBAK","زیباک","1725","ZEBAK","زیباک","NO"
-"17","BADAKHSHAN","1726","KERAN WA MENJAN","کران و منجان","1726","KERAN WA MENJAN","کران و منجان","NO"
-"17","BADAKHSHAN","1727","DARWAZ BALA (NESAY)","درواز بالا (نسی)","1727","DARWAZ BALA (NESAY)","درواز بالا (نسی)","NO"
-"17","BADAKHSHAN","1728","WAKHAN","واخان","1728","WAKHAN","واخان","NO"
-"18","TAKHAR","1801","TALUQAN","تالقان","1801","TALUQAN","تالقان","YES"
-"18","TAKHAR","1802","HAZARSUMOCH","هزارسموچ","1802","HAZARSUMOCH","هزارسموچ","NO"
-"18","TAKHAR","1803","BAHARAK","بهارک","1803","BAHARAK","بهارک","NO"
-"18","TAKHAR","1804","BANGI","بنگی","1804","BANGI","بنگی","NO"
-"18","TAKHAR","1805","CHAL","چال","1805","CHAL","چال","NO"
-"18","TAKHAR","1806","NAMAKAB","نمک آب","1806","NAMAKAB","نمک آب","NO"
-"18","TAKHAR","1807","KALAFGAN","کلفگان","1807","KALAFGAN","کلفگان","NO"
-"18","TAKHAR","1808","FARKHAR","فرخار","1808","FARKHAR","فرخار","NO"
-"18","TAKHAR","1809","KHWAJAGHAR","خواجه غار","1809","KHWAJAGHAR","خواجه غار","NO"
-"18","TAKHAR","1810","RUSTAQ","رستاق","1810","RUSTAQ","رستاق","NO"
-"18","TAKHAR","1811","ESHKAMESH","اشکمش","1811","ESHKAMESH","اشکمش","NO"
-"18","TAKHAR","1812","DASHT QALA","دشت قلعه","1812","DASHT QALA","دشت قلعه","NO"
-"18","TAKHAR","1813","WARSAJ","ورسج","1813","WARSAJ","ورسج","NO"
-"18","TAKHAR","1814","KHWAJA BAHAUDIN","خواجه بهاوالدین","1814","KHWAJA BAHAUDIN","خواجه بهاوالدین","NO"
-"18","TAKHAR","1815","DARQAD","درقد","1815","DARQAD","درقد","NO"
-"18","TAKHAR","1816","CHAHAB","چا آب","1816","CHAHAB","چا آب","NO"
-"18","TAKHAR","1817","YANGI QALA","ینگی قلعه","1817","YANGI QALA","ینگی قلعه","NO"
-"19","KUNDUZ","1901","KUNDUZ","کندز","1901","KUNDUZ","کندز","YES"
-"19","KUNDUZ","1902","CHAHAR DARAH","چاردره","1902","CHAHAR DARAH","چاردره","NO"
-"19","KUNDUZ","1903","ALI ABAD","علی آباد","1903","ALI ABAD","علی آباد","NO"
-"19","KUNDUZ","1904","KHAN ABAD","خان آباد","1904","KHAN ABAD","خان آباد","NO"
-"19","KUNDUZ","1905","EMAM SAHEB","حضرت امام صاحب","1905","EMAM SAHEB","حضرت امام صاحب","NO"
-"19","KUNDUZ","1906","DASHT ARCHI","دشت ارچی","1906","DASHT ARCHI","دشت ارچی","NO"
-"19","KUNDUZ","1907","QALAE ZAL","قلعه ذال","1907","QALAE ZAL","قلعه ذال","NO"
-"19","KUNDUZ","1908","KALBAD","کلباد","1908","KALBAD","کلباد","NO"
-"19","KUNDUZ","1909","GULTAPA","گل تپه","1909","GULTAPA","گل تپه","NO"
-"19","KUNDUZ","1910","AQTASH","آقتاش","1910","AQTASH","آقتاش","NO"
-"20","SAMANGAN","2001","AYBAK","ایبک","2001","AYBAK","ایبک","YES"
-"20","SAMANGAN","2002","HAZRATE SULTAN","حضرت سلطان","2002","HAZRATE SULTAN","حضرت سلطان","NO"
-"20","SAMANGAN","2003","KHURAM WA SARBAGH","خرم و سارباغ","2003","KHURAM WA SARBAGH","خرم و سارباغ","NO"
-"20","SAMANGAN","2004","FIROZ NAKHCHEER","فیروز نخچیر","2004","FIROZ NAKHCHEER","فیروز نخچیر","NO"
-"20","SAMANGAN","2005","ROYE DOAB","روی دوآب","2005","ROYE DOAB","روی دوآب","NO"
-"20","SAMANGAN","2006","DARAE SOFE PAYEN","دره صوف پائین","2006","DARAE SOFE PAYEN","دره صوف پائین","NO"
-"20","SAMANGAN","2007","DARAE SOFE BALA","دره صوف بالا","2007","DARAE SOFE BALA","دره صوف بالا","NO"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-01","MAZARE SHARIF NAHIA 01","مزار شریفد ناحیه 01","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-02","MAZARE SHARIF NAHIA 02","مزار شریفد ناحیه 02","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-03","MAZARE SHARIF NAHIA 03","مزار شریفد ناحیه 03","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-04","MAZARE SHARIF NAHIA 04","مزار شریفد ناحیه 04","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-05","MAZARE SHARIF NAHIA 05","مزار شریفد ناحیه 05","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-06","MAZARE SHARIF NAHIA 06","مزار شریفد ناحیه 06","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-07","MAZARE SHARIF NAHIA 07","مزار شریفد ناحیه 07","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-08","MAZARE SHARIF NAHIA 08","مزار شریفد ناحیه 08","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-09","MAZARE SHARIF NAHIA 09","مزار شریفد ناحیه 09","YES"
-"21","BALKH","2101","MAZARE SHARIF","مزار شریفد","2101-10","MAZARE SHARIF NAHIA 10","مزار شریفد ناحیه 10","YES"
-"21","BALKH","2102","NAHR SHAHI","نهر شاهی","2102","NAHR SHAHI","نهر شاهی","NO"
-"21","BALKH","2103","DEHDADI","دهدادی","2103","DEHDADI","دهدادی","NO"
-"21","BALKH","2104","CHARKENT","چارکنت","2104","CHARKENT","چارکنت","NO"
-"21","BALKH","2105","MARMUL","مارمل","2105","MARMUL","مارمل","NO"
-"21","BALKH","2106","BALKH","بلخ","2106","BALKH","بلخ","NO"
-"21","BALKH","2107","SHOLGARA","شولگره","2107","SHOLGARA","شولگره","NO"
-"21","BALKH","2108","CHEMTAL","چمتال","2108","CHEMTAL","چمتال","NO"
-"21","BALKH","2109","DAWLATABAD","دولت آباد","2109","DAWLATABAD","دولت آباد","NO"
-"21","BALKH","2110","KHULM","خلم","2110","KHULM","خلم","NO"
-"21","BALKH","2111","CHARBOLAK","چار بولک","2111","CHARBOLAK","چار بولک","NO"
-"21","BALKH","2112","SHORTEPA","شور تیپه","2112","SHORTEPA","شور تیپه","NO"
-"21","BALKH","2113","KALDAR","کلدار","2113","KALDAR","کلدار","NO"
-"21","BALKH","2114","KUSHENDEH","کشنده","2114","KUSHENDEH","کشنده","NO"
-"21","BALKH","2115","ZARI","زاری","2115","ZARI","زاری","NO"
-"22","SARE PUL","2201","SARE PUL","سرپل","2201","SARE PUL","سرپل","YES"
-"22","SARE PUL","2202","SAYAD","صیاد","2202","SAYAD","صیاد","NO"
-"22","SARE PUL","2203","KOHESTANAT","کوهستانات","2203","KOHESTANAT","کوهستانات","NO"
-"22","SARE PUL","2204","SOZMAQALA","سوزمه قلعه","2204","SOZMAQALA","سوزمه قلعه","NO"
-"22","SARE PUL","2205","SANCHARAK","سنگ چارک","2205","SANCHARAK","سنگ چارک","NO"
-"22","SARE PUL","2206","GOSFANDI","گوسفندی","2206","GOSFANDI","گوسفندی","NO"
-"22","SARE PUL","2207","BALKHAB","بلخآب","2207","BALKHAB","بلخآب","NO"
-"23","GHOR","2301","FEROZKOH (CHEGHCHERAN)","چغچران","2301","FEROZKOH (CHEGHCHERAN)","چغچران","YES"
-"23","GHOR","2302","DOLAYNA","دولینه","2302","DOLAYNA","دولینه","NO"
-"23","GHOR","2303","DAWLATYAR","دولت یار","2303","DAWLATYAR","دولت یار","NO"
-"23","GHOR","2304","CHARSADA","چار صده","2304","CHARSADA","چار صده","NO"
-"23","GHOR","2305","PASABAND","پسابند","2305","PASABAND","پسابند","NO"
-"23","GHOR","2306","SHAHRAK","شهرک","2306","SHAHRAK","شهرک","NO"
-"23","GHOR","2307","LAL WA SARJANGAL","لعل و سرجنگل","2307","LAL WA SARJANGAL","لعل و سرجنگل","NO"
-"23","GHOR","2308","TAYWARA","تیوره","2308","TAYWARA","تیوره","NO"
-"23","GHOR","2309","TOLAK","تولک","2309","TOLAK","تولک","NO"
-"23","GHOR","2310","SAGHAR","ساغر","2310","SAGHAR","ساغر","NO"
-"24","DAYKUNDI","2401","NILI","نیلی","2401","NILI","نیلی","YES"
-"24","DAYKUNDI","2402","SHAHRESTAN","شهرستان","2402","SHAHRESTAN","شهرستان","NO"
-"24","DAYKUNDI","2403","PATO","پاتو","2403","PATO","پاتو","NO"
-"24","DAYKUNDI","2404","ESHTARLAY","اشترلی","2404","ESHTARLAY","اشترلی","NO"
-"24","DAYKUNDI","2405","KHADER","خدیر","2405","KHADER","خدیر","NO"
-"24","DAYKUNDI","2406","KITI","کیتی","2406","KITI","کیتی","NO"
-"24","DAYKUNDI","2407","MERAMOR","میرامور","2407","MERAMOR","میرامور","NO"
-"24","DAYKUNDI","2408","SANG TAKHT","سنگ تخت","2408","SANG TAKHT","سنگ تخت","NO"
-"24","DAYKUNDI","2409","KAJRAN","کجران","2409","KAJRAN","کجران","NO"
-"25","URUZGAN","2501","TIRENKOT","ترینکوټ","2501","TIRENKOT","ترینکوټ","YES"
-"25","URUZGAN","2502","DEHRAWUD","دهراود","2502","DEHRAWUD","دهراود","NO"
-"25","URUZGAN","2503","CHORA","چوره","2503","CHORA","چوره","NO"
-"25","URUZGAN","2504","SHAHED HASAS","شهید حساس","2504","SHAHED HASAS","شهید حساس","NO"
-"25","URUZGAN","2505","KHASURUZGAN","خاص ارزگان","2505","KHASURUZGAN","خاص ارزگان","NO"
-"25","URUZGAN","2506","CHENARTO","چنارتو","2506","CHENARTO","چنارتو","NO"
-"25","URUZGAN","2507","GIZAB","گیزاب","2507","GIZAB","گیزاب","NO"
-"26","ZABUL","2601","QALAT","قلات","2601","QALAT","قلات","YES"
-"26","ZABUL","2602","TARNAK WA JALDAK","ترنک و جلدک","2602","TARNAK WA JALDAK","ترنک و جلدک","NO"
-"26","ZABUL","2603","SHINKAI","شینکې","2603","SHINKAI","شینکې","NO"
-"26","ZABUL","2604","MEZAN","میزان","2604","MEZAN","میزان","NO"
-"26","ZABUL","2605","ARGHANDAB","ارغنداب","2605","ARGHANDAB","ارغنداب","NO"
-"26","ZABUL","2606","SHAHJOY","شاه جوی","2606","SHAHJOY","شاه جوی","NO"
-"26","ZABUL","2607","DAYCHOPAN","دایچوپان","2607","DAYCHOPAN","دایچوپان","NO"
-"26","ZABUL","2608","ATGHAR","اتغر","2608","ATGHAR","اتغر","NO"
-"26","ZABUL","2609","NAWBAHAR","نوبهار","2609","NAWBAHAR","نوبهار","NO"
-"26","ZABUL","2610","SHUMULZAY","شملزائی","2610","SHUMULZAY","شملزائی","NO"
-"26","ZABUL","2611","KAKAR","کاکړ","2611","KAKAR","کاکړ","NO"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-01","KANDAHAR NAHIA 01","کندهار ناحیه 01","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-02","KANDAHAR NAHIA 02","کندهار ناحیه 02","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-03","KANDAHAR NAHIA 03","کندهار ناحیه 03","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-04","KANDAHAR NAHIA 04","کندهار ناحیه 04","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-05","KANDAHAR NAHIA 05","کندهار ناحیه 05","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-06","KANDAHAR NAHIA 06","کندهار ناحیه 06","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-07","KANDAHAR NAHIA 07","کندهار ناحیه 07","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-08","KANDAHAR NAHIA 08","کندهار ناحیه 08","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-13","KANDAHAR NAHIA 13","کندهار ناحیه 13","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-09","KANDAHAR NAHIA 09","کندهار ناحیه 09","YES"
-"27","KANDAHAR","2701","KANDAHAR","کندهار","2701-10","KANDAHAR NAHIA 10","کندهار ناحیه 10","YES"
-"27","KANDAHAR","2702","ARGHANDAB","ارغنداب","2702","ARGHANDAB","ارغنداب","NO"
-"27","KANDAHAR","2703","DAMAN","دامان","2703","DAMAN","دامان","NO"
-"27","KANDAHAR","2704","PANJWAYE","پنجوایې","2704","PANJWAYE","پنجوایې","NO"
-"27","KANDAHAR","2705","ZHERAY","ژیړی","2705","ZHERAY","ژیړی","NO"
-"27","KANDAHAR","2706","SHAHWALEKOT","شاه ولي كوټ","2706","SHAHWALEKOT","شاه ولي كوټ","NO"
-"27","KANDAHAR","2707","KHAKREZ","خاک ریز","2707","KHAKREZ","خاک ریز","NO"
-"27","KANDAHAR","2708","ARGHESTAN","ارغستان","2708","ARGHESTAN","ارغستان","NO"
-"27","KANDAHAR","2709","GHORAK","غورك","2709","GHORAK","غورك","NO"
-"27","KANDAHAR","2710","MAYWAND","میوند","2710","MAYWAND","میوند","NO"
-"27","KANDAHAR","2711","SPENBOLDAK","سپین بولدک","2711","SPENBOLDAK","سپین بولدک","NO"
-"27","KANDAHAR","2712","NESH","نيش","2712","NESH","نيش","NO"
-"27","KANDAHAR","2713","MIYANSHIN","ميانشين","2713","MIYANSHIN","ميانشين","NO"
-"27","KANDAHAR","2714","SHORABAK","شورابك","2714","SHORABAK","شورابك","NO"
-"27","KANDAHAR","2715","MAROF","معروف","2715","MAROF","معروف","NO"
-"27","KANDAHAR","2716","REG","ریګ","2716","REG","ریګ","NO"
-"27","KANDAHAR","2717","DAND","ډند","2717","DAND","ډند","NO"
-"27","KANDAHAR","2718","TAKHTAPUL","تخته پل","2718","TAKHTAPUL","تخته پل","NO"
-"28","JAWZJAN","2801","SHEBERGHAN","شبرغان","2801","SHEBERGHAN","شبرغان","YES"
-"28","JAWZJAN","2802","KHWAJA DOKOH","خواجه دوکوه","2802","KHWAJA DOKOH","خواجه دوکوه","NO"
-"28","JAWZJAN","2803","KHANEQA","خانقاه","2803","KHANEQA","خانقاه","NO"
-"28","JAWZJAN","2804","MENGAJEK","منگجیک","2804","MENGAJEK","منگجیک","NO"
-"28","JAWZJAN","2805","QOSHTEPA","قوش تیپه","2805","QOSHTEPA","قوش تیپه","NO"
-"28","JAWZJAN","2806","KHAMYAB","خم آب","2806","KHAMYAB","خم آب","NO"
-"28","JAWZJAN","2807","AQCHA","آقچه","2807","AQCHA","آقچه","NO"
-"28","JAWZJAN","2808","FAYZABAD","فیض آباد","2808","FAYZABAD","فیض آباد","NO"
-"28","JAWZJAN","2809","MARDYAN","مردیان","2809","MARDYAN","مردیان","NO"
-"28","JAWZJAN","2810","QARQEEN","قرقین","2810","QARQEEN","قرقین","NO"
-"28","JAWZJAN","2811","DARZAB","درز آب","2811","DARZAB","درز آب","NO"
-"29","FARYAB","2901","MAYMANA","میمنه","2901","MAYMANA","میمنه","YES"
-"29","FARYAB","2902","PASHTONKOT","پشتون کوت","2902","PASHTONKOT","پشتون کوت","NO"
-"29","FARYAB","2903","KHWAJA SABZPOSH","خواجه سبز پوش ولی","2903","KHWAJA SABZPOSH","خواجه سبز پوش ولی","NO"
-"29","FARYAB","2904","ALMAR","المار","2904","ALMAR","المار","NO"
-"29","FARYAB","2905","BELCHERAGH","بل چراغ","2905","BELCHERAGH","بل چراغ","NO"
-"29","FARYAB","2906","SHIRINTAGAB","شیرین تگاب","2906","SHIRINTAGAB","شیرین تگاب","NO"
-"29","FARYAB","2907","QAYSAR","قیصار","2907","QAYSAR","قیصار","NO"
-"29","FARYAB","2908","GURZIWAN","گرزیوان","2908","GURZIWAN","گرزیوان","NO"
-"29","FARYAB","2909","DAWLATABAD","دولت آباد","2909","DAWLATABAD","دولت آباد","NO"
-"29","FARYAB","2910","KOHESTAN","کوهستان","2910","KOHESTAN","کوهستان","NO"
-"29","FARYAB","2911","QARAMQUL","قرم قل","2911","QARAMQUL","قرم قل","NO"
-"29","FARYAB","2912","QURGHAN","قرغان","2912","QURGHAN","قرغان","NO"
-"29","FARYAB","2913","ANDKHOY","اندخوی","2913","ANDKHOY","اندخوی","NO"
-"29","FARYAB","2914","KHAN CHAR BAGH","خان چار باغ","2914","KHAN CHAR BAGH","خان چار باغ","NO"
-"30","HELMAND","3001","LASHKARGAH","لشکرگاه","3001","LASHKARGAH","لشکرگاه","YES"
-"30","HELMAND","3002","NADALI","نادعلی","3002","NADALI","نادعلی","NO"
-"30","HELMAND","3003","NAWAE BARAKZAYE","ناوه بارکزایی","3003","NAWAE BARAKZAYE","ناوه بارکزایی","NO"
-"30","HELMAND","3004","NAHR SARAJ","نهرسراج","3004","NAHR SARAJ","نهرسراج","NO"
-"30","HELMAND","3005","WASHIR","واشیر","3005","WASHIR","واشیر","NO"
-"30","HELMAND","3006","GARMSER","گرم سیر","3006","GARMSER","گرم سیر","NO"
-"30","HELMAND","3007","NAWZAD","نوزاد","3007","NAWZAD","نوزاد","NO"
-"30","HELMAND","3008","SANGEEN","سنگین قلعه","3008","SANGEEN","سنگین قلعه","NO"
-"30","HELMAND","3009","MOSAQALA","موسی قلعه","3009","MOSAQALA","موسی قلعه","NO"
-"30","HELMAND","3010","KAJAKI","کجکی","3010","KAJAKI","کجکی","NO"
-"30","HELMAND","3011","REG(KHAN NESHIN)","ریگ خانشین","3011","REG(KHAN NESHIN)","ریگ خانشین","NO"
-"30","HELMAND","3012","BAGHRAN","باغران","3012","BAGHRAN","باغران","NO"
-"30","HELMAND","3013","DISHO","دیشو","3013","DISHO","دیشو","NO"
-"30","HELMAND","3014","MARJA","مارجه","3014","MARJA","مارجه","NO"
-"30","HELMAND","3015","NAWAMISH","ناوه میش","3015","NAWAMISH","ناوه میش","NO"
-"31","BADGHIS","3101","QALAE NAW","قلعه نو","3101","QALAE NAW","قلعه نو","YES"
-"31","BADGHIS","3102","ABKAMARI","آبکمری","3102","ABKAMARI","آبکمری","NO"
-"31","BADGHIS","3103","MUQUR","مقر","3103","MUQUR","مقر","NO"
-"31","BADGHIS","3104","QADEES","قادس","3104","QADEES","قادس","NO"
-"31","BADGHIS","3104","QADIS","قادس","3104","QADIS","قادس","NO"
-"31","BADGHIS","3105","MURGHAB","بالا مرغاب","3105","MURGHAB","بالا مرغاب","NO"
-"31","BADGHIS","3106","JAWAND","جوند","3106","JAWAND","جوند","NO"
-"31","BADGHIS","3107","GHORMACH","غورماچ","3107","GHORMACH","غورماچ","NO"
-"32","HERAT","3201","HERAT","هرات","3201-01","HERAT NAHIA 01","هرات ناحیه 01","YES"
-"32","HERAT","3201","HERAT","هرات","3201-02","HERAT NAHIA 02","هرات ناحیه 02","YES"
-"32","HERAT","3201","HERAT","هرات","3201-03","HERAT NAHIA 03","هرات ناحیه 03","YES"
-"32","HERAT","3201","HERAT","هرات","3201-04","HERAT NAHIA 04","هرات ناحیه 04","YES"
-"32","HERAT","3201","HERAT","هرات","3201-05","HERAT NAHIA 05","هرات ناحیه 05","YES"
-"32","HERAT","3201","HERAT","هرات","3201-06","HERAT NAHIA 06","هرات ناحیه 06","YES"
-"32","HERAT","3201","HERAT","هرات","3201-07","HERAT NAHIA 07","هرات ناحیه 07","YES"
-"32","HERAT","3201","HERAT","هرات","3201-08","HERAT NAHIA 08","هرات ناحیه 08","YES"
-"32","HERAT","3201","HERAT","هرات","3201-09","HERAT NAHIA 09","هرات ناحیه 09","YES"
-"32","HERAT","3201","HERAT","هرات","3201-10","HERAT NAHIA 10","هرات ناحیه 10","YES"
-"32","HERAT","3201","HERAT","هرات","3201-11","HERAT NAHIA 11","هرات ناحیه 11","YES"
-"32","HERAT","3201","HERAT","هرات","3201-12","HERAT NAHIA 12","هرات ناحیه 12","YES"
-"32","HERAT","3201","HERAT","هرات","3201-13","HERAT NAHIA 13","هرات ناحیه 13","YES"
-"32","HERAT","3201","HERAT","هرات","3201-14","HERAT NAHIA 14","هرات ناحیه 14","YES"
-"32","HERAT","3201","HERAT","هرات","3201-15","HERAT NAHIA 15","هرات ناحیه 15","YES"
-"32","HERAT","3202","ENJEEL","انجیل","3202","ENJEEL","انجیل","NO"
-"32","HERAT","3203","GUZARA","گذره","3203","GUZARA","گذره","NO"
-"32","HERAT","3204","KARUKH","کرخ","3204","KARUKH","کرخ","NO"
-"32","HERAT","3205","ZENDAJAN","زنده جان","3205","ZENDAJAN","زنده جان","NO"
-"32","HERAT","3206","PASHTON ZARGHON","پشتون زرغون","3206","PASHTON ZARGHON","پشتون زرغون","NO"
-"32","HERAT","3207","KUSHK","کشک (رباط سنگی)","3207","KUSHK","کشک (رباط سنگی)","NO"
-"32","HERAT","3208","GULRAN","گلران","3208","GULRAN","گلران","NO"
-"32","HERAT","3209","ADRASKAN","ادرسکن","3209","ADRASKAN","ادرسکن","NO"
-"32","HERAT","3210","KUSHK KUHNA","کشک کهنه","3210","KUSHK KUHNA","کشک کهنه","NO"
-"32","HERAT","3211","GHORYAN","غوریان","3211","GHORYAN","غوریان","NO"
-"32","HERAT","3212","OBI","اوبه","3212","OBI","اوبه","NO"
-"32","HERAT","3213","KOHSAN","کهسان","3213","KOHSAN","کهسان","NO"
-"32","HERAT","3214","SHEENDND","شیندند","3214","SHEENDND","شیندند","NO"
-"32","HERAT","3215","FARSI","فرسی","3215","FARSI","فرسی","NO"
-"32","HERAT","3216","CHISHT SHAREF","چشت شریف","3216","CHISHT SHAREF","چشت شریف","NO"
-"32","HERAT","3217","ZIR KOH","زیرکوه","3217","ZIR KOH","زیرکوه","NO"
-"32","HERAT","3218","PUSHT KOH","پشت کوه","3218","PUSHT KOH","پشت کوه","NO"
-"32","HERAT","3219","KOHE ZOR","کوه زور","3219","KOHE ZOR","کوه زور","NO"
-"32","HERAT","3220","ZAWOL","زاول","3220","ZAWOL","زاول","NO"
-"33","FARAH","3301","FARAH","فراه","3301","FARAH","فراه","YES"
-"33","FARAH","3302","PUSHTROD","پشت رود","3302","PUSHTROD","پشت رود","NO"
-"33","FARAH","3303","KHAK SAFID","خاک سفید","3303","KHAK SAFID","خاک سفید","NO"
-"33","FARAH","3304","QALAYE KAH","قلعه کاه","3304","QALAYE KAH","قلعه کاه","NO"
-"33","FARAH","3305","SHIBKOH","شیب کوه","3305","SHIBKOH","شیب کوه","NO"
-"33","FARAH","3306","BALABLOK","بالا بلوک","3306","BALABLOK","بالا بلوک","NO"
-"33","FARAH","3307","ANARDARA","انار دره","3307","ANARDARA","انار دره","NO"
-"33","FARAH","3308","BAKWA","بکواه","3308","BAKWA","بکواه","NO"
-"33","FARAH","3309","LASH JUWAYN","لاش جوین","3309","LASH JUWAYN","لاش جوین","NO"
-"33","FARAH","3310","GULESTAN","گلستان","3310","GULESTAN","گلستان","NO"
-"33","FARAH","3311","PURCHAMAN","پرچمن","3311","PURCHAMAN","پرچمن","NO"
-"34","NIMROZ","3401","ZARANJ","زرنج","3401","ZARANJ","زرنج","YES"
-"34","NIMROZ","3402","KANG","کنگ","3402","KANG","کنگ","NO"
-"34","NIMROZ","3403","CHAKHANSOR","اصل چغانسور","3403","CHAKHANSOR","اصل چغانسور","NO"
-"34","NIMROZ","3404","CHAR BURJAK","چاربرجک","3404","CHAR BURJAK","چاربرجک","NO"
-"34","NIMROZ","3405","KHASHROD","خاشرود","3405","KHASHROD","خاشرود","NO"
-"34","NIMROZ","3406","DELARAM","دلارام","3406","DELARAM","دلارام","NO"
+province_code,province_name_eng,district_code,district_name_eng,district_name_dari,district_sub_code,district_or_subdivision_name_eng,district_or_subdivision_name_dari,provincial_capital
+1,KABUL,101,KABUL CITY,كابل,0101-01,KABUL CITY NAHIA 01,كابل ناحیه 01,YES
+1,KABUL,101,KABUL CITY,كابل,0101-02,KABUL CITY NAHIA 02,كابل ناحیه 02,YES
+1,KABUL,101,KABUL CITY,كابل,0101-03,KABUL CITY NAHIA 03,كابل ناحیه 03,YES
+1,KABUL,101,KABUL CITY,كابل,0101-04,KABUL CITY NAHIA 04,كابل ناحیه 04,YES
+1,KABUL,101,KABUL CITY,كابل,0101-05,KABUL CITY NAHIA 05,كابل ناحیه 05,YES
+1,KABUL,101,KABUL CITY,كابل,0101-06,KABUL CITY NAHIA 06,كابل ناحیه 06,YES
+1,KABUL,101,KABUL CITY,كابل,0101-07,KABUL CITY NAHIA 07,كابل ناحیه 07,YES
+1,KABUL,101,KABUL CITY,كابل,0101-08,KABUL CITY NAHIA 08,كابل ناحیه 08,YES
+1,KABUL,101,KABUL CITY,كابل,0101-09,KABUL CITY NAHIA 09,كابل ناحیه 09,YES
+1,KABUL,101,KABUL CITY,كابل,0101-10,KABUL CITY NAHIA 10,كابل ناحیه 10,YES
+1,KABUL,101,KABUL CITY,كابل,0101-11,KABUL CITY NAHIA 11,كابل ناحیه 11,YES
+1,KABUL,101,KABUL CITY,كابل,0101-12,KABUL CITY NAHIA 12,كابل ناحیه 12,YES
+1,KABUL,101,KABUL CITY,كابل,0101-13,KABUL CITY NAHIA 13,كابل ناحیه 13,YES
+1,KABUL,101,KABUL CITY,كابل,0101-14,KABUL CITY NAHIA 14,كابل ناحیه 14,YES
+1,KABUL,101,KABUL CITY,كابل,0101-15,KABUL CITY NAHIA 15,كابل ناحیه 15,YES
+1,KABUL,101,KABUL CITY,كابل,0101-16,KABUL CITY NAHIA 16,كابل ناحیه 16,YES
+1,KABUL,101,KABUL CITY,كابل,0101-17,KABUL CITY NAHIA 17,كابل ناحیه 17,YES
+1,KABUL,101,KABUL CITY,كابل,0101-18,KABUL CITY NAHIA 18,كابل ناحیه 18,YES
+1,KABUL,101,KABUL CITY,كابل,0101-19,KABUL CITY NAHIA 19,كابل ناحیه 19,YES
+1,KABUL,101,KABUL CITY,كابل,0101-21,KABUL CITY NAHIA 21,كابل ناحیه 21,YES
+1,KABUL,101,KABUL CITY,كابل,0101-22,KABUL CITY NAHIA 22,كابل ناحیه 22,YES
+1,KABUL,102,PAGHMAN,پغمان,102,PAGHMAN,پغمان,NO
+1,KABUL,103,CHAHARASYAB,چهار آسیاب,103,CHAHARASYAB,چهار آسیاب,NO
+1,KABUL,104,BAGRAMI,بگرامی,104,BAGRAMI,بگرامی,NO
+1,KABUL,105,DEHSABZ,ده سبز,105,DEHSABZ,ده سبز,NO
+1,KABUL,106,SHAKARDARA,شکردره,106,SHAKARDARA,شکردره,NO
+1,KABUL,107,MOSAHI,موسهی,107,MOSAHI,موسهی,NO
+1,KABUL,108,MIRBACHAKOT,میر بچه کوت,108,MIRBACHAKOT,میر بچه کوت,NO
+1,KABUL,109,KHAKEJABAR,خاک جبار,109,KHAKEJABAR,خاک جبار,NO
+1,KABUL,110,KALAKAN,کلکان,110,KALAKAN,کلکان,NO
+1,KABUL,111,GULDARA,گلدره,111,GULDARA,گلدره,NO
+1,KABUL,112,FARZA,فرزه,112,FARZA,فرزه,NO
+1,KABUL,113,ISTALIF,استالف,113,ISTALIF,استالف,NO
+1,KABUL,114,QARABAGH,قره باغ,114,QARABAGH,قره باغ,NO
+1,KABUL,115,SUROBI,سروبی,115,SUROBI,سروبی,NO
+2,KAPISA,201,MAHMODRAQI,محمود راقی,201,MAHMODRAQI,محمود راقی,YES
+2,KAPISA,202,HISSA-E-DUWUMI KOHISTAN,حصه دوم کوهستان,202,HISSA-E-DUWUMI KOHISTAN,حصه دوم کوهستان,NO
+2,KAPISA,203,KOHBAND,کوه بند,203,KOHBAND,کوه بند,NO
+2,KAPISA,204,HESE  AWAL KOHESTAN,حصه اول کوهستان,204,HESE  AWAL KOHESTAN,حصه اول کوهستان,NO
+2,KAPISA,205,NEJRAB,نجراب,205,NEJRAB,نجراب,NO
+2,KAPISA,206,TAGAB,تگاب,206,TAGAB,تگاب,NO
+2,KAPISA,207,ALASAY,اله سای,207,ALASAY,اله سای,NO
+3,PARWAN,301,CHARIKAR,چاریکار,301,CHARIKAR,چاریکار,YES
+3,PARWAN,302,BAGRAM,بگرام,302,BAGRAM,بگرام,NO
+3,PARWAN,303,SHINWARI,شینواری,303,SHINWARI,شینواری,NO
+3,PARWAN,304,SAYDKHEL,سیدخیل,304,SAYDKHEL,سیدخیل,NO
+3,PARWAN,305,JABALUSARAJ,جبل السراج,305,JABALUSARAJ,جبل السراج,NO
+3,PARWAN,306,SALANG,سالنگ,306,SALANG,سالنگ,NO
+3,PARWAN,307,GHORBAND (SIA GERD),سیاه گرد غوربند,307,GHORBAND (SIA GERD),سیاه گرد غوربند,NO
+3,PARWAN,308,KOHESAFI,کوه صافی,308,KOHESAFI,کوه صافی,NO
+3,PARWAN,309,SURKH PARSA,سرخ پارسا,309,SURKH PARSA,سرخ پارسا,NO
+3,PARWAN,310,SHIKHALI,شیخ علی,310,SHIKHALI,شیخ علی,NO
+4,MAYDANWARDAK,401,MAYDANSHAHR,میدان شهر,401,MAYDANSHAHR,میدان شهر,YES
+4,MAYDANWARDAK,402,NIRKH,نرخ,402,NIRKH,نرخ,NO
+4,MAYDANWARDAK,403,JALRIZ,جلریز,403,JALRIZ,جلریز,NO
+4,MAYDANWARDAK,404,CHAK,چک وردک,404,CHAK,چک وردک,NO
+4,MAYDANWARDAK,405,SAYDABAD,سید آباد,405,SAYDABAD,سید آباد,NO
+4,MAYDANWARDAK,406,DAYMIRDAD,دایمیرداد,406,DAYMIRDAD,دایمیرداد,NO
+4,MAYDANWARDAK,407,HISE AWAL BEHSOD,حصه اول بهسود,407,HISE AWAL BEHSOD,حصه اول بهسود,NO
+4,MAYDANWARDAK,408,JAGHATO,جغتو,408,JAGHATO,جغتو,NO
+4,MAYDANWARDAK,409,MARKAZ BIHSOD,مرکز بهسود,409,MARKAZ BIHSOD,مرکز بهسود,NO
+5,LOGAR,501,PULE ALAM,پل علم,501,PULE ALAM,پل علم,YES
+5,LOGAR,502,BARAKIBARAK,برکی برک,502,BARAKIBARAK,برکی برک,NO
+5,LOGAR,503,CHARKH,چرخ,503,CHARKH,چرخ,NO
+5,LOGAR,504,KHOSHI,خوشی,504,KHOSHI,خوشی,NO
+5,LOGAR,505,MUHAMMADAGHA,محمد آغه,505,MUHAMMADAGHA,محمد آغه,NO
+5,LOGAR,506,KHARWAR,خروار,506,KHARWAR,خروار,NO
+5,LOGAR,507,AZRA,اذره,507,AZRA,اذره,NO
+6,NANGARHAR,601,JALALABAD,جلال آباد,0601-01,JALALABAD NAHIA 01,جلال آباد ناحیه 01,YES
+6,NANGARHAR,601,JALALABAD,جلال آباد,0601-02,JALALABAD NAHIA 02,جلال آباد ناحیه 02,YES
+6,NANGARHAR,601,JALALABAD,جلال آباد,0601-03,JALALABAD NAHIA 03,جلال آباد ناحیه 03,YES
+6,NANGARHAR,601,JALALABAD,جلال آباد,0601-04,JALALABAD NAHIA 04,جلال آباد ناحیه 04,YES
+6,NANGARHAR,601,JALALABAD,جلال آباد,0601-05,JALALABAD NAHIA 05,جلال آباد ناحیه 05,YES
+6,NANGARHAR,601,JALALABAD,جلال آباد,0601-06,JALALABAD NAHIA 06,جلال آباد ناحیه 06,YES
+6,NANGARHAR,602,BIHSOD,بهسود,602,BIHSOD,بهسود,NO
+6,NANGARHAR,603,SURKHROD,سرخرود,603,SURKHROD,سرخرود,NO
+6,NANGARHAR,604,CHAPARHAR,چپرهار,604,CHAPARHAR,چپرهار,NO
+6,NANGARHAR,605,KAMA,کامه,605,KAMA,کامه,NO
+6,NANGARHAR,606,KOZ KUNAR,کوز کنړ,606,KOZ KUNAR,کوز کنړ,NO
+6,NANGARHAR,607,RODAT,رودات,607,RODAT,رودات,NO
+6,NANGARHAR,608,KHOGYANI,خوګیاڼي,608,KHOGYANI,خوګیاڼي,NO
+6,NANGARHAR,609,BATIKOT,بټي کوټ,609,BATIKOT,بټي کوټ,NO
+6,NANGARHAR,610,DEHBALA,ده بالا,610,DEHBALA,ده بالا,NO
+6,NANGARHAR,611,PACHERAGAM,پچیر و اګام,611,PACHERAGAM,پچیر و اګام,NO
+6,NANGARHAR,612,DARA NOOR,دره نور,612,DARA NOOR,دره نور,NO
+6,NANGARHAR,613,KOT,کوټ,613,KOT,کوټ,NO
+6,NANGARHAR,614,GOSHTA,ګوشته,614,GOSHTA,ګوشته,NO
+6,NANGARHAR,615,ACHEEN,اچین,615,ACHEEN,اچین,NO
+6,NANGARHAR,616,SHINWAR,شینوار,616,SHINWAR,شینوار,NO
+6,NANGARHAR,617,MUHMAND DARA,مهمند دره,617,MUHMAND DARA,مهمند دره,NO
+6,NANGARHAR,618,LAL POOR,لعل پور,618,LAL POOR,لعل پور,NO
+6,NANGARHAR,619,SHIRZAD,شیرزاد,619,SHIRZAD,شیرزاد,NO
+6,NANGARHAR,620,NAZYAN,نازیان,620,NAZYAN,نازیان,NO
+6,NANGARHAR,621,HISARAK,حصارک,621,HISARAK,حصارک,NO
+6,NANGARHAR,622,DURBABA,در بابا,622,DURBABA,در بابا,NO
+6,NANGARHAR,623,SPIN GHAR,سپین غر,623,SPIN GHAR,سپین غر,NO
+7,LAGHMAN,701,MEHTARLAM,مهترلام,701,MEHTARLAM,مهترلام,YES
+7,LAGHMAN,702,QARGHAYE,قرغه یي,702,QARGHAYE,قرغه یي,NO
+7,LAGHMAN,703,ALISHENG,علیشنګ,703,ALISHENG,علیشنګ,NO
+7,LAGHMAN,704,ALINGAR,علینگار,704,ALINGAR,علینگار,NO
+7,LAGHMAN,705,DAWLATSHAH,دولت شاه,705,DAWLATSHAH,دولت شاه,NO
+7,LAGHMAN,706,BAD PAKH,بادپښ,706,BAD PAKH,بادپښ,NO
+8,PANJSHIR,801,BAZARAK,بازارک,801,BAZARAK,بازارک,YES
+8,PANJSHIR,802,RUKHA,رخه,802,RUKHA,رخه,NO
+8,PANJSHIR,803,DARA,دره,803,DARA,دره,NO
+8,PANJSHIR,804,KHENJ (HESAE AWAL),حصه اول خنج,804,KHENJ (HESAE AWAL),حصه اول خنج,NO
+8,PANJSHIR,805,ONABA,عنابه,805,ONABA,عنابه,NO
+8,PANJSHIR,806,SHUTUL,شتل,806,SHUTUL,شتل,NO
+8,PANJSHIR,807,PARYAN,پریان,807,PARYAN,پریان,NO
+8,PANJSHIR,808,ABSHAR,آبشار,808,ABSHAR,آبشار,NO
+9,BAGHLAN,901,PULE KHUMRI,پلخمری,901,PULE KHUMRI,پلخمری,YES
+9,BAGHLAN,902,DAHANAE GHORI,دهنه غوری,902,DAHANAE GHORI,دهنه غوری,NO
+9,BAGHLAN,903,DOSHI,دوشی,903,DOSHI,دوشی,NO
+9,BAGHLAN,904,NAHREEN,نهرین,904,NAHREEN,نهرین,NO
+9,BAGHLAN,905,BAGHLAN JADID,بغلان جدید,905,BAGHLAN JADID,بغلان جدید,NO
+9,BAGHLAN,906,KHINJAN,خنجان,906,KHINJAN,خنجان,NO
+9,BAGHLAN,907,ANDARAB,اندراب,907,ANDARAB,اندراب,NO
+9,BAGHLAN,908,DEHSALAH,ده صلاح,908,DEHSALAH,ده صلاح,NO
+9,BAGHLAN,909,KHWAJAHEJRAN,جلگه,909,KHWAJAHEJRAN,جلگه,NO
+9,BAGHLAN,910,BORKA,برکه,910,BORKA,برکه,NO
+9,BAGHLAN,911,TALA WA BARFAK,تاله و برفک,911,TALA WA BARFAK,تاله و برفک,NO
+9,BAGHLAN,912,PULE HESAR,پل حصار,912,PULE HESAR,پل حصار,NO
+9,BAGHLAN,913,KHOST WA FERENG,خوست و فرنگ,913,KHOST WA FERENG,خوست و فرنگ,NO
+9,BAGHLAN,914,GUZARGAHE NOOR,گذرگاه نور,914,GUZARGAHE NOOR,گذرگاه نور,NO
+9,BAGHLAN,915,FIRING GHARO,فرنگ و غارو,915,FIRING GHARO,فرنگ و غارو,NO
+10,BAMYAN,1001,BAMYAN,بامیان,1001,BAMYAN,بامیان,YES
+10,BAMYAN,1002,SHEBAR,شیبر,1002,SHEBAR,شیبر,NO
+10,BAMYAN,1003,SAYGHAN,سیغان,1003,SAYGHAN,سیغان,NO
+10,BAMYAN,1004,KAHMARD,کهمرد,1004,KAHMARD,کهمرد,NO
+10,BAMYAN,1005,YAKAWLANG,یکاولنگ نمبر اول,1005,YAKAWLANG,یکاولنگ نمبر اول,NO
+10,BAMYAN,1006,PANJAB,پنجاب,1006,PANJAB,پنجاب,NO
+10,BAMYAN,1007,WARAS,ورس,1007,WARAS,ورس,NO
+10,BAMYAN,1008,YAKAWLANG NUMBER 2,یکاولنگ نمبر دوم,1008,YAKAWLANG NUMBER 2,یکاولنگ نمبر دوم,NO
+11,GHAZNI,1101,GHAZNI,غزنی,1101,GHAZNI,غزنی,YES
+11,GHAZNI,1102,WALEMUHAMMAD SHAHEED,ولی محمد شهید,1102,WALEMUHAMMAD SHAHEED,ولی محمد شهید,NO
+11,GHAZNI,1103,KHWAJAUMARI,خواجه عمری,1103,KHWAJAUMARI,خواجه عمری,NO
+11,GHAZNI,1104,WAGHAZ,واغظ,1104,WAGHAZ,واغظ,NO
+11,GHAZNI,1105,DEHYAK,ده یک,1105,DEHYAK,ده یک,NO
+11,GHAZNI,1106,JAGHATO,جغتو,1106,JAGHATO,جغتو,NO
+11,GHAZNI,1107,ANDAR,اندر,1107,ANDAR,اندر,NO
+11,GHAZNI,1108,ZANAKHAN,زنخان,1108,ZANAKHAN,زنخان,NO
+11,GHAZNI,1109,RASHEEDAN,رشیدان,1109,RASHEEDAN,رشیدان,NO
+11,GHAZNI,1110,NAWUR,ناور,1110,NAWUR,ناور,NO
+11,GHAZNI,1111,QARABAGH,قره باغ,1111,QARABAGH,قره باغ,NO
+11,GHAZNI,1112,GEERO,گیرو,1112,GEERO,گیرو,NO
+11,GHAZNI,1113,AB BAND,آب بند,1113,AB BAND,آب بند,NO
+11,GHAZNI,1114,JAGHORI,جاغوری,1114,JAGHORI,جاغوری,NO
+11,GHAZNI,1115,MUQUR,مقر,1115,MUQUR,مقر,NO
+11,GHAZNI,1116,MALESTAN,مالستان,1116,MALESTAN,مالستان,NO
+11,GHAZNI,1117,GELAN,گیلان,1117,GELAN,گیلان,NO
+11,GHAZNI,1118,AJRESTAN,اجرستان,1118,AJRESTAN,اجرستان,NO
+11,GHAZNI,1119,NAWA,ناوه,1119,NAWA,ناوه,NO
+12,PAKTIKA,1201,SHARAN,شرن,1201,SHARAN,شرن,YES
+12,PAKTIKA,1202,MATAKHAN,مټا خان,1202,MATAKHAN,مټا خان,NO
+12,PAKTIKA,1203,YOSUFKHEL,یوسف خیل,1203,YOSUFKHEL,یوسف خیل,NO
+12,PAKTIKA,1204,YAHYAKHEL,یحی خیل,1204,YAHYAKHEL,یحی خیل,NO
+12,PAKTIKA,1205,SAR RAWZA,سروضه,1205,SAR RAWZA,سروضه,NO
+12,PAKTIKA,1206,OMNA,اومنه,1206,OMNA,اومنه,NO
+12,PAKTIKA,1207,ZARGHONSHAHR,زرغون شهر,1207,ZARGHONSHAHR,زرغون شهر,NO
+12,PAKTIKA,1208,GOMAL,گومل,1208,GOMAL,گومل,NO
+12,PAKTIKA,1209,JANIKHEL,جانی خیل,1209,JANIKHEL,جانی خیل,NO
+12,PAKTIKA,1210,SAROBI,سروبی,1210,SAROBI,سروبی,NO
+12,PAKTIKA,1211,URGUN,اورگون,1211,URGUN,اورگون,NO
+12,PAKTIKA,1212,‌‌ZEEROK‌‎‌‎‌‎‌‎,زیړوک,1212,‌‌ZEEROK‌‎‌‎‌‎‌‎,زیړوک,NO
+12,PAKTIKA,1213,NEEKA‌‎‌‎‌‎‌‎,نیکه,1213,NEEKA‌‎‌‎‌‎‌‎,نیکه,NO
+12,PAKTIKA,1214,BARAL,برمل,1214,BARAL,برمل,NO
+12,PAKTIKA,1215,GYAN,گیان,1215,GYAN,گیان,NO
+12,PAKTIKA,1216,DELA,دیله و خوش امند,1216,DELA,دیله و خوش امند,NO
+12,PAKTIKA,1217,WAZAKHUA,وازه خواه,1217,WAZAKHUA,وازه خواه,NO
+12,PAKTIKA,1218,WORMAMAY,وړممی,1218,WORMAMAY,وړممی,NO
+12,PAKTIKA,1219,TURWO,تروو,1219,TURWO,تروو,NO
+13,PAKTYA,1301,GARDEZ,گردیز,1301,GARDEZ,گردیز,YES
+13,PAKTYA,1302,AHMADABA,احمد آبا,1302,AHMADABA,احمد آبا,NO
+13,PAKTYA,1303,ZURMAT,زرمت,1303,ZURMAT,زرمت,NO
+13,PAKTYA,1304,SHUWAK,شواک,1304,SHUWAK,شواک,NO
+13,PAKTYA,1305,ZADRAN,وزه ځدراڼ,1305,ZADRAN,وزه ځدراڼ,NO
+13,PAKTYA,1306,SAYEDKARAM,سید کرم,1306,SAYEDKARAM,سید کرم,NO
+13,PAKTYA,1307,JAJEE,جاجی,1307,JAJEE,جاجی,NO
+13,PAKTYA,1308,LEJA AHMADKHEL,لجه احمد خیل,1308,LEJA AHMADKHEL,لجه احمد خیل,NO
+13,PAKTYA,1309,JANIKHEL,جانی خیل,1309,JANIKHEL,جانی خیل,NO
+13,PAKTYA,1310,CHAMKANI,څمکنی,1310,CHAMKANI,څمکنی,NO
+13,PAKTYA,1311,DAND WA PATAN,ډنډ پټان,1311,DAND WA PATAN,ډنډ پټان,NO
+13,PAKTYA,1312,LEJAMANGAL,لجه منګل,1312,LEJAMANGAL,لجه منګل,NO
+13,PAKTYA,1313,MEARZAKA,میرزکه,1313,MEARZAKA,میرزکه,NO
+13,PAKTYA,1314,GARDA SIRAY,گرده څیړی,1314,GARDA SIRAY,گرده څیړی,NO
+13,PAKTYA,1315,ROHANI BABA,روحانی بابا,1315,ROHANI BABA,روحانی بابا,NO
+14,KHOST,1401,KHOST (MATON),خوست,1401,KHOST (MATON),خوست,YES
+14,KHOST,1402,MANDOZAY,مندوزی,1402,MANDOZAY,مندوزی,NO
+14,KHOST,1403,GURBUZ,گربز,1403,GURBUZ,گربز,NO
+14,KHOST,1404,TANI,تڼي,1404,TANI,تڼي,NO
+14,KHOST,1405,MOSAKHEL,موسی خیل,1405,MOSAKHEL,موسی خیل,NO
+14,KHOST,1406,NADIRSHAHKOT,نادرشاه کوت,1406,NADIRSHAHKOT,نادرشاه کوت,NO
+14,KHOST,1407,SABARI,صبری,1407,SABARI,صبری,NO
+14,KHOST,1408,TIREZAYE,علی شیر,1408,TIREZAYE,علی شیر,NO
+14,KHOST,1409,BAK,باک,1409,BAK,باک,NO
+14,KHOST,1410,QALANDAR,قلندر,1410,QALANDAR,قلندر,NO
+14,KHOST,1411,SPERA,سپیره,1411,SPERA,سپیره,NO
+14,KHOST,1412,SHAMAL,شمل,1412,SHAMAL,شمل,NO
+14,KHOST,1413,JAJIMAYDAN,ځاځي میدان,1413,JAJIMAYDAN,ځاځي میدان,NO
+15,KUNARHA,1501,ASADABAD,اسعد آباد,1501,ASADABAD,اسعد آباد,YES
+15,KUNARHA,1502,MARAWARA,مره وره,1502,MARAWARA,مره وره,NO
+15,KUNARHA,1503,WATAPOOR,واټه پور,1503,WATAPOOR,واټه پور,NO
+15,KUNARHA,1504,NARANG,نرنګ,1504,NARANG,نرنګ,NO
+15,KUNARHA,1505,SARKANI,سرکاڼو,1505,SARKANI,سرکاڼو,NO
+15,KUNARHA,1506,SHEGAL,شیگل,1506,SHEGAL,شیگل,NO
+15,KUNARHA,1507,DARAE PECH,دره پیچ,1507,DARAE PECH,دره پیچ,NO
+15,KUNARHA,1508,BARKUNAR,بر کنړ,1508,BARKUNAR,بر کنړ,NO
+15,KUNARHA,1509,SAWKAY,څوکی,1509,SAWKAY,څوکی,NO
+15,KUNARHA,1510,KHASKUNAR,خاص کنړ,1510,KHASKUNAR,خاص کنړ,NO
+15,KUNARHA,1511,GHAZIABAD,غازی آباد,1511,GHAZIABAD,غازی آباد,NO
+15,KUNARHA,1512,DANGAM,دانګام,1512,DANGAM,دانګام,NO
+15,KUNARHA,1513,CHAPADARA,چپه دره,1513,CHAPADARA,چپه دره,NO
+15,KUNARHA,1514,NORGAL,نور ګل,1514,NORGAL,نور ګل,NO
+15,KUNARHA,1515,NARI,ناړی,1515,NARI,ناړی,NO
+15,KUNARHA,1516,SHELTAN,شلتن,1516,SHELTAN,شلتن,NO
+16,NOORESTAN,1601,PAROON,پارون,1601,PAROON,پارون,YES
+16,NOORESTAN,1602,WAYGAL,وایگل,1602,WAYGAL,وایگل,NO
+16,NOORESTAN,1603,WAMA,واما,1603,WAMA,واما,NO
+16,NOORESTAN,1604,NOORGERAM,نورګرام,1604,NOORGERAM,نورګرام,NO
+16,NOORESTAN,1605,DOAB,دو آب,1605,DOAB,دو آب,NO
+16,NOORESTAN,1606,KAMDESH,کامدیش,1606,KAMDESH,کامدیش,NO
+16,NOORESTAN,1607,MANDOL,منډول,1607,MANDOL,منډول,NO
+16,NOORESTAN,1608,BARGEMATAL,برګ مټال,1608,BARGEMATAL,برګ مټال,NO
+17,BADAKHSHAN,1701,FAYZABAD,فیض آباد,1701,FAYZABAD,فیض آباد,YES
+17,BADAKHSHAN,1702,ARGO,ارگو,1702,ARGO,ارگو,NO
+17,BADAKHSHAN,1703,ARGHANCHKHWA,ارغنجخواه,1703,ARGHANCHKHWA,ارغنجخواه,NO
+17,BADAKHSHAN,1704,YAFTAL SUFLA,یفتل سفلا,1704,YAFTAL SUFLA,یفتل سفلا,NO
+17,BADAKHSHAN,1705,KHASH,خاش,1705,KHASH,خاش,NO
+17,BADAKHSHAN,1706,BAHARAK,بهارک,1706,BAHARAK,بهارک,NO
+17,BADAKHSHAN,1707,DARAYEM,درایم,1707,DARAYEM,درایم,NO
+17,BADAKHSHAN,1708,KOHESTAN,کوهستان,1708,KOHESTAN,کوهستان,NO
+17,BADAKHSHAN,1709,YAWAN,یاوان,1709,YAWAN,یاوان,NO
+17,BADAKHSHAN,1710,JURM,جرم,1710,JURM,جرم,NO
+17,BADAKHSHAN,1711,TESHKAN,تشکان,1711,TESHKAN,تشکان,NO
+17,BADAKHSHAN,1712,SHUHADA,شهدا,1712,SHUHADA,شهدا,NO
+17,BADAKHSHAN,1713,SHAHR BUZORG,شهر بزرگ,1713,SHAHR BUZORG,شهر بزرگ,NO
+17,BADAKHSHAN,1714,RAGHESTAN,راغستان,1714,RAGHESTAN,راغستان,NO
+17,BADAKHSHAN,1715,KESHEM,کشم,1715,KESHEM,کشم,NO
+17,BADAKHSHAN,1716,WARDOJ,وردوج,1716,WARDOJ,وردوج,NO
+17,BADAKHSHAN,1717,TAGAB,تگاب,1717,TAGAB,تگاب,NO
+17,BADAKHSHAN,1718,YAMGAN,یمگان,1718,YAMGAN,یمگان,NO
+17,BADAKHSHAN,1719,SHEGHNAN,شغنان,1719,SHEGHNAN,شغنان,NO
+17,BADAKHSHAN,1720,KHWAHAN,خواهان,1720,KHWAHAN,خواهان,NO
+17,BADAKHSHAN,1721,KOFAB,کوف آب,1721,KOFAB,کوف آب,NO
+17,BADAKHSHAN,1722,DARWAZ PAYEN (MAMAY),درواز پائین (مایمی),1722,DARWAZ PAYEN (MAMAY),درواز پائین (مایمی),NO
+17,BADAKHSHAN,1723,ESHKASHEM,اشکاشم,1723,ESHKASHEM,اشکاشم,NO
+17,BADAKHSHAN,1724,SHAKI,شکی,1724,SHAKI,شکی,NO
+17,BADAKHSHAN,1725,ZEBAK,زیباک,1725,ZEBAK,زیباک,NO
+17,BADAKHSHAN,1726,KERAN WA MENJAN,کران و منجان,1726,KERAN WA MENJAN,کران و منجان,NO
+17,BADAKHSHAN,1727,DARWAZ BALA (NESAY),درواز بالا (نسی),1727,DARWAZ BALA (NESAY),درواز بالا (نسی),NO
+17,BADAKHSHAN,1728,WAKHAN,واخان,1728,WAKHAN,واخان,NO
+18,TAKHAR,1801,TALUQAN,تالقان,1801,TALUQAN,تالقان,YES
+18,TAKHAR,1802,HAZARSUMOCH,هزارسموچ,1802,HAZARSUMOCH,هزارسموچ,NO
+18,TAKHAR,1803,BAHARAK,بهارک,1803,BAHARAK,بهارک,NO
+18,TAKHAR,1804,BANGI,بنگی,1804,BANGI,بنگی,NO
+18,TAKHAR,1805,CHAL,چال,1805,CHAL,چال,NO
+18,TAKHAR,1806,NAMAKAB,نمک آب,1806,NAMAKAB,نمک آب,NO
+18,TAKHAR,1807,KALAFGAN,کلفگان,1807,KALAFGAN,کلفگان,NO
+18,TAKHAR,1808,FARKHAR,فرخار,1808,FARKHAR,فرخار,NO
+18,TAKHAR,1809,KHWAJAGHAR,خواجه غار,1809,KHWAJAGHAR,خواجه غار,NO
+18,TAKHAR,1810,RUSTAQ,رستاق,1810,RUSTAQ,رستاق,NO
+18,TAKHAR,1811,ESHKAMESH,اشکمش,1811,ESHKAMESH,اشکمش,NO
+18,TAKHAR,1812,DASHT QALA,دشت قلعه,1812,DASHT QALA,دشت قلعه,NO
+18,TAKHAR,1813,WARSAJ,ورسج,1813,WARSAJ,ورسج,NO
+18,TAKHAR,1814,KHWAJA BAHAUDIN,خواجه بهاوالدین,1814,KHWAJA BAHAUDIN,خواجه بهاوالدین,NO
+18,TAKHAR,1815,DARQAD,درقد,1815,DARQAD,درقد,NO
+18,TAKHAR,1816,CHAHAB,چا آب,1816,CHAHAB,چا آب,NO
+18,TAKHAR,1817,YANGI QALA,ینگی قلعه,1817,YANGI QALA,ینگی قلعه,NO
+19,KUNDUZ,1901,KUNDUZ,کندز,1901,KUNDUZ,کندز,YES
+19,KUNDUZ,1902,CHAHAR DARAH,چاردره,1902,CHAHAR DARAH,چاردره,NO
+19,KUNDUZ,1903,ALI ABAD,علی آباد,1903,ALI ABAD,علی آباد,NO
+19,KUNDUZ,1904,KHAN ABAD,خان آباد,1904,KHAN ABAD,خان آباد,NO
+19,KUNDUZ,1905,EMAM SAHEB,حضرت امام صاحب,1905,EMAM SAHEB,حضرت امام صاحب,NO
+19,KUNDUZ,1906,DASHT ARCHI,دشت ارچی,1906,DASHT ARCHI,دشت ارچی,NO
+19,KUNDUZ,1907,QALAE ZAL,قلعه ذال,1907,QALAE ZAL,قلعه ذال,NO
+19,KUNDUZ,1908,KALBAD,کلباد,1908,KALBAD,کلباد,NO
+19,KUNDUZ,1909,GULTAPA,گل تپه,1909,GULTAPA,گل تپه,NO
+19,KUNDUZ,1910,AQTASH,آقتاش,1910,AQTASH,آقتاش,NO
+20,SAMANGAN,2001,AYBAK,ایبک,2001,AYBAK,ایبک,YES
+20,SAMANGAN,2002,HAZRATE SULTAN,حضرت سلطان,2002,HAZRATE SULTAN,حضرت سلطان,NO
+20,SAMANGAN,2003,KHURAM WA SARBAGH,خرم و سارباغ,2003,KHURAM WA SARBAGH,خرم و سارباغ,NO
+20,SAMANGAN,2004,FIROZ NAKHCHEER,فیروز نخچیر,2004,FIROZ NAKHCHEER,فیروز نخچیر,NO
+20,SAMANGAN,2005,ROYE DOAB,روی دوآب,2005,ROYE DOAB,روی دوآب,NO
+20,SAMANGAN,2006,DARAE SOFE PAYEN,دره صوف پائین,2006,DARAE SOFE PAYEN,دره صوف پائین,NO
+20,SAMANGAN,2007,DARAE SOFE BALA,دره صوف بالا,2007,DARAE SOFE BALA,دره صوف بالا,NO
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-01,MAZARE SHARIF NAHIA 01,مزار شریفد ناحیه 01,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-02,MAZARE SHARIF NAHIA 02,مزار شریفد ناحیه 02,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-03,MAZARE SHARIF NAHIA 03,مزار شریفد ناحیه 03,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-04,MAZARE SHARIF NAHIA 04,مزار شریفد ناحیه 04,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-05,MAZARE SHARIF NAHIA 05,مزار شریفد ناحیه 05,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-06,MAZARE SHARIF NAHIA 06,مزار شریفد ناحیه 06,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-07,MAZARE SHARIF NAHIA 07,مزار شریفد ناحیه 07,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-08,MAZARE SHARIF NAHIA 08,مزار شریفد ناحیه 08,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-09,MAZARE SHARIF NAHIA 09,مزار شریفد ناحیه 09,YES
+21,BALKH,2101,MAZARE SHARIF,مزار شریفد,2101-10,MAZARE SHARIF NAHIA 10,مزار شریفد ناحیه 10,YES
+21,BALKH,2102,NAHR SHAHI,نهر شاهی,2102,NAHR SHAHI,نهر شاهی,NO
+21,BALKH,2103,DEHDADI,دهدادی,2103,DEHDADI,دهدادی,NO
+21,BALKH,2104,CHARKENT,چارکنت,2104,CHARKENT,چارکنت,NO
+21,BALKH,2105,MARMUL,مارمل,2105,MARMUL,مارمل,NO
+21,BALKH,2106,BALKH,بلخ,2106,BALKH,بلخ,NO
+21,BALKH,2107,SHOLGARA,شولگره,2107,SHOLGARA,شولگره,NO
+21,BALKH,2108,CHEMTAL,چمتال,2108,CHEMTAL,چمتال,NO
+21,BALKH,2109,DAWLATABAD,دولت آباد,2109,DAWLATABAD,دولت آباد,NO
+21,BALKH,2110,KHULM,خلم,2110,KHULM,خلم,NO
+21,BALKH,2111,CHARBOLAK,چار بولک,2111,CHARBOLAK,چار بولک,NO
+21,BALKH,2112,SHORTEPA,شور تیپه,2112,SHORTEPA,شور تیپه,NO
+21,BALKH,2113,KALDAR,کلدار,2113,KALDAR,کلدار,NO
+21,BALKH,2114,KUSHENDEH,کشنده,2114,KUSHENDEH,کشنده,NO
+21,BALKH,2115,ZARI,زاری,2115,ZARI,زاری,NO
+22,SARE PUL,2201,SARE PUL,سرپل,2201,SARE PUL,سرپل,YES
+22,SARE PUL,2202,SAYAD,صیاد,2202,SAYAD,صیاد,NO
+22,SARE PUL,2203,KOHESTANAT,کوهستانات,2203,KOHESTANAT,کوهستانات,NO
+22,SARE PUL,2204,SOZMAQALA,سوزمه قلعه,2204,SOZMAQALA,سوزمه قلعه,NO
+22,SARE PUL,2205,SANCHARAK,سنگ چارک,2205,SANCHARAK,سنگ چارک,NO
+22,SARE PUL,2206,GOSFANDI,گوسفندی,2206,GOSFANDI,گوسفندی,NO
+22,SARE PUL,2207,BALKHAB,بلخآب,2207,BALKHAB,بلخآب,NO
+23,GHOR,2301,FEROZKOH (CHEGHCHERAN),چغچران,2301,FEROZKOH (CHEGHCHERAN),چغچران,YES
+23,GHOR,2302,DOLAYNA,دولینه,2302,DOLAYNA,دولینه,NO
+23,GHOR,2303,DAWLATYAR,دولت یار,2303,DAWLATYAR,دولت یار,NO
+23,GHOR,2304,CHARSADA,چار صده,2304,CHARSADA,چار صده,NO
+23,GHOR,2305,PASABAND,پسابند,2305,PASABAND,پسابند,NO
+23,GHOR,2306,SHAHRAK,شهرک,2306,SHAHRAK,شهرک,NO
+23,GHOR,2307,LAL WA SARJANGAL,لعل و سرجنگل,2307,LAL WA SARJANGAL,لعل و سرجنگل,NO
+23,GHOR,2308,TAYWARA,تیوره,2308,TAYWARA,تیوره,NO
+23,GHOR,2309,TOLAK,تولک,2309,TOLAK,تولک,NO
+23,GHOR,2310,SAGHAR,ساغر,2310,SAGHAR,ساغر,NO
+24,DAYKUNDI,2401,NILI,نیلی,2401,NILI,نیلی,YES
+24,DAYKUNDI,2402,SHAHRESTAN,شهرستان,2402,SHAHRESTAN,شهرستان,NO
+24,DAYKUNDI,2403,PATO,پاتو,2403,PATO,پاتو,NO
+24,DAYKUNDI,2404,ESHTARLAY,اشترلی,2404,ESHTARLAY,اشترلی,NO
+24,DAYKUNDI,2405,KHADER,خدیر,2405,KHADER,خدیر,NO
+24,DAYKUNDI,2406,KITI,کیتی,2406,KITI,کیتی,NO
+24,DAYKUNDI,2407,MERAMOR,میرامور,2407,MERAMOR,میرامور,NO
+24,DAYKUNDI,2408,SANG TAKHT,سنگ تخت,2408,SANG TAKHT,سنگ تخت,NO
+24,DAYKUNDI,2409,KAJRAN,کجران,2409,KAJRAN,کجران,NO
+25,URUZGAN,2501,TIRENKOT,ترینکوټ,2501,TIRENKOT,ترینکوټ,YES
+25,URUZGAN,2502,DEHRAWUD,دهراود,2502,DEHRAWUD,دهراود,NO
+25,URUZGAN,2503,CHORA,چوره,2503,CHORA,چوره,NO
+25,URUZGAN,2504,SHAHED HASAS,شهید حساس,2504,SHAHED HASAS,شهید حساس,NO
+25,URUZGAN,2505,KHASURUZGAN,خاص ارزگان,2505,KHASURUZGAN,خاص ارزگان,NO
+25,URUZGAN,2506,CHENARTO,چنارتو,2506,CHENARTO,چنارتو,NO
+25,URUZGAN,2507,GIZAB,گیزاب,2507,GIZAB,گیزاب,NO
+26,ZABUL,2601,QALAT,قلات,2601,QALAT,قلات,YES
+26,ZABUL,2602,TARNAK WA JALDAK,ترنک و جلدک,2602,TARNAK WA JALDAK,ترنک و جلدک,NO
+26,ZABUL,2603,SHINKAI,شینکې,2603,SHINKAI,شینکې,NO
+26,ZABUL,2604,MEZAN,میزان,2604,MEZAN,میزان,NO
+26,ZABUL,2605,ARGHANDAB,ارغنداب,2605,ARGHANDAB,ارغنداب,NO
+26,ZABUL,2606,SHAHJOY,شاه جوی,2606,SHAHJOY,شاه جوی,NO
+26,ZABUL,2607,DAYCHOPAN,دایچوپان,2607,DAYCHOPAN,دایچوپان,NO
+26,ZABUL,2608,ATGHAR,اتغر,2608,ATGHAR,اتغر,NO
+26,ZABUL,2609,NAWBAHAR,نوبهار,2609,NAWBAHAR,نوبهار,NO
+26,ZABUL,2610,SHUMULZAY,شملزائی,2610,SHUMULZAY,شملزائی,NO
+26,ZABUL,2611,KAKAR,کاکړ,2611,KAKAR,کاکړ,NO
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-01,KANDAHAR NAHIA 01,کندهار ناحیه 01,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-02,KANDAHAR NAHIA 02,کندهار ناحیه 02,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-03,KANDAHAR NAHIA 03,کندهار ناحیه 03,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-04,KANDAHAR NAHIA 04,کندهار ناحیه 04,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-05,KANDAHAR NAHIA 05,کندهار ناحیه 05,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-06,KANDAHAR NAHIA 06,کندهار ناحیه 06,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-07,KANDAHAR NAHIA 07,کندهار ناحیه 07,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-08,KANDAHAR NAHIA 08,کندهار ناحیه 08,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-13,KANDAHAR NAHIA 13,کندهار ناحیه 13,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-09,KANDAHAR NAHIA 09,کندهار ناحیه 09,YES
+27,KANDAHAR,2701,KANDAHAR,کندهار,2701-10,KANDAHAR NAHIA 10,کندهار ناحیه 10,YES
+27,KANDAHAR,2702,ARGHANDAB,ارغنداب,2702,ARGHANDAB,ارغنداب,NO
+27,KANDAHAR,2703,DAMAN,دامان,2703,DAMAN,دامان,NO
+27,KANDAHAR,2704,PANJWAYE,پنجوایې,2704,PANJWAYE,پنجوایې,NO
+27,KANDAHAR,2705,ZHERAY,ژیړی,2705,ZHERAY,ژیړی,NO
+27,KANDAHAR,2706,SHAHWALEKOT,شاه ولي كوټ,2706,SHAHWALEKOT,شاه ولي كوټ,NO
+27,KANDAHAR,2707,KHAKREZ,خاک ریز,2707,KHAKREZ,خاک ریز,NO
+27,KANDAHAR,2708,ARGHESTAN,ارغستان,2708,ARGHESTAN,ارغستان,NO
+27,KANDAHAR,2709,GHORAK,غورك,2709,GHORAK,غورك,NO
+27,KANDAHAR,2710,MAYWAND,میوند,2710,MAYWAND,میوند,NO
+27,KANDAHAR,2711,SPENBOLDAK,سپین بولدک,2711,SPENBOLDAK,سپین بولدک,NO
+27,KANDAHAR,2712,NESH,نيش,2712,NESH,نيش,NO
+27,KANDAHAR,2713,MIYANSHIN,ميانشين,2713,MIYANSHIN,ميانشين,NO
+27,KANDAHAR,2714,SHORABAK,شورابك,2714,SHORABAK,شورابك,NO
+27,KANDAHAR,2715,MAROF,معروف,2715,MAROF,معروف,NO
+27,KANDAHAR,2716,REG,ریګ,2716,REG,ریګ,NO
+27,KANDAHAR,2717,DAND,ډند,2717,DAND,ډند,NO
+27,KANDAHAR,2718,TAKHTAPUL,تخته پل,2718,TAKHTAPUL,تخته پل,NO
+28,JAWZJAN,2801,SHEBERGHAN,شبرغان,2801,SHEBERGHAN,شبرغان,YES
+28,JAWZJAN,2802,KHWAJA DOKOH,خواجه دوکوه,2802,KHWAJA DOKOH,خواجه دوکوه,NO
+28,JAWZJAN,2803,KHANEQA,خانقاه,2803,KHANEQA,خانقاه,NO
+28,JAWZJAN,2804,MENGAJEK,منگجیک,2804,MENGAJEK,منگجیک,NO
+28,JAWZJAN,2805,QOSHTEPA,قوش تیپه,2805,QOSHTEPA,قوش تیپه,NO
+28,JAWZJAN,2806,KHAMYAB,خم آب,2806,KHAMYAB,خم آب,NO
+28,JAWZJAN,2807,AQCHA,آقچه,2807,AQCHA,آقچه,NO
+28,JAWZJAN,2808,FAYZABAD,فیض آباد,2808,FAYZABAD,فیض آباد,NO
+28,JAWZJAN,2809,MARDYAN,مردیان,2809,MARDYAN,مردیان,NO
+28,JAWZJAN,2810,QARQEEN,قرقین,2810,QARQEEN,قرقین,NO
+28,JAWZJAN,2811,DARZAB,درز آب,2811,DARZAB,درز آب,NO
+29,FARYAB,2901,MAYMANA,میمنه,2901,MAYMANA,میمنه,YES
+29,FARYAB,2902,PASHTONKOT,پشتون کوت,2902,PASHTONKOT,پشتون کوت,NO
+29,FARYAB,2903,KHWAJA SABZPOSH,خواجه سبز پوش ولی,2903,KHWAJA SABZPOSH,خواجه سبز پوش ولی,NO
+29,FARYAB,2904,ALMAR,المار,2904,ALMAR,المار,NO
+29,FARYAB,2905,BELCHERAGH,بل چراغ,2905,BELCHERAGH,بل چراغ,NO
+29,FARYAB,2906,SHIRINTAGAB,شیرین تگاب,2906,SHIRINTAGAB,شیرین تگاب,NO
+29,FARYAB,2907,QAYSAR,قیصار,2907,QAYSAR,قیصار,NO
+29,FARYAB,2908,GURZIWAN,گرزیوان,2908,GURZIWAN,گرزیوان,NO
+29,FARYAB,2909,DAWLATABAD,دولت آباد,2909,DAWLATABAD,دولت آباد,NO
+29,FARYAB,2910,KOHESTAN,کوهستان,2910,KOHESTAN,کوهستان,NO
+29,FARYAB,2911,QARAMQUL,قرم قل,2911,QARAMQUL,قرم قل,NO
+29,FARYAB,2912,QURGHAN,قرغان,2912,QURGHAN,قرغان,NO
+29,FARYAB,2913,ANDKHOY,اندخوی,2913,ANDKHOY,اندخوی,NO
+29,FARYAB,2914,KHAN CHAR BAGH,خان چار باغ,2914,KHAN CHAR BAGH,خان چار باغ,NO
+30,HELMAND,3001,LASHKARGAH,لشکرگاه,3001,LASHKARGAH,لشکرگاه,YES
+30,HELMAND,3002,NADALI,نادعلی,3002,NADALI,نادعلی,NO
+30,HELMAND,3003,NAWAE BARAKZAYE,ناوه بارکزایی,3003,NAWAE BARAKZAYE,ناوه بارکزایی,NO
+30,HELMAND,3004,NAHR SARAJ,نهرسراج,3004,NAHR SARAJ,نهرسراج,NO
+30,HELMAND,3005,WASHIR,واشیر,3005,WASHIR,واشیر,NO
+30,HELMAND,3006,GARMSER,گرم سیر,3006,GARMSER,گرم سیر,NO
+30,HELMAND,3007,NAWZAD,نوزاد,3007,NAWZAD,نوزاد,NO
+30,HELMAND,3008,SANGEEN,سنگین قلعه,3008,SANGEEN,سنگین قلعه,NO
+30,HELMAND,3009,MOSAQALA,موسی قلعه,3009,MOSAQALA,موسی قلعه,NO
+30,HELMAND,3010,KAJAKI,کجکی,3010,KAJAKI,کجکی,NO
+30,HELMAND,3011,REG(KHAN NESHIN),ریگ خانشین,3011,REG(KHAN NESHIN),ریگ خانشین,NO
+30,HELMAND,3012,BAGHRAN,باغران,3012,BAGHRAN,باغران,NO
+30,HELMAND,3013,DISHO,دیشو,3013,DISHO,دیشو,NO
+30,HELMAND,3014,MARJA,مارجه,3014,MARJA,مارجه,NO
+30,HELMAND,3015,NAWAMISH,ناوه میش,3015,NAWAMISH,ناوه میش,NO
+31,BADGHIS,3101,QALAE NAW,قلعه نو,3101,QALAE NAW,قلعه نو,YES
+31,BADGHIS,3102,ABKAMARI,آبکمری,3102,ABKAMARI,آبکمری,NO
+31,BADGHIS,3103,MUQUR,مقر,3103,MUQUR,مقر,NO
+31,BADGHIS,3104,QADEES,قادس,3104,QADEES,قادس,NO
+31,BADGHIS,3105,MURGHAB,بالا مرغاب,3105,MURGHAB,بالا مرغاب,NO
+31,BADGHIS,3106,JAWAND,جوند,3106,JAWAND,جوند,NO
+31,BADGHIS,3107,GHORMACH,غورماچ,3107,GHORMACH,غورماچ,NO
+32,HERAT,3201,HERAT,هرات,3201-01,HERAT NAHIA 01,هرات ناحیه 01,YES
+32,HERAT,3201,HERAT,هرات,3201-02,HERAT NAHIA 02,هرات ناحیه 02,YES
+32,HERAT,3201,HERAT,هرات,3201-03,HERAT NAHIA 03,هرات ناحیه 03,YES
+32,HERAT,3201,HERAT,هرات,3201-04,HERAT NAHIA 04,هرات ناحیه 04,YES
+32,HERAT,3201,HERAT,هرات,3201-05,HERAT NAHIA 05,هرات ناحیه 05,YES
+32,HERAT,3201,HERAT,هرات,3201-06,HERAT NAHIA 06,هرات ناحیه 06,YES
+32,HERAT,3201,HERAT,هرات,3201-07,HERAT NAHIA 07,هرات ناحیه 07,YES
+32,HERAT,3201,HERAT,هرات,3201-08,HERAT NAHIA 08,هرات ناحیه 08,YES
+32,HERAT,3201,HERAT,هرات,3201-09,HERAT NAHIA 09,هرات ناحیه 09,YES
+32,HERAT,3201,HERAT,هرات,3201-10,HERAT NAHIA 10,هرات ناحیه 10,YES
+32,HERAT,3201,HERAT,هرات,3201-11,HERAT NAHIA 11,هرات ناحیه 11,YES
+32,HERAT,3201,HERAT,هرات,3201-12,HERAT NAHIA 12,هرات ناحیه 12,YES
+32,HERAT,3201,HERAT,هرات,3201-13,HERAT NAHIA 13,هرات ناحیه 13,YES
+32,HERAT,3201,HERAT,هرات,3201-14,HERAT NAHIA 14,هرات ناحیه 14,YES
+32,HERAT,3201,HERAT,هرات,3201-15,HERAT NAHIA 15,هرات ناحیه 15,YES
+32,HERAT,3202,ENJEEL,انجیل,3202,ENJEEL,انجیل,NO
+32,HERAT,3203,GUZARA,گذره,3203,GUZARA,گذره,NO
+32,HERAT,3204,KARUKH,کرخ,3204,KARUKH,کرخ,NO
+32,HERAT,3205,ZENDAJAN,زنده جان,3205,ZENDAJAN,زنده جان,NO
+32,HERAT,3206,PASHTON ZARGHON,پشتون زرغون,3206,PASHTON ZARGHON,پشتون زرغون,NO
+32,HERAT,3207,KUSHK,کشک (رباط سنگی),3207,KUSHK,کشک (رباط سنگی),NO
+32,HERAT,3208,GULRAN,گلران,3208,GULRAN,گلران,NO
+32,HERAT,3209,ADRASKAN,ادرسکن,3209,ADRASKAN,ادرسکن,NO
+32,HERAT,3210,KUSHK KUHNA,کشک کهنه,3210,KUSHK KUHNA,کشک کهنه,NO
+32,HERAT,3211,GHORYAN,غوریان,3211,GHORYAN,غوریان,NO
+32,HERAT,3212,OBI,اوبه,3212,OBI,اوبه,NO
+32,HERAT,3213,KOHSAN,کهسان,3213,KOHSAN,کهسان,NO
+32,HERAT,3214,SHEENDND,شیندند,3214,SHEENDND,شیندند,NO
+32,HERAT,3215,FARSI,فرسی,3215,FARSI,فرسی,NO
+32,HERAT,3216,CHISHT SHAREF,چشت شریف,3216,CHISHT SHAREF,چشت شریف,NO
+32,HERAT,3217,ZIR KOH,زیرکوه,3217,ZIR KOH,زیرکوه,NO
+32,HERAT,3218,PUSHT KOH,پشت کوه,3218,PUSHT KOH,پشت کوه,NO
+32,HERAT,3219,KOHE ZOR,کوه زور,3219,KOHE ZOR,کوه زور,NO
+32,HERAT,3220,ZAWOL,زاول,3220,ZAWOL,زاول,NO
+33,FARAH,3301,FARAH,فراه,3301,FARAH,فراه,YES
+33,FARAH,3302,PUSHTROD,پشت رود,3302,PUSHTROD,پشت رود,NO
+33,FARAH,3303,KHAK SAFID,خاک سفید,3303,KHAK SAFID,خاک سفید,NO
+33,FARAH,3304,QALAYE KAH,قلعه کاه,3304,QALAYE KAH,قلعه کاه,NO
+33,FARAH,3305,SHIBKOH,شیب کوه,3305,SHIBKOH,شیب کوه,NO
+33,FARAH,3306,BALABLOK,بالا بلوک,3306,BALABLOK,بالا بلوک,NO
+33,FARAH,3307,ANARDARA,انار دره,3307,ANARDARA,انار دره,NO
+33,FARAH,3308,BAKWA,بکواه,3308,BAKWA,بکواه,NO
+33,FARAH,3309,LASH JUWAYN,لاش جوین,3309,LASH JUWAYN,لاش جوین,NO
+33,FARAH,3310,GULESTAN,گلستان,3310,GULESTAN,گلستان,NO
+33,FARAH,3311,PURCHAMAN,پرچمن,3311,PURCHAMAN,پرچمن,NO
+34,NIMROZ,3401,ZARANJ,زرنج,3401,ZARANJ,زرنج,YES
+34,NIMROZ,3402,KANG,کنگ,3402,KANG,کنگ,NO
+34,NIMROZ,3403,CHAKHANSOR,اصل چغانسور,3403,CHAKHANSOR,اصل چغانسور,NO
+34,NIMROZ,3404,CHAR BURJAK,چاربرجک,3404,CHAR BURJAK,چاربرجک,NO
+34,NIMROZ,3405,KHASHROD,خاشرود,3405,KHASHROD,خاشرود,NO
+34,NIMROZ,3406,DELARAM,دلارام,3406,DELARAM,دلارام,NO
