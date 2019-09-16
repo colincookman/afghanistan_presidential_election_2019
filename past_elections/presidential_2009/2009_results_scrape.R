@@ -6,7 +6,6 @@ library(lubridate)
 library(pdftools)
 library(readr)
 library(RSelenium)
-#library(tabulizer)
 library(gsheet)
 setwd("~/Google Drive/GitHub/afghanistan_presidential_election_2019")
 
@@ -814,4 +813,340 @@ tabulation_check <- tabulation_check %>% mutate(difference = calculated_vote_tot
 tabulation_check <- tabulation_check %>% dplyr::select(candidate_code, candidate_name_eng, everything())
 
 write.csv(tabulation_check, "./past_elections/presidential_2009/validity_checks/final_iec_tabulation_check.csv", row.names = F)
+
+# ATTEMPT TO PARSE PRELIMINARY RESULTS PDFS -----------------------------------
+
+rm(list = ls())
+
+prelim_raw <- pdf_text("./past_elections/presidential_2009/raw/final_uncertified_ps_results_16_09_2009.pdf")
+prelim_text <- toString(prelim_raw)
+prelim_lines <- read_lines(prelim_text)
+
+# strip bad parse of dari and other characters
+prelim_lines <- gsub("\002", " ", prelim_lines)
+prelim_lines <- gsub("\\(  \\\003\\\004\\\005\\\006 \\\a\\\b)       \\\004 \\\016\\\017\\\020 \\\021\\\004\\\022 \\\023\\\017\\\022\\\024", "", prelim_lines)
+prelim_lines <- gsub("\\\025 \\\026\\\022 \\\027 \\\006 \\\026\\\022\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\\a\\\030\\\031\\\024 \\\016\\\004 \\\024 \\\016\\\004\\\032\\\026 \\\004\\\033\\\020\\\033", "", prelim_lines)
+prelim_lines <- gsub("\\\003\\\034\\\033\\\026 \\\035\\\004\\\005\\\022 \\\030\\\036", "", prelim_lines)
+prelim_lines <- gsub("\\\a\\\033\\\017\\\030\\\006 \\\027\\\033 \\\025 \\\017\\\037   \\!\\\004\\\005", "", prelim_lines)
+prelim_lines <- gsub("\\\021\\\004 \\\036 \\\003\\#\\\020 \\\004\\\006", "", prelim_lines)
+prelim_lines <- gsub("\\\a\\\033\\\004\\\006\\\017\\\004 \\$\\\004\\\027 \\\004\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\\004   \\\021\\\006\\\005", "", prelim_lines)
+prelim_lines <- gsub("\\\016\\%\\\004\\\005 \\\026\\\022 \\\004 \\\005", "", prelim_lines)
+prelim_lines <- gsub("\\\a\\\005\\&\"\\\026 \'\\\017\\\005 \\\021\\(\\\030\\\032\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\\025 \\\026\\\022 \\\a\\\033\\\037 \\)", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\021 \\* \\) \\)\\\004\\+\\,\\\024 \\\005\\-", "", prelim_lines)
+prelim_lines <- gsub("\\\a\\.\\\030 \\\027\\\033\\/", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\a\\\030\\\036  \\) \\\021\\#\\\006\\\024 \\\005\\- \\#\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\a0\\\b\\\017\\\022 \\) 1\\\022\\\024 \\\017\\\0042", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\017\\\004 \\\027 \\) \\\005\\\036 \\\026\\\022\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\a\\\033\\\017\\\026\\\022  \\) \\\026\\\022\\\026 \\\016\\\004\\\034\\\033\\\006", "", prelim_lines)
+prelim_lines <- gsub("\\(\\\a\\\033\\\017 \\\027\\\036 \\)   \\\035\\\027\\\005\\\022\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\016\\\004 3 \\) \\\035\\\004\\\006\\\022\\\024 \\\005\\-", "", prelim_lines)
+prelim_lines <- gsub("\\(\\\a\\\034\\\004 \\) \\\026\\\022\\\026 \\\021\\#\\\037 \\#\\\026", "", prelim_lines)
+prelim_lines <- gsub("4\\\006\\\027 \\\005 \\\016\\\0172\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\021\\\004\\\026\\( \\) \\\004\\\020\\\026\\\024 \\\005\\-", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\017\\+\\- \\) \\#\\/", "", prelim_lines)
+prelim_lines <- gsub("\\(\\\a\\\005 \\\020\\\033 \\) 1\\\027 \\\017\\\b \\\021\\#\\\037 \\\027\\\030\\\036\\\027 \\\027\\\006\\\004\\\b\\\027 \\*", "", prelim_lines)
+prelim_lines <- gsub("\\(\\\025 \\\027 \\) \\\027\\\0315\\\024 \\\005\\- \\\023\\\017\\\022\\\024", "", prelim_lines)
+prelim_lines <- gsub(" \\\a6\\\004\\\b\\\027\\\030 \\\021 \\\017\\& \\\026\\\022\\\026", "", prelim_lines)
+prelim_lines <- gsub("\\\025 \\\036 \\\026\\\017\\\022", "", prelim_lines)
+prelim_lines <- gsub("\\(   \\\005\\- \\)   \\\005\\- \\\030\\\036", "", prelim_lines)
+prelim_lines <- gsub("\\( \\\017\\\033\\\b \\) \\\016 \\\027 \\\b \\\030\\\036", "", prelim_lines)
+prelim_lines <- gsub("4\\\005\\\0177 \\\017\\\005\\\020\024 \\\005\\-", "", prelim_lines)
+prelim_lines <- gsub("\\#\\\006 \\\016\\\004\\\026 4\\\004 \\&", "", prelim_lines)
+prelim_lines <- gsub("\\(\\\017\\\026\\\004\\) \\\026\\\022 \\\0038", "", prelim_lines)
+prelim_lines <- gsub("\\\025 \\\027         \\\027\\\0315\\\024 \\\005\\- \\\023\\\017\\\022\\\024", "", prelim_lines)
+prelim_lines <- gsub("\\\003", "-", prelim_lines)
+prelim_lines <- gsub("\\(", "", prelim_lines)
+prelim_lines <- gsub("\\)", "", prelim_lines)
+prelim_lines <- gsub('\\"', "", prelim_lines)
+
+headers <- c((1:5), grep("Independent Election Commission", prelim_lines))
+totals <- grep("Total", prelim_lines)
+prelim_trimmed <- prelim_lines[- c(headers, totals)]
+
+pc_start <- grep("\\d{6,7} Haji", prelim_trimmed)
+# pc_end <- grep("\\d{6,7} Total", prelim_trimmed)
+pc_repeat <- setdiff(grep("\\d{6,7}", prelim_trimmed), c(pc_start))
+prelim_trimmed[pc_repeat] <- gsub("\\d{6,7}", " ", prelim_trimmed[pc_repeat])
+
+# strip out province headers
+prelim_trimmed <- gsub("Kabul", "", prelim_trimmed)
+prelim_trimmed <- gsub("Kapisa", "", prelim_trimmed)
+prelim_trimmed <- gsub("Parwan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Wardak", "", prelim_trimmed)
+prelim_trimmed <- gsub("Logar", "", prelim_trimmed)
+prelim_trimmed <- gsub("Ghazni", "", prelim_trimmed)
+prelim_trimmed <- gsub("Paktika", "", prelim_trimmed)
+prelim_trimmed <- gsub("Paktia", "", prelim_trimmed)
+prelim_trimmed <- gsub("Khost", "", prelim_trimmed)
+prelim_trimmed <- gsub("Nangerhar", "", prelim_trimmed)
+prelim_trimmed <- gsub("Kunarha", "", prelim_trimmed)
+prelim_trimmed <- gsub("Kapisa", "", prelim_trimmed)
+prelim_trimmed <- gsub("Laghman", "", prelim_trimmed)
+prelim_trimmed <- gsub("Nooristan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Badakhshan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Takhar", "", prelim_trimmed)
+prelim_trimmed <- gsub("Baghlan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Kunduz", "", prelim_trimmed)
+prelim_trimmed <- gsub("Samangan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Balkh", "", prelim_trimmed)
+prelim_trimmed <- gsub("Juzjan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Sar-i-Pul", "", prelim_trimmed)
+prelim_trimmed <- gsub("Faryab", "", prelim_trimmed)
+prelim_trimmed <- gsub("Badghis", "", prelim_trimmed)
+prelim_trimmed <- gsub("Herat", "", prelim_trimmed)
+prelim_trimmed <- gsub("Farah", "", prelim_trimmed)
+prelim_trimmed <- gsub("Nimroz", "", prelim_trimmed)
+prelim_trimmed <- gsub("Helmand", "", prelim_trimmed)
+prelim_trimmed <- gsub("Kandahar", "", prelim_trimmed)
+prelim_trimmed <- gsub("Zabul", "", prelim_trimmed)
+prelim_trimmed <- gsub("Urozgan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Ghor", "", prelim_trimmed)
+prelim_trimmed <- gsub("Bamyan", "", prelim_trimmed)
+prelim_trimmed <- gsub("Panjshir", "", prelim_trimmed)
+prelim_trimmed <- gsub("Daikondi", "", prelim_trimmed)
+
+
+pc_codes <- str_extract(prelim_trimmed[pc_start], "\\d{6,7}")
+
+pc_code_applied <- list()
+for(n in 1:length(pc_codes)){
+  for(m in 1:32){
+    count = n
+    pc_code_applied = c(pc_code_applied, count)
+  }
+}
+
+# this is very slow!
+ps_out <- data.frame()
+
+for(i in (1:(length(prelim_trimmed)-1))){
+  line = prelim_trimmed[i]
+  # strip any pc code at the start of the line
+  new_line <- gsub("^(.*)\\d{6,7}", " ", line)
+  # find the appropriate pc code
+  pc_code_location <- as.numeric(pc_code_applied[i])
+  # add the pc code to every line
+  new_line_pc <- paste0(pc_codes[pc_code_location], "  ", new_line)
+  # make sure there is a proper gap between vote numbers so that columns are properly detected
+  new_line_filled <- gsub("(?<=\\d) ", perl = T, replacement = "  ", x = new_line_pc)
+  # split up into separate columns
+  new_line_split <- str_split(new_line_filled, "\\s{2,}")
+  
+  # now, process each column as a new ps-candidate row
+  for(j in (3:(length(new_line_split[[1]])-1))){
+    pc_code = str_pad(as.character(new_line_split[[1]][1]), width = 7, side = "left", pad = "0"))
+    candidate_name_eng = new_line_split[[1]][2]
+    ps_code = paste0(pc_code, "-", as.character(str_pad(as.character(j-2), width = 2, side = "left", pad = "0")))
+    votes = new_line_split[[1]][j]
+    ps_row = data.frame(pc_code, candidate_name_eng, ps_code, votes)
+    ps_out <- rbind(ps_out, ps_row)
+  }
+}
+
+prelim_ps_2009 <- ps_out
+prelim_ps_2009$pc_code <- as.character(str_pad(as.character(prelim_ps_2009$pc_code), 7, pad = "0", side = "left"))
+prelim_ps_2009 <- prelim_ps_2009 %>% rowwise %>% mutate(ps_code_new = paste0(pc_code, "-", str_split(ps_code, "-")[[1]][2]))
+prelim_ps_2009 <- prelim_ps_2009 %>% dplyr::select(- ps_code) %>% rename(ps_code = ps_code_new)
+ps_cut <- prelim_ps_2009[- grep("Alhaj Abdul Ghafor Zori", prelim_ps_2009$candidate_name_eng), ]
+prelim_ps_2009_fixed <- full_join(ps_cut, ps_out) %>% arrange(pc_code, ps_code, candidate_name_eng)
+
+prelim_ps_2009_fixed$candidate_name_eng <- as.character(prelim_ps_2009$candidate_name_eng)
+prelim_ps_2009_fixed$ps_code <- as.character(prelim_ps_2009$ps_code)
+prelim_ps_2009_fixed$votes <- as.numeric(as.character(prelim_ps_2009_fixed$votes))
+
+prelim_ps_2009_fixed <- dplyr::select(prelim_ps_2009_fixed, pc_code, ps_code, candidate_name_eng, votes) %>%
+  arrange(pc_code, ps_code, candidate_name_eng)
+
+write.csv(prelim_ps_2009_fixed, "./past_elections/presidential_2009/raw/rough_prelim_2009.csv", row.names = F)
+
+# parse final results pdf
+rm(list = ls())
+
+final_raw <- pdf_text("./past_elections/presidential_2009/raw/final_certified_ps_results_03_11_2009.pdf")
+final_text <- toString(final_raw)
+final_lines <- read_lines(final_text)
+
+
+final_lines <- gsub("\\(", "", final_lines)
+final_lines <- gsub("\\)", "", final_lines)
+final_lines <- gsub('\\"', "", final_lines)
+final_lines <- gsub(str_split(final_lines[5], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[6], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[7], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[8], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[9], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[10], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[11], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[12], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[13], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[14], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[15], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[16], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[17], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[18], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[19], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[20], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[21], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[22], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[23], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[24], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[25], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[26], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[27], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[28], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[29], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[30], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[31], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[32], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[33], "\\s{3,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[34], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[35], "\\s{2,}")[[1]][3], "", final_lines)
+final_lines <- gsub(str_split(final_lines[36], "\\s{2,}")[[1]][3], "", final_lines)
+
+headers <- c((1:4), grep("Independent Election Commission", final_lines))
+totals <- grep("Total", final_lines)
+final_trimmed <- final_lines[- c(headers, totals)]
+
+pc_start <- grep("\\d{6,7} Haji", final_trimmed)
+pc_repeat <- setdiff(grep("\\d{6,7}", final_trimmed), c(pc_start))
+final_trimmed[pc_repeat] <- gsub("\\d{6,7}", " ", final_trimmed[pc_repeat])
+
+# strip out province headers
+final_trimmed <- gsub("Kabul", "", final_trimmed)
+final_trimmed <- gsub("Kapisa", "", final_trimmed)
+final_trimmed <- gsub("Parwan", "", final_trimmed)
+final_trimmed <- gsub("Wardak", "", final_trimmed)
+final_trimmed <- gsub("Logar", "", final_trimmed)
+final_trimmed <- gsub("Ghazni", "", final_trimmed)
+final_trimmed <- gsub("Paktika", "", final_trimmed)
+final_trimmed <- gsub("Paktia", "", final_trimmed)
+final_trimmed <- gsub("Khost", "", final_trimmed)
+final_trimmed <- gsub("Nangerhar", "", final_trimmed)
+final_trimmed <- gsub("Kunarha", "", final_trimmed)
+final_trimmed <- gsub("Kapisa", "", final_trimmed)
+final_trimmed <- gsub("Laghman", "", final_trimmed)
+final_trimmed <- gsub("Nooristan", "", final_trimmed)
+final_trimmed <- gsub("Badakhshan", "", final_trimmed)
+final_trimmed <- gsub("Takhar", "", final_trimmed)
+final_trimmed <- gsub("Baghlan", "", final_trimmed)
+final_trimmed <- gsub("Kunduz", "", final_trimmed)
+final_trimmed <- gsub("Samangan", "", final_trimmed)
+final_trimmed <- gsub("Balkh", "", final_trimmed)
+final_trimmed <- gsub("Juzjan", "", final_trimmed)
+final_trimmed <- gsub("Sar-i-Pul", "", final_trimmed)
+final_trimmed <- gsub("Sar‐i‐Pul", "", final_trimmed)
+final_trimmed <- gsub("Faryab", "", final_trimmed)
+final_trimmed <- gsub("Badghis", "", final_trimmed)
+final_trimmed <- gsub("Herat", "", final_trimmed)
+final_trimmed <- gsub("Farah", "", final_trimmed)
+final_trimmed <- gsub("Nimroz", "", final_trimmed)
+final_trimmed <- gsub("Helmand", "", final_trimmed)
+final_trimmed <- gsub("Kandahar", "", final_trimmed)
+final_trimmed <- gsub("Zabul", "", final_trimmed)
+final_trimmed <- gsub("Urozgan", "", final_trimmed)
+final_trimmed <- gsub("Ghor", "", final_trimmed)
+final_trimmed <- gsub("Bamyan", "", final_trimmed)
+final_trimmed <- gsub("Panjshir", "", final_trimmed)
+final_trimmed <- gsub("Daikondi", "", final_trimmed)
+
+pc_codes <- str_extract(final_trimmed[pc_start], "\\d{6,7}")
+
+pc_code_applied <- list()
+for(n in 1:length(pc_codes)){
+  for(m in 1:32){
+    count = n
+    pc_code_applied = c(pc_code_applied, count)
+  }
+}
+
+# this is very slow!
+ps_out <- data.frame()
+
+for(i in (151846:(length(final_trimmed)-1))){
+  line = final_trimmed[i]
+  # strip any pc code at the start of the line
+  new_line <- gsub("^(.*)\\d{6,7}", " ", line)
+  # find the appropriate pc code
+  pc_code_location <- as.numeric(pc_code_applied[i])
+  # add the pc code to every line
+  new_line_pc <- paste0(pc_codes[pc_code_location], "  ", new_line)
+  # make sure there is a proper gap between vote numbers so that columns are properly detected
+  new_line_filled <- gsub("(?<=\\d) ", perl = T, replacement = "  ", x = new_line_pc)
+  # split up into separate columns
+  new_line_split <- str_split(new_line_filled, "\\s{2,}")
+  
+  # now, process each column as a new ps-candidate row
+  for(j in (3:(length(new_line_split[[1]])-1))){
+    pc_code = str_pad(as.character(new_line_split[[1]][1]), width = 7, side = "left", pad = "0")
+    candidate_name_eng = new_line_split[[1]][2]
+    ps_code = paste0(pc_code, "-", as.character(str_pad(as.character(j-2), width = 2, side = "left", pad = "0")))
+    votes = new_line_split[[1]][j]
+    ps_row = data.frame(pc_code, candidate_name_eng, ps_code, votes)
+    ps_out <- rbind(ps_out, ps_row)
+  }
+}
+
+
+
+final_ps_2009 <- ps_out
+final_ps_2009$pc_code <- as.character(final_ps_2009$pc_code)
+final_ps_2009$candidate_name_eng <- as.character(final_ps_2009$candidate_name_eng)
+final_ps_2009$ps_code <- as.character(final_ps_2009$ps_code)
+final_ps_2009$votes <- as.numeric(as.character(final_ps_2009$votes))
+
+final_ps_2009 <- dplyr::select(final_ps_2009, pc_code, ps_code, candidate_name_eng, votes) %>%
+  arrange(pc_code, ps_code, candidate_name_eng)
+
+write.csv(final_ps_2009, "./past_elections/presidential_2009/raw/rough_final_2009.csv", row.names = F)
+
+# UPDATE PC KEY AND PS KEY AND ADD METADATA TO RESULTS, RE-AGGREGATE AGAIN --------------
+
+rm(list = ls())
+
+ps_key_2009 <- read_csv("past_elections/presidential_2009/keyfiles/ps_key_2009.csv")
+ps_key_2009$pc_code <- str_pad(as.character(ps_key_2009$pc_code), width = 7, side = "left", pad = "0")
+pc_key_2009 <- read_csv("past_elections/presidential_2009/keyfiles/pc_key_2009.csv")
+candidate_key_2009 <- read_csv("past_elections/presidential_2009/keyfiles/candidate_key_2009.csv")
+rough_prelim_2009 <- read_csv("past_elections/presidential_2009/raw/rough_prelim_2009.csv")
+
+setdiff(unique(rough_prelim_2009$pc_code), pc_key_2009$pc_code)
+setdiff(unique(rough_prelim_2009$ps_code), ps_key_2009$ps_code)
+
+# one PC missing from pre-election plan (2406471) - add to PC key
+
+
+prelim_2009_full <- rough_prelim_2009 %>% mutate(
+  election_date = mdy("08-20-2009"),
+  results_date = mdy("09-16-2009"),
+  election_type = "PRESIDENTIAL",
+  results_status = "PRELIMINARY"
+  ) %>%
+  left_join(
+    dplyr::select(pc_key_2009,
+            province_code, province_name_eng, province_name_dari, 
+            district_code, district_name_eng, district_name_dari,
+            district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari,
+            provincial_capital, 
+            pc_code, pc_name_eng, pc_name_dari)) %>%
+  mutate(prelim_results_reporting = "YES") %>%
+  left_join(ps_key_2009) %>% 
+  left_join(candidate_key_2009) %>% 
+  dplyr::select(election_date, results_date, election_type, results_status,
+                province_code, province_name_eng, province_name_dari,
+                district_code, district_name_eng, district_name_dari, 
+                district_sub_code, district_or_subdivision_name_eng, district_or_subdivision_name_dari,
+                provincial_capital,
+                pc_code, pc_name_eng, pc_name_dari, 
+                ps_code, ps_type, planned_ps, ps_status,
+                candidate_code, ballot_position, candidate_name_eng, candidate_name_dari, candidate_gender,
+                party_name_dari, past_winner, votes, final_winner) %>%
+  arrange(pc_code, ps_code, ballot_position)
+  
+
+
+# fix row count
+
 
