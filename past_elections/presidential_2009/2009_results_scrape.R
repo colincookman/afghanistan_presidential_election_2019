@@ -1354,7 +1354,7 @@ write.csv(ps_count, "./past_elections/presidential_2009/validity_checks/final_pc
 # TABULATION CHECK -------------------------
 rm(list = ls())
 
-all_data <- read.csv("./past_elections/presidential_2009/results_data/final_af_candidate_ps_data_2009.csv", stringsAsFactors = F)
+all_data <- read.csv("./past_elections/presidential_2009/results_data/final_results/final_af_candidate_ps_data_2009.csv", stringsAsFactors = F)
 candidate_key <- read.csv("./past_elections/presidential_2009/keyfiles/candidate_key_2009.csv", stringsAsFactors = F)
 
 national_sums <- all_data %>% group_by(candidate_code, ballot_position) %>% summarize(votes = sum(votes, na.rm = TRUE))
