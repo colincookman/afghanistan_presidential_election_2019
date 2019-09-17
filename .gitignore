@@ -11,3 +11,4 @@ past_elections/presidential_2004/.Rapp.history
 .gitattributes
 *.Rapp.history
 past_elections/presidential_2009/results_data/final_results/final_af_candidate_ps_data_2009.csv
+past_elections/presidential_2009/results_data/preliminary_results/prelim_af_candidate_ps_data_2009.csv
