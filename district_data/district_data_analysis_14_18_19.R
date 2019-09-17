@@ -68,6 +68,10 @@ consolidate_18_to_14 <- all_data_2018_with_2014 %>% group_by(`2019_matched_to_20
 consolidate_14 <- all_data_2014 %>% rename(`2014_IEC_district_code` = district_code) %>%
   group_by(`2014_IEC_district_code`) %>%
   summarize(
+    prelim_first_round_pcs_14 = length(unique(pc_code[results_status == "PRELIMINARY" & election_type == "PRESIDENTIAL"])),
+    final_first_round_pcs_14 = length(unique(pc_code[results_status == "FINAL" & election_type == "PRESIDENTIAL"])),
+    prelim_runoff_pcs_14 = length(unique(pc_code[results_status == "PRELIMINARY" & election_type == "PRESIDENTIAL RUNOFF"])),
+    final_runoff_pcs_14 = length(unique(pc_code[results_status == "FINAL" & election_type == "PRESIDENTIAL RUNOFF"])),
     prelim_first_round_votes_14 = sum(votes[results_status == "PRELIMINARY" & election_type == "PRESIDENTIAL"], na.rm = T),
     final_first_round_votes_14 = sum(votes[results_status == "FINAL" & election_type == "PRESIDENTIAL"], na.rm = T),
     net_change_first_round_14 = final_first_round_votes_14 - prelim_first_round_votes_14,
@@ -111,7 +115,7 @@ vr_19_to_14 <- pc_key_2019 %>% rename(`2019_IEC_district_code` = district_code) 
   vr_2018_2019_pct_change = vr_2018_2019_net_change / vr_total_final_18,
   planned_pcs_19 = length(pc_code[planned_2019 == "YES"]),
   planned_pcs_18 = length(pc_code[planned_2018 == "YES"]),
-  pc_change = planned_pcs_19 - planned_pcs_18,
+  pc_change_18_19 = planned_pcs_19 - planned_pcs_18,
   vr_topup_pcs_19 = length(pc_code[vr_topup_location == "YES"]),
   prelim_pcs_18 = length(pc_code[prelim_results_2018 == "YES"]),
   final_pcs_18 = length(pc_code[final_results_2018 == "YES"])
@@ -148,7 +152,8 @@ district_data_combined <- vr_19_to_14 %>%
         rename(`2014_IEC_district_code` = district_code) %>% unique()) %>%
   dplyr::select(
     province_code, province_name_eng, `2014_IEC_district_code`, district_name_eng, provincial_capital,
-    planned_pcs_19, vr_topup_pcs_19, planned_pcs_18, prelim_pcs_18, final_pcs_18,
+    planned_pcs_19, vr_topup_pcs_19, planned_pcs_18, prelim_pcs_18, final_pcs_18, 
+    prelim_first_round_pcs_14, final_first_round_pcs_14, prelim_runoff_pcs_14, final_runoff_pcs_14,
     vr_total_final_19, vr_total_prelim_19, vr_2019_net_change, vr_2019_pct_change, vr_final_19_pct_natl,
     vr_total_final_18, vr_2018_2019_net_change, vr_2018_2019_pct_change, vr_final_18_pct_natl,
     prelim_votes_18, final_votes_18, net_change_prelim_final_18, pct_change_prelim_final_18,
