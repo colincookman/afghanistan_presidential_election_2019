@@ -14,7 +14,7 @@ This data is being released in open source for the purposes of contributing to p
 
 ## Summary of files
 
-Once elections are held and results released by the IEC, detailed results for all candidates across all reporting polling stations will be cleaned, restructured, and published in this repository in .csv file format. Results will also be re-aggregated to the polling center, district, and provincial level. If the IEC follows past precedent, both preliminary and final certified results data should be available at all levels.
+Once results are finalized, the underlying R code used to scrape, clean, and reorganize all data will also be published to allow for replication of results, although no guarantees are made as to its long-term functionality.
 
 The main keyfiles collecting the metadata used to aggregate, disaggregate, and join the results datasets are:
 - **[candidate_key.csv](https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/keyfiles/candidate_key_2019.csv)** for a list of all registered candidates. Includes unique IEC-assigned ID codes, names in Dari (official IEC transliterations into English are pending until the results release), incumbency status, and gender.
@@ -25,7 +25,7 @@ The main keyfiles collecting the metadata used to aggregate, disaggregate, and j
 
 ## Summary of results data
 
-Once results are finalized, the underlying R code used to scrape, clean, and reorganize all data will also be published to allow for replication of results, although no guarantees are made as to its long-term functionality.
+Once elections are held and results released by the IEC, detailed results for all candidates across all reporting polling stations will be cleaned, restructured, and published in this repository in .csv file format. Results will also be re-aggregated to the polling center, district, and provincial level. If the IEC follows past precedent, both preliminary and final certified results data should be available at all levels.
 
 ## Background to the election
 
