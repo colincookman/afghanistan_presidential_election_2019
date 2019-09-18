@@ -1798,35 +1798,53 @@ coord_2014 <- dplyr::select(pc_key_2014, district_code, pc_code, pc_name_eng, pc
 
 gis_matches <- coord_2018$pc_code_18[coord_2018$latlon %in% coord_2014$latlon]
 
-gis_matches <- as.data.frame(gis_matches) %>% rename(pc_code_18 = gis_matches) %>% mutate(matched_by_gis = "YES") %>% 
+gis_matches <- as.data.frame(gis_matches) %>% rename(pc_code_18 = gis_matches) %>% 
   left_join(coord_2018) %>% 
   left_join(dplyr::select(coord_2014, pc_code_14, pc_name_eng_14, pc_name_dari_14, latlon)) %>% 
-  mutate(code_change = ifelse(pc_code_18 != pc_code_14, "YES", "NO"))
+  mutate(code_change = ifelse(pc_code_18 != pc_code_14, "YES", "NO"),
+         matched_by = "GIS MATCH")
 
-# HAVE TO FIX duplicates within districts / nahia subdivisions
 
-name_matches <- dplyr::select(coord_2018, `2019_matched_to_2014_IEC_district_code`, pc_name_dari_18, pc_name_eng_18, pc_code_18) %>%
+names_2018 <- dplyr::select(coord_2018, `2019_matched_to_2014_IEC_district_code`, pc_name_dari_18, pc_name_eng_18, pc_code_18) %>%
   rename(pc_name_dari = pc_name_dari_18) %>%
-  left_join((dplyr::select(coord_2014, `2019_matched_to_2014_IEC_district_code`, pc_name_dari_14, pc_name_eng_14, pc_code_14) %>% 
-               rename(pc_name_dari = pc_name_dari_14)
-             )
+  left_join((dplyr::select(pc_key_2018, pc_code, district_sub_code)) %>% 
+              rename(pc_code_18 = pc_code)
             ) %>%
-  filter(!is.na(pc_code_14))
+    mutate(`2019_matched_to_2014_sub_code` = ifelse(`2019_matched_to_2014_IEC_district_code` == "0101",
+                                                           district_sub_code, `2019_matched_to_2014_IEC_district_code`)) %>%
+  dplyr::select(-c(district_sub_code, `2019_matched_to_2014_IEC_district_code`))
+names_2018$`2019_matched_to_2014_sub_code`[names_2018$pc_code_18 == "0101555"] <- "0101-12"
+names_2018$`2019_matched_to_2014_sub_code`[names_2018$pc_code_18 == "0101556"] <- "0101-12"
+names_2018$`2019_matched_to_2014_sub_code`[names_2018$pc_code_18 == "0101559"] <- "0101-22"
 
-known_matches <- gis_matches %>% dplyr::select(`2019_matched_to_2014_IEC_district_code`, pc_code_18, pc_code_14,
-                                               pc_name_eng_18, pc_name_eng_14, pc_name_dari_18) %>% 
+names_2014 <- dplyr::select(coord_2014, `2019_matched_to_2014_IEC_district_code`, pc_name_dari_14, pc_name_eng_14, pc_code_14) %>% 
+               rename(pc_name_dari = pc_name_dari_14) %>%
+               left_join(dplyr::select(pc_key_2014, pc_code, district_sub_code) %>%
+                           rename(pc_code_14 = pc_code)
+                         ) %>%
+  mutate(`2019_matched_to_2014_sub_code` = ifelse(`2019_matched_to_2014_IEC_district_code` == "0101",
+                                                           district_sub_code, `2019_matched_to_2014_IEC_district_code`)) %>%
+  dplyr::select(-c(district_sub_code, `2019_matched_to_2014_IEC_district_code`))
+
+name_matches <- left_join(names_2018, names_2014) %>% 
+  filter(!is.na(pc_code_14)) %>%
+  mutate(matched_by = "NAME AND DISTRICT MATCH",
+         code_change = ifelse(pc_code_18 != pc_code_14, "YES", "NO"))
+  
+
+known_matches <- gis_matches %>% dplyr::select(pc_code_18, pc_code_14, code_change,
+                                               pc_name_eng_18, pc_name_eng_14, pc_name_dari_18, matched_by) %>% 
   rename(pc_name_dari = pc_name_dari_18) %>% 
   full_join(filter(name_matches, !(pc_code_18 %in% gis_matches$pc_code_18))) %>% 
-  left_join(dplyr::select(pc_key_2014, pc_code, district_sub_code) %>% 
-              rename(pc_code_14 = pc_code,
-                     district_sub_code_14 = district_sub_code)
-            ) %>%
+  dplyr::select(-`2019_matched_to_2014_sub_code`) %>%
   arrange(pc_code_18)
+
+write.csv(known_matches, "./pc_plan/pc_code_matching_2014_2018.csv", row.names = F)
 
 
 not_matched <- pc_key_2018$pc_code[!pc_key_2018$pc_code %in% c(gis_matches$pc_code_18, name_matches$pc_code_18)]
 
-not_matched <- as.data.frame(not_matched) %>% rename(pc_code = not_matched) %>% mutate(matched_by_gis = "NO") %>%
+not_matched <- as.data.frame(not_matched) %>% rename(pc_code = not_matched) %>% 
   left_join(
     dplyr::select(pc_key_2018,
                   district_code, pc_code, pc_name_eng, pc_name_dari, assessment_status, planned_2018)) %>%
@@ -1835,4 +1853,9 @@ not_matched <- as.data.frame(not_matched) %>% rename(pc_code = not_matched) %>% 
          pc_name_dari_18 = pc_name_dari,
          `2018_IEC_district_code` = district_code) %>%
   left_join(dplyr::select(
-    district_code_keyfile_2019, `2018_IEC_district_code`, `2019_matched_to_2014_IEC_district_code`))
+    district_code_keyfile_2019, `2018_IEC_district_code`, `2019_matched_to_2014_IEC_district_code`)) %>%
+  mutate(matched_by = NA)
+
+write.csv(not_matched, "./pc_plan/unmatched_2018_pcs.csv", row.names = F)
+
+

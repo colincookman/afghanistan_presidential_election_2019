@@ -1,3 +1,5 @@
+options(scipen=999)
+
 # IMPORT DATA -----------------
 
 final_first_round_2014 <- read_csv("past_elections/presidential_2014/results_data/first_round_final_results/final_af_candidate_ps_data_first_round_2014.csv")
