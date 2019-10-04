@@ -93,7 +93,7 @@ prov_turnout <- ggplot(data = partial_turnout_reports_10_03_19, aes(x = turnout_
        x = "2018 Votes Against Voter Registration (Preliminary Results)",
        title = "Provincial-Level Turnout Comparisons in Afghanistan Elections",
        subtitle = "Diagonal line represents hypothetical perfect correlation, x- and y-intercept lines are national median.",
-       caption = "Author: Colin Cookman (Twitter: @colincookman)\nData Sources:\n2018 parliamentary data: https://github.com/colincookman/afghanistan_election_results_2018\n2019 provisional data: https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/raw/Partial%20Turnout%2010-01-19.xlsx",
+       caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources:\n2018 parliamentary data: https://github.com/colincookman/afghanistan_election_results_2018\n2019 provisional data: https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/raw/Partial%20Turnout%2010-03-19.xlsx",
        color = "UNAMA Region Code"
   ) +
   theme(
@@ -102,4 +102,4 @@ prov_turnout <- ggplot(data = partial_turnout_reports_10_03_19, aes(x = turnout_
 
 prov_turnout
 
-ggsave("./graphics/provisional_turnout.png", plot = prov_turnout, dpi = 300, height = 215.9, width = 279.4, units = "mm")
+ggsave("./graphics/provisional_turnout_10_03.png", plot = prov_turnout, dpi = 300, height = 215.9, width = 279.4, units = "mm")
