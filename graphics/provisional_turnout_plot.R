@@ -103,3 +103,65 @@ prov_turnout <- ggplot(data = partial_turnout_reports_10_03_19, aes(x = turnout_
 prov_turnout
 
 ggsave("./graphics/provisional_turnout_10_03.png", plot = prov_turnout, dpi = 300, height = 215.9, width = 279.4, units = "mm")
+
+
+natl_med_vr_18 <- median(partial_turnout_reports_10_03_19$pct_natl_vr_19[!is.na(partial_turnout_reports_10_03_19$pct_natl_vr_19)])
+natl_med_open_ps_19 <- median(partial_turnout_reports_10_03_19$ps_reporting_pct_IEC_10_03)
+
+
+ps_closures <- ggplot(data = partial_turnout_reports_10_03_19, 
+                      aes(x = turnout_10_03_19, y = ps_reporting_pct_IEC_10_03, color = region_name_eng)) +
+  coord_fixed(ratio = 1) +
+  geom_hline(yintercept = natl_med_open_ps_19, size = 1, color = "gray80") +
+  geom_vline(xintercept = natl_med_turnout_19, size = 1, color = "gray80") +
+#  geom_abline(slope = 1, intercept = 0, size = 1, color="gray80") +
+  geom_point() +
+#  geom_smooth(method = "lm", color = "dodgerblue4", 
+#              data = partial_turnout_reports_10_03_19,
+#              aes(x = turnout_10_03_19, y = ps_reporting_pct_IEC_10_03)) +
+  scale_x_continuous(limits = c(0, .9), labels = scales::percent_format(accuracy = 1), breaks=seq(0, .9, by=0.05)) +
+  scale_y_continuous(limits = c(.4, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(.4, 1, by=0.05)) +
+  geom_text_repel(data = partial_turnout_reports_10_03_19, 
+                  mapping = aes(label = province_name_eng), size = 3, box.padding = unit(0.55, "lines")) +
+  labs(y = "Percent of Planned Polling Stations Reported Open (Provisional Results of 10-03-19)", 
+       x = "2019 Provisional Votes Against Voter Registration (Provisional Results as of 10-03-19)",
+       title = "Polling Station Closures in the 2019 Afghan Presidential Election",
+       subtitle = "X- and y-intercept lines are national median.",
+       caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources: https://github.com/colincookman/afghanistan_presidential_election_2019/",
+       color = "UNAMA Region Code"
+  ) +
+  theme(
+    plot.caption = element_text(hjust = 0)
+  )
+
+ps_closures
+
+ggsave("./graphics/ps_closures_turnout_10_03.png", plot = ps_closures, dpi = 300, height = 215.9, width = 279.4, units = "mm")
+
+
+ps_closures_vr <- ggplot(data = partial_turnout_reports_10_03_19, 
+                       aes(y = pct_natl_vr_19, x = ps_reporting_pct_IEC_10_03, color = region_name_eng)) +
+   coord_fixed(ratio = 1) +
+   geom_vline(xintercept = natl_med_open_ps_19, size = 1, color = "gray80") +
+   geom_hline(yintercept = natl_med_vr_18, size = 1, color = "gray80") +
+#  geom_abline(slope = 1, intercept = 0, size = 1, color="gray80") +
+   geom_point() +
+#  geom_smooth(method = "lm") +
+   scale_y_continuous(limits = c(0, .2), labels = scales::percent_format(accuracy = 1), breaks=seq(0, .2, by=0.05)) +
+   scale_x_continuous(limits = c(.4, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(.4, 1, by=0.05)) +
+   geom_text_repel(data = partial_turnout_reports_10_03_19, 
+                   mapping = aes(label = province_name_eng), size = 3, box.padding = unit(0.55, "lines")) +
+   labs(x = "Percent of Planned Polling Stations Reported Open (Provisional Results of 10-03-19)", 
+        y = "Province's Share of Total National 2019 Voter Registration",
+        title = "Polling Station Closures in the 2019 Afghan Presidential Election",
+        subtitle = "X- and y-intercept lines are national median.",
+        caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources: https://github.com/colincookman/afghanistan_presidential_election_2019/",
+        color = "UNAMA Region Code"
+   ) +
+   theme(
+     plot.caption = element_text(hjust = 0)
+   )
+
+ps_closures_vr
+
+ggsave("./graphics/ps_closures_vr_10_03.png", plot = ps_closures_vr, dpi = 300, height = 215.9, width = 279.4, units = "mm")
