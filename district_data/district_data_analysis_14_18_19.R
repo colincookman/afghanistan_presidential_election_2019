@@ -199,3 +199,37 @@ very_dumb_model <- district_data_combined %>% filter(!is.infinite(prelim_turnout
                 proj_AG_14_runoff_votes_on_18_turnout_19_vr, proj_AG_pct_natl,
                 proj_WJ_winner_votes_on_19_vr, proj_WJ_winner_pct_natl)
 
+
+med_ag_vr <- median(district_data_combined$vr_2018_2019_net_change[district_data_combined$partisan == "GHANI" & !is.na(district_data_combined$vr_2018_2019_net_change)])
+med_aa_vr <- median(district_data_combined$vr_2018_2019_net_change[district_data_combined$partisan == "ABDULLAH" & !is.na(district_data_combined$vr_2018_2019_net_change)])
+med_all_vr <- median(district_data_combined$vr_2018_2019_net_change[!is.na(district_data_combined$vr_2018_2019_net_change)])
+med_ag_votes <- median(district_data_combined$prelim_votes_18[district_data_combined$partisan == "GHANI" & !is.na(district_data_combined$prelim_votes_18)])
+med_aa_votes <- median(district_data_combined$prelim_votes_18[district_data_combined$partisan == "ABDULLAH" & !is.na(district_data_combined$prelim_votes_18)])
+med_all_votes <- median(district_data_combined$prelim_votes_18[!is.na(district_data_combined$prelim_votes_18)])
+
+ggplot(data = district_data_combined, 
+                       aes(x = log(prelim_votes_18), y = log(vr_2018_2019_net_change), color = partisan)) +
+#   coord_fixed(ratio = 1) +
+  geom_vline(xintercept = med_ag_votes, size = 1, color = "green") +
+  geom_vline(xintercept = med_aa_votes, size = 1, color = "red") +
+  geom_vline(xintercept = med_all_votes, size = 1, color = "gray80") +
+#   geom_hline(yintercept = natl_med_vr_18, size = 1, color = "gray80") +
+#  geom_abline(slope = 1, intercept = 0, size = 1, color="gray80") +
+   geom_point() +
+#  geom_smooth(method = "lm") +
+   scale_y_continuous(limits = c(0, .2), labels = scales::percent_format(accuracy = 1), breaks=seq(0, .2, by=0.05)) +
+   scale_x_continuous(limits = c(.4, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(.4, 1, by=0.05)) +
+   geom_text_repel(data = partial_turnout_reports_10_03_19, 
+                   mapping = aes(label = province_name_eng), size = 3, box.padding = unit(0.55, "lines")) +
+   labs(x = "Percent of Planned Polling Stations Reported Open (Provisional Results of 10-03-19)", 
+        y = "Province's Share of Total National 2019 Voter Registration",
+        title = "Polling Station Closures in the 2019 Afghan Presidential Election",
+        subtitle = "X- and y-intercept lines are national median.",
+        caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources: https://github.com/colincookman/afghanistan_presidential_election_2019/",
+        color = "UNAMA Region Code"
+   ) +
+   theme(
+     plot.caption = element_text(hjust = 0)
+   )
+
+ps_closures_vr
