@@ -248,16 +248,16 @@ partial_turnout_reports_10_14_19 <- partial_turnout_reports_10_14_19 %>% mutate(
 write.csv(partial_turnout_reports_10_14_19, "./raw/provisional_turnout_reports_10_14_19.csv", row.names = F)
 
 
-natl_med_turnout_18 <- median(partial_turnout_reports_10_14_19$turnout_2018[!is.na(partial_turnout_reports_10_14_19$turnout_2018)])
-natl_med_turnout_19 <- median(partial_turnout_reports_10_14_19$turnout_10_03_19)
+natl_med_bvv_turnout <- median(partial_turnout_reports_10_14_19$bvv_proj_turnout_10_14_19)
+natl_med_pct_change_bvv <- median(partial_turnout_reports_10_14_19$pct_change_votes_proj_bvv_03_14)
 
 
 bvv_vs_provisional <- ggplot(data = partial_turnout_reports_10_14_19, 
                              aes(y = bvv_proj_turnout_10_14_19, x = pct_change_votes_proj_bvv_03_14, 
                                  color = region_name_eng, size = projected_bvv_votes_10_14)) +
   coord_fixed(ratio = 1) +
-#  geom_hline(yintercept = natl_med_turnout_19, size = 1, color = "gray80") +
-#  geom_vline(xintercept = natl_med_turnout_18, size = 1, color = "gray80") +
+  geom_hline(yintercept = natl_med_bvv_turnout, size = 1, color = "gray80") +
+  geom_vline(xintercept = natl_med_pct_change_bvv, size = 1, color = "gray80") +
 #  geom_abline(slope = 1, intercept = 0, size = 1, color="gray80") +
   geom_point() +
 #  geom_smooth(method = "lm") +
@@ -268,12 +268,13 @@ bvv_vs_provisional <- ggplot(data = partial_turnout_reports_10_14_19,
   labs(x = "Percent Change Between Provisional Vote Totals of 10-03 and Projected Total BVV Votes as of 10-14", 
        y = "Turnout Against Registration Using Projected BVV Vote Totals as of 10-14",
        title = "Changes Between BVV and Provisional Vote Totals and Turnout",
-#       subtitle = "Diagonal line represents hypothetical perfect correlation.",
+       subtitle = "X- and Y-intercepts are national medians.",
        caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources:\n2018 parliamentary data: https://github.com/colincookman/afghanistan_election_results_2018\n2019 provisional data: https://github.com/colincookman/afghanistan_presidential_election_2019/",
        color = "UNAMA Region Code", size = "Straightline Projection of Total BVV Votes"
   ) +
   theme(
-    plot.caption = element_text(hjust = 0)
+    plot.caption = element_text(hjust = 0),
+    axis.text.x = element_text(angle = 90)
   )
 
 bvv_vs_provisional

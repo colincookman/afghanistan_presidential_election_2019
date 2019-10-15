@@ -210,10 +210,13 @@ med_all_votes <- median(district_data_combined$prelim_votes_18[!is.na(district_d
 ggplot(data = district_data_combined, 
                        aes(x = log(prelim_votes_18), y = log(vr_2018_2019_net_change), color = partisan)) +
 #   coord_fixed(ratio = 1) +
-  geom_vline(xintercept = med_ag_votes, size = 1, color = "green") +
-  geom_vline(xintercept = med_aa_votes, size = 1, color = "red") +
-  geom_vline(xintercept = med_all_votes, size = 1, color = "gray80") +
-#   geom_hline(yintercept = natl_med_vr_18, size = 1, color = "gray80") +
+  scale_color_manual(values = c("#e41a1c", "#377eb8", "#4e5a65")) +
+  geom_vline(xintercept = log(med_ag_votes), size = 1, color = "#377eb8", alpha = .8) +
+  geom_vline(xintercept = log(med_aa_votes), size = 1, color = "#e41a1c", alpha = .8) +
+  geom_vline(xintercept = log(med_all_votes), size = 1, color = "black", alpha = .6) +
+  geom_hline(yintercept = log(med_ag_vr), size = 1, color = "#377eb8", alpha = .8) +
+  geom_hline(yintercept = log(med_aa_vr), size = 1, color = "#e41a1c", alpha = .8) +
+  geom_hline(yintercept = log(med_all_vr), size = 1, color = "black", alpha = .6) +
 #  geom_abline(slope = 1, intercept = 0, size = 1, color="gray80") +
    geom_point() +
 #  geom_smooth(method = "lm") +
