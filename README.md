@@ -1,6 +1,6 @@
 # Results for Afghanistan 2019 Presidential Elections
 
-This repository will host (if and when elections are held) results data and other information for the 2019 Afghan presidential election, as  reported by the [Independent Election Commission of Afghanistan (IEC)](http://www.iec.org.af/). In the interim, the repository hosts historical data from past presidential elections, and administrative data (primarily polling center plans and voter registration data) released by the IEC in advance of the 2019 elections, which (after several previous postponements) were held on September 28 2019.
+This repository will host results data (once announced) and other information for the 2019 Afghan presidential election, as reported by the [Independent Election Commission of Afghanistan (IEC)](http://www.iec.org.af/). In the interim, the repository hosts historical data from past presidential elections, and administrative data (primarily polling center plans and voter registration data) released by the IEC in advance of the 2019 elections, which (after several previous postponements) were held on September 28 2019.
 
 This data is being released in open source for the purposes of contributing to public understanding of the elections and to allow for the analysis of available IEC reporting. Please read all accompanying documentation and link, cite, and credit as appropriate. 
 
