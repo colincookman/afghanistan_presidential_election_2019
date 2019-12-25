@@ -1,0 +1,356 @@
+---
+title: "Afghanistan 2019 Preliminary Results Analysis"
+author: "Colin Cookman // ccookman@usip.org // ccookman@gmail.com"
+output: pdf_document
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dplyr)
+library(lubridate)
+library(pdftools)
+library(ggrepel)
+library(knitr)
+library(scales)
+library(kableExtra)
+library(ggrepel)
+setwd("~/Google Drive/GitHub/afghanistan_presidential_election_2019")
+options(scipen=999)
+knitr::opts_chunk$set(echo = TRUE, fig.pos= "h")
+
+province_key <- read_csv("keyfiles/province_key_2019.csv")
+ps_key <- read_csv("keyfiles/ps_key_2019.csv")
+pc_key <- read_csv("keyfiles/pc_key_2019.csv")
+ps_audit_target_list <- read_csv("audit_data/ps_audit_target_list.csv")
+district_code_keyfile_2019 <- read_csv("district_data/district_code_keyfile_2019.csv")
+ps_results <- read_csv("results_data/first_round_preliminary_results/prelim_af_candidate_ps_data_2019.csv")
+ps_summary_report <- read_csv("analysis/ps_summary_report.csv")
+provincial_summary_report <- read_csv("analysis/provincial_summary_report.csv")
+partial_turnout_reports_10_14_19 <- read_csv("raw/provisional_turnout_reports/partial_turnout_reports_10_14_19.csv")
+partial_turnout_reports_10_14_19$province_code <- str_pad(partial_turnout_reports_10_14_19$province_code, side = "left", width = 2, pad = "0")
+colnames(partial_turnout_reports_10_14_19)[31] <- "provisional_votes_10_03"
+
+partial_turnout_reports_10_14_19 <- partial_turnout_reports_10_14_19 %>% filter(!is.na(province_code)) %>%
+  full_join(tibble(province_code = "NATIONAL TOTAL", province_name_eng = "NATIONAL TOTAL", provisional_votes_10_03 = 2695890))
+
+provincial_summary_report <- provincial_summary_report %>%
+  left_join(dplyr::select(partial_turnout_reports_10_14_19, province_code, provisional_votes_10_03))
+
+district_summary_no_nahia <- ps_summary_report %>%
+  left_join(dplyr::select(pc_key, pc_code, district_code, district_name_eng)) %>%
+  group_by(province_code, province_name_eng, district_code, district_name_eng, provincial_capital) %>%
+  summarize(
+    ps_planned = length(ps_code),
+    ps_reporting = length(ps_code[prelim_results_reporting == "YES"]),
+    ps_audited = length(ps_code[audit_or_recount == "YES"]),
+    missing_bvv_ps_reporting = length(ps_code[missing_bvv_reporting == "YES"]),
+    missing_bvv_new_votes = sum(total_votes[missing_bvv_reporting == "YES"], na.rm = T),
+    ps_reporting_zero_votes = length(ps_code[reporting_zero_votes == "YES" & prelim_results_reporting == "YES"]),
+    ps_reporting_excess_turnout = length(ps_code[excess_turnout == "YES" & prelim_results_reporting == "YES"]),
+    ps_added_votes_in_audit = length(ps_code[added_votes == "YES"]),
+    known_bvv_votes_under_audit = sum(pre_audit_bvv_total, na.rm = T),
+    known_net_change_from_audit = sum(pre_post_audit_difference, na.rm = T),
+    total_vr = sum(total_vr, na.rm = T),
+    total_preliminary_votes = sum(total_votes, na.rm = T),
+    turnout = total_preliminary_votes / total_vr,
+    candidate_1 = sum(candidate_1, na.rm = T),
+    candidate_2 = sum(candidate_2, na.rm = T),
+    candidate_3 = sum(candidate_3, na.rm = T),
+    candidate_5 = sum(candidate_5, na.rm = T),
+    candidate_6 = sum(candidate_6, na.rm = T),
+    candidate_7 = sum(candidate_7, na.rm = T),
+    candidate_8 = sum(candidate_8, na.rm = T),
+    candidate_9 = sum(candidate_9, na.rm = T),
+    candidate_10 = sum(candidate_10, na.rm = T),
+    candidate_11 = sum(candidate_11, na.rm = T),
+    candidate_12 = sum(candidate_12, na.rm = T),
+    candidate_15 = sum(candidate_12, na.rm = T),
+    candidate_16 = sum(candidate_16, na.rm = T),
+    candidate_17 = sum(candidate_17, na.rm = T)
+  )
+  
+
+```
+
+## I - SUMMARY
+
+This report summarizes preliminary election results released by the Afghanistan Independent Election Commission on December 22 2019.
+
+* In total, 4,540 polling centers and 25,079 polling stations were included in the IEC’s preliminary results report, or **84.8% of planned**. (At least 1138 stations reported zero votes, and some open but invalidated stations may be missing from the preliminary results.)
+* President Ashraf Ghani secured a **narrow 50.64% majority**, clearing the 50% threshhold required to avoid a runoff election. Chief Executive Abdullah Abdullah received 39.52% of the preliminary vote, and third-party candidates 9.84%.
+* While many factors, including tighter controls on participation and the criteria for determining a valid vote, contributed to restrictions on participation in the electoral process, the total preliminary vote total of 1.824 million represents a **record low 18.9% turnout** against voter registration.
+* Afghanistan's provincial capitals comprise an estimated 32% of the national population, 35% of the 2019 voter registry, and 41.5% of the preliminary vote, making **urban centers overrepresented** both in the potential and actual electorate.
+* Analysis of available data on the audit and recount process ordered by the IEC prior to the announcement of the preliminary results noted that:
+  + 254 polling stations audited for missing biometric vote information **added 27,641 new votes** following the audit process.
+  + In cases where the IEC provided pre-audit biometric vote totals, **16,810 votes were removed on net** in the preliminary results. However, this includes 611 polling stations that reported increased vote totals following the audit, which **added 14,865 votes**.
+  + Taking into account the addition and removal of votes in the audit, the removal of duplicate biometric vote records, **another 29,537 votes were removed on net** through other unaccounted for changes when comparing the preliminary results with previously reported (but not officially verified) biometric vote totals by province.
+* Complaints adjudication and further decisions on vote validation or invalidation, which will be made in the coming weeks by the Electoral Complaints Commission prior to the certification of final results, will be extremely sensitive. The Abdullah campaign has rejected many of the IEC's decisions and have filed challenges to the reported results. At current margins, **the invalidation of any further votes for Ghani in excess of 25,000 votes would force a runoff**.
+
+## II - DATA SOURCES
+
+This reporting and analysis is based on the author's collection of election results and other information related to the 2019 Afghan presidential election. This report is a work in progress and further updates will be forthcoming as investigation and analysis of the elections and available continues. Corrections and feedback is greatly appreciated.
+
+For more information and the raw data used to generate this report, see: https://github.com/colincookman/afghanistan_presidential_election_2019
+
+## III - PRELIMINARY RESULTS
+
+### Reporting stations
+
+The IEC's preparations for the 2019 elections were, with some exceptions, based on the same universe of polling centers generated for the [2018 parliamentary elections](https://github.com/colincookman/afghanistan_election_results_2018), which were reduced from the 2014 presidential elections following a security and operational review in January 2018. On August 19 2019, the IEC published a final polling center plan for the 2019 elections, which included details for **5373 polling centers** and **29,586 polling stations**. At a press conference on August 28 2019, Interior Minister Massoud Andarabi [said that](http://reporterly.net/live/newsfeed/wednesday-august-28/431-polling-centers-to-be-closed-on-election-day-moi/) another 431 polling centers would be closed due to security threats, but these centers have not been publicly idenitifed by either MOI or the IEC.
+
+The **IEC has not released an official report on which planned centers and stations were open or closed on election day**, either due to deliberately planned or unplanned closures. Ommissions from the reported preliminary results may be due to election-day closure, but may also be due a station's invalidation during the audit and recount process, or due to ommission of zero votes being reported despite a station being open. 1138 stations included in the results reported zero votes for any candidates, although this may not be exhaustive of all such cases. 1627 polling stations previously identified for audit were ommitted from the reporting and are presumed to have been invalidated; of those, 1406 stations had been flagged for missing biometric data in the audit process (discussed further in Section IV).
+
+In total, **4,540 polling centers** and **25,079 polling stations** were included in the IEC's preliminary results report. 529 centers did not report complete results at all of their originally planned stations (for example, five stations were planned, but only four included in the results data), either due to a station's invalidation and removal from the results or incomplete station openings at a given center.
+
+```{r echo = F}
+natl_total_planned <- provincial_summary_report$ps_planned[35]
+natl_total_reporting <- provincial_summary_report$ps_reporting[35]
+provincial_summary_report %>%
+  mutate(
+    pct_total_reporting = scales::percent(ps_reporting / natl_total_reporting),
+    pct_total_planned = scales::percent(ps_planned / natl_total_planned),
+    pct_reporting = scales::percent(ps_reporting / ps_planned),
+    pct_open = scales::percent(ps_reporting_zero_votes / ps_reporting)
+    ) %>%
+  dplyr::select(province_code, province_name_eng,
+                ps_planned, pct_total_planned, ps_reporting, pct_total_reporting, pct_reporting, ps_reporting_zero_votes, pct_open) %>%
+  kable(col.names = c("Province Code", "Province Name", 
+                      "Planned Polling Stations", "% of National Total",
+                      "Polling Stations in Preliminary Results", "% of National Total", "% of Planned",
+                      "Polling Stations Reporting Zero Votes", "% of Reporting Stations"
+                      ),
+        caption = "Polling Station Report") %>%
+  row_spec(0, bold = T) %>%
+  row_spec(35, bold = T) %>%
+  column_spec(c(3:9), width = "2cm") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  kable_styling(latex_options = "HOLD_position") %>% 
+  landscape()
+```
+
+### Vote summary
+
+In total, **1,824,401 valid votes** were reported in the preliminary results. Afghan election law mandates a runoff in the event that no candidate secures greater than fifty percent of the vote share; incumbent President Ashraf Ghani was reported to have won a narrow majority in the preliminary results, securing 923,868 votes or **50.64%** of total. Chief Executive Abdullah Abdullah came in second place with 720,990 votes (**39.52%**).
+
+```{r echo = F, fig.width = 5, fig.height=6, fig.align = "center"}
+
+provincial_summary_report <- provincial_summary_report %>%
+  mutate(ghani_pct = candidate_8 / total_preliminary_votes,
+         abdullah_pct = candidate_9 / total_preliminary_votes
+         )
+
+ggplot(data = provincial_summary_report,
+       aes(x = abdullah_pct, y = ghani_pct)) + 
+  geom_point(alpha = .65) +
+  coord_equal() +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  scale_x_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  geom_text_repel(mapping = aes(label = province_name_eng), size = 3, box.padding = unit(0.55, "lines")) +
+  labs(x = "Abdullah Share of Preliminary Vote Total", 
+       y = "Ghani Share of Preliminary Vote Total",
+       title = "Provincial Vote Share for Top Two Candidates in the\n 2019 Afghan Presidential Elections"
+   ) +
+  theme(
+     axis.text.x = element_text(angle = 90)
+   )
+```
+
+Sixteen other candidates initially registered to contest the elections, but following their withdrawals the IEC invalidated votes for four of them and did not include any ballots cast for those four candidates in determining the overall pool of valid votes and the threshold required for a majority.^[Shaida Abdali, Ibrahim Alokozai, Zalmay Rasoul, and Noorul Haq Ulomi were invalidated. Candidate Hanif Atmar also withdrew but did not file the necessary paperwork with the IEC to officialize his action, and his votes were included in the valid vote pool.] **Collectively, third-party candidates received 9.84%** of the total vote. Gulbuddin Hekmatyar (70,242 votes, 3.85% of total) and Rahmatullah Nabil (33,921 votes, 1.86% of total) were third- and fourth- place finishers, respectively.
+
+```{r echo = F}
+natl_total_vote <- provincial_summary_report$total_preliminary_votes[35]
+
+provincial_summary_report %>%
+  mutate(pct_of_natl_total = scales::percent(total_preliminary_votes / natl_total_vote),
+         ghani_pct = scales::percent(candidate_8 / total_preliminary_votes),
+         abdullah_pct = scales::percent(candidate_9 / total_preliminary_votes),
+         nabil_pct = scales::percent(candidate_1 / total_preliminary_votes),
+         hekmatyar_pct = scales::percent(candidate_11 / total_preliminary_votes),
+         other_candidates = total_preliminary_votes - (candidate_1 + candidate_8 + candidate_9 + candidate_11),
+         other_pct = scales::percent(other_candidates / total_preliminary_votes)
+  ) %>%
+  dplyr::select(province_code, province_name_eng,
+                total_preliminary_votes, pct_of_natl_total, candidate_8, ghani_pct, candidate_9, abdullah_pct,
+                candidate_11, hekmatyar_pct, candidate_1, nabil_pct, other_candidates, other_pct) %>%
+  kable(col.names = c("Province Code", "Province Name", "Total Preliminary Votes", "% of National Total",
+                      "Ghani", "%", "Abdullah", "%", "Hekmatyar", "%", "Nabil", "%", "Other Candidates", "%"
+                      ),
+        caption = "Candidate Votes by Province") %>%
+  row_spec(0, bold = T) %>%
+  row_spec(35, bold = T) %>%
+  column_spec(c(3:13), width = "2 cm") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  kable_styling(latex_options = "HOLD_position") %>% 
+  landscape()
+```
+
+### Voter registration and turnout
+
+Political uncertainty about whether elections would be held as planned, limited campaign activity by the major candidates until the final weeks of the pre-election period, the absence of parallel local-level elections as an additional motivating factor for turnout, and serious security threats from the Taliban insurgency all contributed to a marked decline in nominal vote totals in the 2019 elections when compared to prior years. Additionally, **controls on participation in the election process have tightened** with the introduction of new polling center-specific voter registration lists and biometric voter verification measures that were implemented as a means of preventing fraud. 
+
+Initial election-day reports from the IEC suggested approximately 2.69 million votes had been tallied, but approximately 871,000 of these votes were invalidated prior to the announcement of preliminary results as a result of the IEC's decision to only accept biometrically verified votes and the subsequent audit and recount process (discussed further in Section IV). These restrictions on what qualifies as a valid vote are important to keep in mind when interpreting differences in raw vote totals between the 2019 presidential election and past polls in which there were fewer controls on casting a vote. However, the total pool of valid votes in the preliminary results is a **record low turnout of 18.9% against total registration**.
+
+```{r echo = F}
+natl_vr <- provincial_summary_report$total_vr[35]
+natl_vote <- provincial_summary_report$total_preliminary_votes[35]
+
+provincial_summary_report %>%
+  mutate(turnout = scales::percent(turnout),
+         pct_natl_vr = scales::percent(total_vr / natl_vr),
+         pct_natl_vote = scales::percent(total_preliminary_votes / natl_vote)) %>%
+  dplyr::select(province_code, province_name_eng,
+                total_vr, pct_natl_vr, total_preliminary_votes, pct_natl_vote, turnout) %>%
+  kable(col.names = c("Province Code", "Province Name", "Total Voter Registration", "% of National VR", 
+                      "Total Valid Preliminary Votes", "% of National Vote", "% of Registration"),
+        caption = "Turnout by Province") %>%
+  row_spec(0, bold = T) %>%
+  row_spec(35, bold = T) %>%
+  column_spec(c(3:7), width = "2 cm") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  kable_styling(latex_options = "HOLD_position")# %>% 
+#  landscape()
+```
+
+One effect of the reduction of the size of the electorate and the restriction of access to the franchise is the **increasing overrepresentation of Afghanistan's urban centers in the electorate**. Although Afghanistan does not have reliable census estimates, the Afghan Central Statistics Organization estimates that the provincial capital centers collectively comprise around 32% of the national population, and Kabul city around 14% of the national total.^[Out of a total estimated population of 30.48 million as of solary year 1398 / 2019-2020, CSO estimates 9.68 million residents in all 34 provincial capitals and 4.27 million in Kabul city district.] However, the provincial capitals comprise approximately 35% of the 2019 voter registry, and 41.5% of the preliminary vote, making them overrepresented both in the potential and actual electorate. (By comparison, votes from provincial capitals comprised 30.3% of the preliminary 2014 first round presidential vote, and 38% of the total preliminary 2018 parliamentary vote.)
+
+Ghani won a greater share of votes cast in provincial capitals (46.6% of total votes in these centers, compared to 42.4% for Abdullah). However, his greater share of the remaining vote relative to Abdullah meant that 38.2% of Ghani's total national vote came from provincial capitals (13.4% from Kabul), as compared to 44.5% of Abdullah Abdullah's (smaller) total national vote coming from provincial capitals (17.5% from Kabul).
+
+```{r echo = F, fig.width = 10, fig.height=11}
+
+district_summary_no_nahia <- district_summary_no_nahia %>% mutate(
+  ghani_pct = candidate_8 / total_preliminary_votes,
+  abdullah_pct = candidate_9 / total_preliminary_votes,
+  other_pct = (total_preliminary_votes - (candidate_8 + candidate_9)) / total_preliminary_votes,
+  vr_pct_natl = total_vr / 9665745,
+  votes_pct_natl = total_preliminary_votes / 1824401)
+
+ghani_med <- median(district_summary_no_nahia$ghani_pct, na.rm = T)
+abdullah_med <- median(district_summary_no_nahia$abdullah_pct, na.rm = T)
+
+ggplot(data = subset(district_summary_no_nahia,
+                     total_preliminary_votes > 0),
+       aes(x = abdullah_pct, y = ghani_pct, size = votes_pct_natl, color = provincial_capital)) +
+  coord_equal() +
+  geom_vline(xintercept = abdullah_med, size = 1, color = "black", alpha = .6) +
+  geom_hline(yintercept = ghani_med, size = 1, color = "black", alpha = .6) +
+  geom_point(alpha = .65) +
+  geom_text_repel(data = subset(district_summary_no_nahia, provincial_capital == "YES"),
+                   mapping = aes(label = district_name_eng), size = 3, box.padding = unit(0.55, "lines")) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  scale_x_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  scale_color_manual(values = c("black", "blue")) +
+  labs(y = "Ghani Share of Preliminary Vote", 
+       x = "Abdullah Share of Preliminary Vote",
+       title = "District Vote Share for Top Two Candidates in the 2019 Afghan Presidential Elections",
+       subtitle = "Points are districts. X- and Y-intercept lines are national median.",
+       color = "Provincial capital district",
+       size = "Total district votes as percent of total national vote"
+   ) +
+   theme(
+     plot.caption = element_text(hjust = 0),
+     legend.position = "bottom"
+   )
+
+```
+
+\newpage
+
+## IV - AUDIT AND RECOUNT OUTCOMES
+
+### Initial provisional vote totals
+
+Election results were transmitted to the IEC through at least two separate reporting streams: physical tally sheets prepared by polling station workers and transmitted (both physically and digitally) to the National Tally Center in Kabul, and digital records from biometric voter verifiction (BVV) devices provided by the German company Dermalog, which polling staff were instructed to use to check in voters, to generate unique QR code stickers to affix to ballots after votes were cast, and to transmit a summary report of the results sheet as well.
+
+Discrepancies between these reporting streams quickly emerged. Ultimately, the IEC affirmed that it would only accept votes where the voter had been biometrically verified as valid for inclusion in the preliminary results. However, because the biometric data did not include candidate choice, any polling station where there was a discrepancy between the vote totals on the physical tally sheet (which records individual candidate vote totals) and the BVV device (which did not) would have to undergo a recount or audit in order to identify ballots with verified QR code stickers in order to produce an updated and reconciled candidate vote total.^[In most cases, the IEC set the threshhold for scrutiny at a discrepancy of five or more votes.]
+
+```{r echo = F}
+provincial_summary_report %>%
+  mutate(net_change = total_preliminary_votes - provisional_votes_10_03,
+         pct_change = scales::percent((total_preliminary_votes - provisional_votes_10_03) / provisional_votes_10_03)) %>%  dplyr::select(province_code, province_name_eng,
+                provisional_votes_10_03, total_preliminary_votes, net_change, pct_change) %>%
+  kable(col.names = c("Province Code", "Province Name", 
+                      "Provisional Votes as of 10-03-19", "Total Valid Preliminary Votes", 
+                      "Net Change", "% Change"),
+        caption = "Provisional and Preliminary Votes") %>%
+  row_spec(0, bold = T) %>%
+  row_spec(35, bold = T) %>%
+  column_spec(c(3:6), width = "2 cm") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  kable_styling(latex_options = "HOLD_position")# %>% 
+#  landscape()
+```
+
+The IEC did not release detailed information on the initial pre-audit provisional vote totals. In press statements and through personal social media accounts, however, IEC commissioners provided provincial aggregate vote totals, which may be compared to the final prelimnary results.^[See Afghan Analyst Network report on the IEC's statements regarding provisional vote totals: https://www.afghanistan-analysts.org/afghanistans-2019-election-17-iec-tally-process-underway-but-figures-remain-murky/] Badakhshan province was the only province to report a net increase after the audit process when compared to the initial unverified provisional results, although this appears likely to be due to incomplete or faulty provisional vote totals.
+
+### Audit and recount categories
+
+Following the decision to recount and audit stations with apparent discrepancies between tally sheet and biometric voter records, the IEC identified 8,268 polling stations selected for audit or recount, based on:
+
+* **Decision 104** of November 4 2019 (covering the selection of polling stations for audit for which biometric data was available; partially available in [English](http://www.iec.org.af/pdf/decisions-1398/en/1398-104.pdf) or in full in [Dari](http://www.iec.org.af/pdf/decisions-1398/dari/1398-104.pdf)), 
+* **Decision 105** of November 7 2019 (covering the selection of polling stations for audit for which biometric data was missing but for which physical tally sheet results had been transmitted or which the IEC believed the station to be open - in [English](http://www.iec.org.af/pdf/decisions-1398/en/1398-105.pdf) / [Dari](http://www.iec.org.af/pdf/decisions-1398/dari/1398-105.pdf)), 
+* **Decision 112** of November 21 2019 (covering an additional 22 polling stations referred for audit from stations reporting votes with biometric timestamps outside of official voting hours; available in [Dari](http://www.iec.org.af/pdf/decisions-1398/dari/1398-112.pdf) only).
+
+The IEC additionally released:
+
+* **Decision 108** of November 14 2019 (detailing 137,630 biometrically verified votes which were initially quarantined for a variety of criteria but which the IEC ultimately accepted for inclusion - in [English](http://www.iec.org.af/pdf/decisions-1398/en/1398-108.pdf) / [Dari](http://www.iec.org.af/pdf/decisions-1398/dari/1398-108.pdf)), and 
+* **Decision 109** of November 15 2019 (detailing 102,012 biometrically verified votes with timestamp data outside of official voting hours, the majority of which the IEC also accepted, but **262 stations of which were selected for audit** - in [English](http://www.iec.org.af/pdf/decisions-1398/en/1398-109.pdf) / [Dari](http://www.iec.org.af/pdf/decisions-1398/dari/1398-109.pdf)).
+
+However, the specific stations selected for audit under Decision 109 were **not** publicly identified by the IEC in its [official list of audit targets](http://www.iec.org.af/en/auditlist-2019), released on November 28 2019.^[Mirrored in csv file format here: https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/audit_data/ps_audit_target_list.csv] Election observer sources have reported to the author that in total, 8368 unique polling stations were selected for audit or recount on the basis of one or more criteria, but a full detailed list to confirm this has not been released.
+
+### Vote signature de-duplication
+
+On November 2 2019 the IEC announced that Dermalog had identified **86,225 duplicate biometric votes** through a process of comparing digital biometric signatures, providing a new total of approximately 1.84 million total verified votes (prior to audit and recount). No detailed breakdown of the duplicated votes or the polling stations at which they were recorded has been released, but the [Afghan Analysts Network](https://www.afghanistan-analysts.org/afghanistans-2019-election-24-disputed-recount-threats-not-to-accept-results-and-some-interesting-new-data/) reported a provincial breakdown, which was verified by the author with another election observer source.^[In the absence of an official statement from the IEC on the pre-audit biometric vote totals per province, it is unclear whether the AAN and observer sources may be the same, and if so whether that source is in fact authoritative.] 
+
+The IEC did not publically clarify a procedure for removing duplicate votes or list the presence of duplicate biometric signatures as a criteria for audit or recount. An election observer source told this author that all of the duplicate votes fell within polling stations already selected for audit under other criteria, and would be removed as part of the audit and recount process there; however, this account is presently unverified.
+
+### Stations missing biometric data in preliminary results
+
+Under Decision 105, the IEC identified 1261 polling stations that transmitted a physical tally sheet report but did not include associated biometric records for validation, and 1162 stations that did not transmit any results data but which IEC staff or other officials reported had opened on election day.^[The IEC did not provide any details on the votes associated with the physical tally sheet reports for the former category.] The Abdullah campaign objected to the inclusion of these stations in the IEC audit target list and argued that they should be automatically invalidated, but the IEC held that it must first investigate polling station boxes to confirm the absence of any biometric records as part of the audit and recount process before deciding to invalidate a station.
+
+In total, 730 stations in the first category were included in the preliminary results, of which 207 reported non-zero vote totals. In the second category, 287 stations were included in the preliminary results, of which 47 reported non-zero vote totals. **In sum, stations under Decision 105 previously found to be missing biometric records added 27,641 new votes following the audit process**.
+
+While Ghani's vote share in a polling station does not appear to be significantly statistically correlated with that station falling into this category of missing biometrics now reporting votes (these stations fall within with a range comparable to those Ghani won elsewhere), the overwhelming majority of these stations were won by Ghani, in many cases by significant margins. Collectively, Ghani received approximately 24,000 votes from these stations (2.64% of his national total), versus around 2100 votes for Abdullah.
+
+### Known changes in audit
+
+For the stations listed under Decision 104, the IEC's audit target list included a reported total number of biometric votes prior to audit. The IEC did not clarify whether this figure represented a pre- or post- vote deduplication figure, and did not provide details on votes per candidate. However, for the stations for which these details were reported it is possible to calculate the overall net change in the audit as a result of vote verification or invalidations. On net, **16,810 votes were removed** when compared to the known pre-audit figures at these stations.
+
+While the overall result of the audit was a decrease in the number of valid votes, **611 polling stations notably reported net increases in votes** when compared to the pre-audit biometric vote total previously reported by the IEC. In total, **14,865 votes were added** in these stations. While it is not possible to determine for which candidates, all affected stations were won overwhelmingly by Ghani (with a median Ghani vote share of 92.3%). The IEC has not offered an explanation for this apparent increase.
+
+### Net change in results
+
+In sum, taking the AAN-reported breakdown of biometric votes per province prior to any other changes in audit, removing votes from duplicate biometric signatures, adding votes from stations previously flagged for missing biometric data, and adding the net change in known votes from the audit, produces a **remaining unaccounted-for net change** for each province when compared against the preliminary vote totals ultimately reported by the IEC. (In total, this appears to be another 29,537 additional votes removed.) This discrepancy may be due to unobserved audit changes at the stations audited under Decisions 109 and 112, for which the IEC did not specify pre-audit biometric totals, or may be due to other changes; the IEC has not clarified the discrepancy.
+
+```{r echo = F}
+provincial_summary_report %>%
+  mutate(dedupe_net = post_deduplication_bvv_vote_total - pre_deduplication_bvv_vote_total,
+         net_change = total_preliminary_votes - pre_deduplication_bvv_vote_total,
+         pct_change = scales::percent((total_preliminary_votes - pre_deduplication_bvv_vote_total) / pre_deduplication_bvv_vote_total)) %>%  dplyr::select(province_code, province_name_eng,
+                provisional_votes_10_03, pre_deduplication_bvv_vote_total, dedupe_net,
+                missing_bvv_new_votes, known_net_change_from_audit, other_change_post_dedupe_post_audit, total_preliminary_votes,
+                net_change, pct_change
+                ) %>%
+  kable(col.names = c("Province Code", "Province Name", 
+                      "Provisional (Non-Biometric) Votes as of 10-03-19", 
+                      "Pre-Audit Biometric Vote (via AAN)", "Net Change from Deduplication",
+                      "Votes Added from Stations Missing Biometrics", "Known Net Change from Audit", "Other Unaccounted Net Change",
+                      "Total Valid Preliminary Votes", "Net Change Pre-Audit Biometric to Preliminary", "% Change Pre-Audit Biometric to Preliminary"),
+        caption = "Net Changes in Audit") %>%
+  row_spec(0, bold = T) %>%
+  row_spec(35, bold = T) %>%
+  column_spec(c(3:11), width = "2 cm") %>%
+  kable_styling(latex_options = "scale_down") %>%
+  kable_styling(latex_options = "HOLD_position") %>% 
+  landscape()
+```
+
+### Other potentially disputed votes
+
+IEC Decision 108 covers a batch of 137,630 votes where there appear to be discrepancies between voters processed by a biometric voter verification device and individual biometric voter data for those stations. These were initially flagged by Dermalog based on discrepancies between a “processed voters” figure that is automatically generated and linked to a specific BVV device, and individual biometric voter signatures that are linked to a specific polling station on a digital SD card. Switching SD cards due to device malfunction (recording multiple station results on a single device, or using multiple devices to submit a single station) appears to be the primary cause of these discrepancies. 
+
+In total, 4563 stations were reportedly affected, but no detailed list of which ones has been released; at 1466 polling stations there were 30,608 more voters in the device count than the SD voter count (so votes appeared to be “missing”), and at 3097 polling stations there were 168,238 fewer voters in the device count than the SD card voter count (so “extra” votes). The IEC has broadly decided not to invalidate or audit votes under this criteria, concluding that most of the discrepancies were due to technical problems with the use of biometric devices and not evidence of wrongdoing. The Abdullah campaign has objected to this decision and called for all votes under this category to be eliminated.
+
+No detailed information has been released by the IEC on any of the polling stations covered under IEC Decision 109 where out of hours votes were reported, either those selected for audit or those cleared for processing.
+
+Although not selected as a criteria for audit or invalidation by the IEC and ECC, the preliminary results data includes 40 polling stations that reported total votes in excess of 100% turnout as compared to voter registration. (In 29 of those stations, total voter registration was less than 100 voters.)

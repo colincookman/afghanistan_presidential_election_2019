@@ -1,0 +1,477 @@
+"results_date","results_status","election_type","province_code","province_name_eng","candidate_code","ballot_position","candidate_name_eng","candidate_name_dari","candidate_gender","withdrawn","invalidated","past_winners","prelim_winner","votes"
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",9056
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",5032
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",1458
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",602
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",86
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",617
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",166619
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",141881
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",1962
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",14904
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",1934
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",215
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",4571
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","01","KABUL","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",145
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",56
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",121
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",59
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",54
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",14
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",4599
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",7089
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",66
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1814
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",57
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",176
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","02","KAPISA","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",257
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",357
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",203
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",118
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",6
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",30
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",7783
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",20448
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",147
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",3324
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",165
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",82
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",270
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","03","PARWAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",21
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",248
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",109
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",28
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",8
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",8
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",24
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",1279
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",17139
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",61
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",274
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",32
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",25
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",647
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","04","MAYDANWARDAK","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",19
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",10
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",64
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",18
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",3
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",7
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",13344
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",503
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",216
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",3
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",0
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","05","LOGAR","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",221
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",294
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",70
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",45
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",105
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",383
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",188462
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",4949
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",193
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",9515
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",30
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",16
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","06","NANGARHAR","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",62
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",46
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",96
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",19
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",4
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",3
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",93
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",22769
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",469
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",36
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",2360
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",7
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","07","LAGHMAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",21
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",92
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",59
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",79
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",370
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",18
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",2079
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",15343
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",66
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",110
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",120
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",35
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","08","PANJSHIR","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",12
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",311
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",200
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",163
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",303
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",12
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",20
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",5834
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",21011
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",177
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1648
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",545
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",20
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","09","BAGHLAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",4120
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",1339
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",367
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",192
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",59
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",174
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",15021
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",55795
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",314
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1859
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",240
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",133
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",2707
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","10","BAMYAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",132
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",2941
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",562
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",293
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",45
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",15
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",72
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",19259
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",26946
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",142
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",685
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",202
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",26
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",664
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","11","GHAZNI","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",71
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",121
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",81
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",18
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",70
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",29499
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",828
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",33
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",794
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",8
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","12","PAKTIKA","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",26
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",81
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",94
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",22
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",46
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",9
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",67
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",35657
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",1643
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",21
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",727
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",8
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",1
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",3
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","13","PAKTYA","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",7
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",72
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",70
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",35
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",17
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",74
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",75109
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",787
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",26
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1625
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",9
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",1
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","14","KHOST","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",26
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",498
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",76
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",4
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",14
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",100
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",54907
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",5072
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",58
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",3417
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",15
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",8
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",4
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","15","KUNARHA","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",19
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",31
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",34
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",32
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",8
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",10
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",6290
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",3516
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",932
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",0
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",2
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",0
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","16","NOORESTAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",1
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",432
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",436
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",283
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",292
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",22
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",123
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",15234
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",39246
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",300
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",6368
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",7216
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",81
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",25
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","17","BADAKHSHAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",69
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",303
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",504
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",220
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",154
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",39
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",93
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",8583
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",49516
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",329
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1407
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",419
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",110
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",39
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","18","TAKHAR","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",119
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",70
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",114
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",65
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",79
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",7
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",27
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",3636
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",8074
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",89
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",290
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",191
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",12
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",9
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","19","KUNDUZ","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",264
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",203
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",90
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",78
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",24
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",84
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",7123
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",28392
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",159
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",687
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",61
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",60
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",116
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","20","SAMANGAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",52
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",3163
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",1219
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",425
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",130
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",23
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",86
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",24073
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",40078
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",454
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1448
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",612
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",53
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",511
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","21","BALKH","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",70
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",581
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",351
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",110
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",36
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",32
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",43
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",6154
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",26323
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",139
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",219
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",48
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",34
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",103
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","22","SARE PUL","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",29
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",3449
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",722
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",208
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",473
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",20
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",69
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",21553
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",19849
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",114
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1127
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",102
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",33
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",796
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","23","GHOR","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",25
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",3122
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",651
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",277
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",190
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",75
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",260
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",29742
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",62521
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",295
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",303
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",130
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",165
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",283
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","24","DAYKUNDI","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",156
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",135
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",92
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",43
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",9
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",14
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",51
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",3518
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",936
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",12
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",525
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",26
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",14
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",20
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","25","URUZGAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",39
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",37
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",20
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",8
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",16
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",5380
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",262
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",28
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",194
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",6
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",7
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",1
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","26","ZABUL","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",6
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",373
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",586
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",187
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",65
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",88
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",320
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",59467
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",3667
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",111
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",3207
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",65
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",65
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",63
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","27","KANDAHAR","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",109
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",225
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",260
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",102
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",53
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",25
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",75
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",7305
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",29006
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",239
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",248
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",48
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",46
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",28
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","28","JAWZJAN","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",50
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",181
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",171
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",99
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",57
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",18
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",17
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",5207
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",20476
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",116
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",175
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",52
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",18
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",3
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","29","FARYAB","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",6
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",279
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",302
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",84
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",24
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",46
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",55
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",31072
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",4878
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",112
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",1139
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",35
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",20
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",57
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","30","HELMAND","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",34
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",80
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",147
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",140
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",173
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",14
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",31
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",2374
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",6209
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",74
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",336
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",21
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",25
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","31","BADGHIS","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",29
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",2968
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",954
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",12718
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",256
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",23
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",158
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",34199
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",56117
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",528
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",7504
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",175
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",100
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",372
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","32","HERAT","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",138
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",21
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",71
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",62
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",17
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",12
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",3552
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",539
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",23
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",220
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",5
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",3
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",1
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","33","FARAH","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",4
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1038-4-12",1,"Rahmatullah Nabil","رحمت الله نبيل","M","NO","NO","NO","NO",77
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1044-6-3",2,"Sayed Noorullah Jalili","سيد نورالله جليلی","M","NO","NO","NO","NO",135
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1012-32-7",3,"Dr. Faramarz Tamana","دکتور فرامرز تمنا","M","NO","NO","NO","NO",71
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1035-8-11",5,"Ahmad Wali Masood","احمد ولی مسعود","M","NO","NO","NO","NO",23
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1025-5-16",6,"Noor Rahman Lewal","نور رحمان لٻوال","M","NO","NO","NO","NO",11
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1033-4-8",7,"Mohammad Shahab Hakimi","محمد شهاب حکيمی","M","NO","NO","NO","NO",32
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1055-5-15",8,"Mohammad Ashraf Ghani","محمد اشرف غنی","M","NO","NO","YES","YES",7186
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1052-1-14",9,"Dr. Abdullah Abdullah","دکتور عبدالله عبدالله","M","NO","NO","NO","NO",1482
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1037-1-2",10,"Mohammad Hakim Torsan","محمد حکيم تورسن","M","NO","NO","NO","NO",56
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1042-19-10",11,"Gulbedin Hekmatyar","گلبدين حکمتيار","M","NO","NO","NO","NO",641
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1002-17-1",12,"Abdul Latif Pedram","عبداللطيف پدرام","M","NO","NO","NO","NO",13
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1007-2-18",15,"Professor Dr. Ghulam Farooq Najrabi","پوهاند پروفيسور دوکتور غلام فاروق نجرابی","M","NO","NO","NO","NO",15
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1029-4-4",16,"Enayatullah Hafiz","عنايت الله حفيظ","M","NO","NO","NO","NO",21
+2019-12-22,"PRELIMINARY","PRESIDENTIAL","34","NIMROZ","1058-7-9",17,"Mohammad Hanif Atmar","محمد حنيف اتمر","M","YES","NO","NO","NO",38
