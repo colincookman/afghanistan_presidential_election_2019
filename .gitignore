@@ -17,3 +17,4 @@ graphics/provisional_turnout_differences.png
 ps_scans/
 code/rerun_for_missing.R
 analysis/Preliminary_Results_Analysis.log
+audit_data/old_invalidated_ps.csv

@@ -178,7 +178,7 @@ district_rollup <- ps_results_long_out %>%
     candidate_10 = sum(candidate_10, na.rm = T),
     candidate_11 = sum(candidate_11, na.rm = T),
     candidate_12 = sum(candidate_12, na.rm = T),
-    candidate_15 = sum(candidate_12, na.rm = T),
+    candidate_15 = sum(candidate_15, na.rm = T),
     candidate_16 = sum(candidate_16, na.rm = T),
     candidate_17 = sum(candidate_17, na.rm = T)
   )
