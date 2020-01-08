@@ -240,18 +240,20 @@ write.csv(ps_status_update, "./validity_checks/prelim_ps_reporting_status.csv", 
 write.csv(missing_open_status, "./validity_checks/prelim_ps_missing_status.csv", row.names = F)
 
 ps_summary_report_update <- ps_summary_report %>% left_join(ps_status_update) %>%
-  rename(pre_audit_decision = commission_decision) %>% left_join((invalidated_ps %>% rename(invalidated_results_sheet_total = votes))) %>%
+  rename(pre_audit_decision = commission_decision) %>% left_join((invalidated_ps_data %>% rename(invalidated_results_sheet_total = votes))) %>%
   rename(post_audit_decision = commission_decision_or_status) %>%
-  dplyr::select(1:9, ps_open, accompanying_ps_scan, audit_or_recount, ps_invalidated, pre_audit_decision, post_audit_decision, 10:17, invalidated_results_sheet_total,
+  dplyr::select(1:9, ps_open, 
+                #accompanying_ps_scan, 
+                audit_or_recount, ps_invalidated, pre_audit_decision, post_audit_decision, 10:17, invalidated_results_sheet_total,
                 everything()) %>%
   dplyr::select(-c(serial_number, ps_number))
 
 ps_summary_report_update$post_audit_decision[is.na(ps_summary_report_update$post_audit_decision) & ps_summary_report_update$ps_invalidated == "NO"] <- "Not invalidated in audit or recount"
-
-write.csv(ps_summary_report_update, "./analysis/ps_summary_report.csv", row.names = F)
 
 ps_summary_report$added_votes[ps_summary_report$prelim_results_reporting == "NO" & ps_summary_report$invalidated_results_sheet_total == 0] <- "NO"
 ps_summary_report$added_votes[ps_summary_report$prelim_results_reporting == "YES" & ps_summary_report$invalidated_results_sheet_total == 0] <- "NO"
 ps_summary_report$added_votes[ps_summary_report$ps_invalidated == "YES"] <- "NO"
 ps_summary_report$added_votes[ps_summary_report$added_votes == "UNKNOWN" & ps_summary_report$total_votes == 0] <- "NO"
 ps_summary_report$added_votes[ps_summary_report$added_votes == "UNKNOWN" & ps_summary_report$prelim_results_reporting == "NO" & ps_summary_report$audit_or_recount == "YES"] <- "NO"
+
+write.csv(ps_summary_report_update, "./analysis/ps_summary_report.csv", row.names = F)

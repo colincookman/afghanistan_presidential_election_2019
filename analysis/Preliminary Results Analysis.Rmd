@@ -1,6 +1,7 @@
 ---
 title: "Afghanistan 2019 Preliminary Results Analysis"
 author: "Colin Cookman // ccookman@usip.org // ccookman@gmail.com"
+date: "January 8 2020"
 output: pdf_document
 urlcolor: blue
 ---
@@ -77,7 +78,7 @@ district_summary_no_nahia <- ps_summary_report %>%
 
 This report summarizes preliminary election results released by the Afghanistan Independent Election Commission on December 22 2019.
 
-* In total, 4,540 polling centers and 25,079 polling stations were included in the IEC’s preliminary results report, or **84.8% of planned**. (At least 1138 stations reported zero votes, and some open but invalidated stations may be missing from the preliminary results.)
+* In total, 4,540 polling centers and 25,079 polling stations were included in the IEC’s preliminary results report, or **84.8% of planned**. 2,035 polling stations (6.9% of planned) were confirmed by the IEC to have been invalidated, and 1,799 polling stations (6.1% of planned) were confirmed to have been closed on election day. Another 1,354 polling stations (4.6% of planned) did not appear in the preliminary results or in the IEC's official list of closed or invalidated polling stations.
 * President Ashraf Ghani secured a **narrow 50.64% majority**, clearing the 50% threshhold required to avoid a runoff election. Chief Executive Abdullah Abdullah received 39.52% of the preliminary vote, and third-party candidates 9.84%.
 * While many factors, including tighter controls on participation and the criteria for determining a valid vote, contributed to restrictions on participation in the electoral process, the total preliminary vote total of 1.824 million represents a **record low 18.9% turnout** against voter registration.
 * Afghanistan's provincial capitals comprise an estimated 32% of the national population, 35% of the 2019 voter registry, and 41.5% of the preliminary vote, making **urban centers overrepresented** both in the potential and actual electorate.
@@ -85,6 +86,7 @@ This report summarizes preliminary election results released by the Afghanistan 
   + 254 polling stations audited for missing biometric vote information **added 27,641 new votes** following the audit process.
   + In cases where the IEC provided pre-audit biometric vote totals, **16,810 votes were removed on net** in the preliminary results. However, this includes 611 polling stations that reported increased vote totals following the audit, which **added 14,865 votes**.
   + Taking into account the addition and removal of votes in the audit, the removal of duplicate biometric vote records, **another 29,537 votes were removed on net** through other unaccounted for changes when comparing the preliminary results with previously reported (but not officially verified) biometric vote totals by province.
+  + According to the IEC, **74,720 non-biometrically verified votes** were reported at polling stations that were invalidated prior to the announcement of preliminary results.
 * Complaints adjudication and further decisions on vote validation or invalidation, which will be made in the coming weeks by the Electoral Complaints Commission prior to the certification of final results, will be extremely sensitive. The Abdullah campaign has rejected many of the IEC's decisions and have filed challenges to the reported results. At current margins, **the invalidation of any further votes for Ghani in excess of 25,000 votes would force a runoff**.
 
 ## II - DATA SOURCES
@@ -99,9 +101,9 @@ For more information and the raw data used to generate this report, see: https:/
 
 The IEC's preparations for the 2019 elections were, with some exceptions, based on the same universe of polling centers generated for the [2018 parliamentary elections](https://github.com/colincookman/afghanistan_election_results_2018), which were reduced from the 2014 presidential elections following a security and operational review in January 2018. On August 19 2019, the IEC published a final polling center plan for the 2019 elections, which included details for **5373 polling centers** and **29,586 polling stations**. At a press conference on August 28 2019, Interior Minister Massoud Andarabi [said that](http://reporterly.net/live/newsfeed/wednesday-august-28/431-polling-centers-to-be-closed-on-election-day-moi/) another 431 polling centers would be closed due to security threats, but these centers have not been publicly idenitifed by either MOI or the IEC.
 
-The **IEC has not released an official report on which planned centers and stations were open or closed on election day**, either due to deliberately planned or unplanned closures. Ommissions from the reported preliminary results may be due to election-day closure, but may also be due a station's invalidation during the audit and recount process, or due to ommission of zero votes being reported despite a station being open. 1138 stations included in the results reported zero votes for any candidates, although this may not be exhaustive of all such cases. 1627 polling stations previously identified for audit were ommitted from the reporting and are presumed to have been invalidated; of those, 1406 stations had been flagged for missing biometric data in the audit process (discussed further in Section IV).
-
 In total, **4,540 polling centers** and **25,079 polling stations** were included in the IEC's preliminary results report. 529 centers did not report complete results at all of their originally planned stations (for example, five stations were planned, but only four included in the results data), either due to a station's invalidation and removal from the results or incomplete station openings at a given center.
+
+On December 28 2019, the IEC released a list of invalidated polling stations based on decisions made by the IEC and ECC against the original audit list, and updated this again the following day to also specify some closed polling stations. 1,799 stations (6.1% of planned) were confirmed closed. 2,305 polling stations (6.9% of planned) were listed as having been invalidated, of which 681 stations were previously included in the preliminary results, although in all cases those stations had reported zero vote counts. (Another 457 stations not on the invalidated list were also included in the preliminary results reporting zero votes.) Some discrepancies remain: 1,354 previously planned polling stations (4.6% of planned), including 270 stations selected for audit, did not report any preliminary results but were also not inclued in the invalidated or closed polling station list.
 
 ```{r echo = F}
 natl_total_planned <- provincial_summary_report$ps_planned[35]
@@ -109,16 +111,17 @@ natl_total_reporting <- provincial_summary_report$ps_reporting[35]
 provincial_summary_report %>%
   mutate(
     pct_total_reporting = scales::percent(ps_reporting / natl_total_reporting),
+    pct_confirmed_closed = scales::percent(ps_confirmed_closed / ps_planned),
     pct_total_planned = scales::percent(ps_planned / natl_total_planned),
     pct_reporting = scales::percent(ps_reporting / ps_planned),
     pct_open = scales::percent(ps_reporting_zero_votes / ps_reporting)
     ) %>%
   dplyr::select(province_code, province_name_eng,
-                ps_planned, pct_total_planned, ps_reporting, pct_total_reporting, pct_reporting, ps_reporting_zero_votes, pct_open) %>%
+                ps_planned, pct_total_planned, ps_reporting, pct_total_reporting, pct_reporting, ps_confirmed_closed, pct_confirmed_closed) %>%
   kable(col.names = c("Province Code", "Province Name", 
                       "Planned Polling Stations", "% of National Total",
                       "Polling Stations in Preliminary Results", "% of National Total", "% of Planned",
-                      "Polling Stations Reporting Zero Votes", "% of Reporting Stations"
+                      "Polling Stations Confirmed Closed", "% of Planned"
                       ),
         caption = "Polling Station Report") %>%
   row_spec(0, bold = T) %>%
@@ -212,7 +215,7 @@ provincial_summary_report %>%
 #  landscape()
 ```
 
-One effect of the reduction of the size of the electorate and the restriction of access to the franchise is the **increasing overrepresentation of Afghanistan's urban centers in the electorate**. Although Afghanistan does not have reliable census estimates, the Afghan Central Statistics Organization estimates that the provincial capital centers collectively comprise around 32% of the national population, and Kabul city around 14% of the national total.^[Out of a total estimated population of 30.48 million as of solary year 1398 / 2019-2020, CSO estimates 9.68 million residents in all 34 provincial capitals and 4.27 million in Kabul city district.] However, the provincial capitals comprise approximately 35% of the 2019 voter registry, and 41.5% of the preliminary vote, making them overrepresented both in the potential and actual electorate. (By comparison, votes from provincial capitals comprised 30.3% of the preliminary 2014 first round presidential vote, and 38% of the total preliminary 2018 parliamentary vote.)
+One effect of the reduction of the size of the electorate and the restriction of access to the franchise is the **increasing overrepresentation of Afghanistan's urban centers in the electorate**. Although Afghanistan does not have reliable census estimates, the Afghan Central Statistics Organization estimates that the provincial capital centers collectively comprise around 32% of the national population, and Kabul city around 14% of the national total.^[Out of a total estimated population of 30.48 million as of solar year 1398 / 2019-2020, CSO estimates 9.68 million residents in all 34 provincial capitals and 4.27 million in Kabul city district.] However, the provincial capitals comprise approximately 35% of the 2019 voter registry, and 41.5% of the preliminary vote, making them overrepresented both in the potential and actual electorate. (By comparison, votes from provincial capitals comprised 30.3% of the preliminary 2014 first round presidential vote, and 38% of the total preliminary 2018 parliamentary vote.)
 
 Ghani won a greater share of votes cast in provincial capitals (46.6% of total votes in these centers, compared to 42.4% for Abdullah). However, his greater share of the remaining vote relative to Abdullah meant that 38.2% of Ghani's total national vote came from provincial capitals (13.4% from Kabul), as compared to 44.5% of Abdullah Abdullah's (smaller) total national vote coming from provincial capitals (17.5% from Kabul).
 
@@ -308,7 +311,7 @@ The IEC did not publically clarify a procedure for removing duplicate votes or l
 
 Under Decision 105, the IEC identified 1261 polling stations that transmitted a physical tally sheet report but did not include associated biometric records for validation, and 1162 stations that did not transmit any results data but which IEC staff or other officials reported had opened on election day.^[The IEC did not provide any details on the votes associated with the physical tally sheet reports for the former category.] The Abdullah campaign objected to the inclusion of these stations in the IEC audit target list and argued that they should be automatically invalidated, but the IEC held that it must first investigate polling station boxes to confirm the absence of any biometric records as part of the audit and recount process before deciding to invalidate a station.
 
-In total, 730 stations in the first category were included in the preliminary results, of which 207 reported non-zero vote totals. In the second category, 287 stations were included in the preliminary results, of which 47 reported non-zero vote totals. **In sum, stations under Decision 105 previously found to be missing biometric records added 27,641 new votes following the audit process**.
+In total, 730 stations in the first category were included in the preliminary results, of which 207 reported non-zero vote totals. In the second category, 287 stations were included in the preliminary results, of which 47 reported non-zero vote totals. **In sum, stations audited under Decision 105 previously found to be missing biometric records added 27,641 new votes following the audit process**.
 
 While Ghani's vote share in a polling station does not appear to be significantly statistically correlated with that station falling into this category of missing biometrics now reporting votes (these stations fall within with a range comparable to those Ghani won elsewhere), the overwhelming majority of these stations were won by Ghani, in many cases by significant margins. Collectively, Ghani received approximately 24,000 votes from these stations (2.64% of his national total), versus around 2100 votes for Abdullah.
 
@@ -344,6 +347,10 @@ provincial_summary_report %>%
   kable_styling(latex_options = "HOLD_position") %>% 
   landscape()
 ```
+
+### Invalidation decisions
+
+The IEC invalidation and closure report of December 28 identifies 2,035 invalidated polling stations out of the 8,268 previously targeted for audit. 681 'invalidated' stations were also included in the preliminary results data but reported zero votes. The total group of invalidated stations was previously reported in the IEC's audit target list to collectively total 4,598 known biometric votes. The post-audit invalidation list also reported non-biometrically verified physical result sheet vote totals, which according to the IEC totaled **74,720 non-biometrically verified votes**.
 
 ### Other potentially disputed votes
 
