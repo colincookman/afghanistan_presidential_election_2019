@@ -71,28 +71,46 @@ missing_download_targets$link_broken <- "YES"
 write.csv(missing_download_targets, "./scan_reports/ps_scans_broken_links.csv", row.names = F)
 
 # GAPS VS REPORTING
+rm(list = ls())
 
-download_filenames <- download_filenames %>% rowwise %>% mutate(ps_code = paste0(str_split(scan_filename, "-")[[1]][1], "-", str_split(scan_filename, "-")[[1]][2]))
+downloaded_ps <- list.files("./ps_scans/", pattern = "png", recursive = T, full.names = T)
+downloaded_invalid_ps <- list.files("./ps_scans/invalidated_ps_scans/", pattern = "png", recursive = T, full.names = T)
 
-has_scan <- download_filenames %>% dplyr::select(ps_code) %>% mutate(accompanying_ps_scan = "YES")
-ps_status_update <- left_join(ps_status_update, has_scan)
+download_filenames <- tibble(ps_path = downloaded_ps) %>% 
+  rowwise %>% mutate(scan_filename = str_split(ps_path, "/")[[1]][6])
+
+download_invalid_filenames <- tibble(ps_path = downloaded_invalid_ps) %>% 
+  rowwise %>% mutate(scan_filename = str_split(ps_path, "/")[[1]][7],
+                     invalidated_ps = "YES")
+
+all_downloads <- download_filenames %>% full_join(download_invalid_filenames) %>%
+  rowwise %>% 
+  mutate(ps_code = paste0(str_split(scan_filename, "-")[[1]][1], "-", str_split(scan_filename, "-")[[1]][2]))
+all_downloads$invalidated_ps[is.na(all_downloads$invalidated_ps)] <- "NO"
+
+has_scan <- all_downloads %>% dplyr::select(ps_code) %>% mutate(accompanying_ps_scan = "YES")
+
+ps_status_update <- left_join(prelim_ps_reporting_status, has_scan)
 ps_status_update$accompanying_ps_scan[is.na(ps_status_update$accompanying_ps_scan) & ps_status_update$prelim_results_reporting == "YES"] <- "NO"
 
-ps_summary_report_update <- ps_summary_report_update %>% left_join(ps_status_update) %>% 
+ps_summary_report_update <- ps_summary_report %>% left_join(has_scan) %>% 
   dplyr::select(
     1:10, accompanying_ps_scan, everything()
   )
+ps_summary_report_update$accompanying_ps_scan[is.na(ps_summary_report_update$accompanying_ps_scan) & ps_summary_report_update$prelim_results_reporting == "YES"] <- "NO"
 
 write.csv(ps_status_update, "./validity_checks/prelim_ps_reporting_status.csv", row.names = F)
 write.csv(ps_summary_report_update, "./analysis/ps_summary_report.csv", row.names = F)
 
 ps_scans_reporting_check <- ps_status_update %>% group_by(province_code) %>%
-  filter(prelim_results_reporting == "YES") %>% 
   summarize(
   ps_reporting_count = length(ps_code[prelim_results_reporting == "YES"]),
-  ps_scan_count = length(ps_code[accompanying_ps_scan == "YES"]),
-  difference = ps_scan_count - ps_reporting_count
-) %>% left_join(dplyr::select(province_key_2019, province_code, province_name_eng)) %>%
+  ps_invalidated_count = length(ps_code[ps_invalidated == "YES" & !is.na(ps_invalidated)]),
+  ps_scan_count = length(ps_code[accompanying_ps_scan == "YES" & ps_invalidated != "YES" & prelim_results_reporting == "YES"]),
+  ps_invalidated_scan_count = length(ps_code[accompanying_ps_scan == "YES" & ps_invalidated == "YES" & !is.na(ps_invalidated)]),
+  ps_difference = ps_scan_count - ps_reporting_count,
+  ps_invalidated_difference = ps_invalidated_scan_count - ps_invalidated_count
+  ) %>% left_join(dplyr::select(province_key_2019, province_code, province_name_eng)) %>%
   dplyr::select(province_code, province_name_eng, everything())
 
 write.csv(ps_scans_reporting_check, "./scan_reports/ps_scans_reporting_check.csv", row.names = F)

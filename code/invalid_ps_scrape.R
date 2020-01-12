@@ -200,7 +200,7 @@ ps_scan_links_write = data.frame(lapply(ps_scan_links_out, as.character), string
 
 write.csv(ps_scan_links_write, "./audit_data/invalidated_ps_scan_links.csv", row.names = F)
 
-# DOWNLOAD
+# DOWNLOAD FILES ---------------------------------------------------------------
 scan_links_list <- read_csv("./audit_data/invalidated_ps_scan_links.csv")
 
 # create a subdirectory for scraped polling station scans if it doesn't already exist
