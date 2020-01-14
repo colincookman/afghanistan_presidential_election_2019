@@ -18,3 +18,5 @@ ps_scans/
 code/rerun_for_missing.R
 analysis/Preliminary_Results_Analysis.log
 audit_data/old_invalidated_ps.csv
+raw/prelim_results_ps_second_check.csv
+code/status_reporting_check.R
