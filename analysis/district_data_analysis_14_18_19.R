@@ -138,6 +138,7 @@ pop_long <- pop_14_18_19 %>%
             fem_pop_19 = sum(fem_population[solar_year == "1398"])
   )
 
+
 # SUMMARIZE DATA  
 
 district_summary_report <- merge_18_19_to_14 %>%
@@ -206,7 +207,6 @@ district_summary_report <- district_summary_report %>%
          no_votes_18 = ifelse(total_18 == 0, "YES", "NO"),
          no_votes_19 = ifelse(total_19 == 0, "YES", "NO")
   )
-
 
 ag_q1_R214 <- quantile(district_summary_report$ag_pct_R214, .25, na.rm = T)
 ag_q4_R214 <- quantile(district_summary_report$ag_pct_R214, .65, na.rm = T)
@@ -346,4 +346,89 @@ turnout_comparison_plot
 ggsave("./graphics/turnout_18_19_comparison_plot.png", plot = turnout_comparison_plot, dpi = 300, height = 215.9, width = 279.4, units = "mm")
 
 
+# -----------------
+# POLLING CENTER CLOSURES
+
+pc_closures <- ps_key_2019 %>% 
+  group_by(pc_code) %>% 
+  summarize(ps_planned = length(ps_code),
+            ps_open = length(ps_code[ps_open == "YES"]),
+            close_rate = (1 - ps_open/ps_planned)) %>%
+  mutate(pc_closed = ifelse(close_rate == 0, "NO",
+                            ifelse(close_rate != 1, "PARTIAL", "YES"))
+         )
+
+district_pc_closures <- pc_key_2019 %>%
+  left_join(dplyr::select(pc_closures, pc_code, pc_closed)) %>%
+  group_by(district_code) %>%
+  summarize(pc_total = length(pc_code),
+            pc_planned = length(pc_code[planned_2019 == "YES"]),
+            pct_planned = pc_planned / pc_total, pc_open = length(pc_code[pc_closed == "NO" & !is.na(pc_closed)]),
+            pct_closed = 1 - (pc_open / pc_planned)) %>%
+  rename(`2018_IEC_district_code` = district_code) %>%
+  left_join(dplyr::select(district_code_keyfile_2019, `2018_IEC_district_code`, `2019_matched_to_2014_IEC_district_code`))
+
+district_pc_closures_collapsed <- district_pc_closures %>%
+  group_by(`2019_matched_to_2014_IEC_district_code`) %>%
+  summarize(
+    pc_total = sum(pc_total, na.rm = T),
+    pc_planned = sum(pc_planned, na.rm = T),
+    pct_planned = pc_planned / pc_total,
+    pc_open = sum(pc_open, na.rm = T),
+    pct_closed = 1 - (pc_open / pc_planned)
+  ) %>%
+  rename(district_code = `2019_matched_to_2014_IEC_district_code`)
+
+district_pc_closures_data <- left_join(district_pc_closures_collapsed, district_summary_report)
+
+
+aa_planned_closures <- ggplot(data = district_pc_closures_data,
+       aes(x = aa_pct_R214, y = pct_planned, size = pct_natl_19, color = provincial_capital)) +
+  coord_equal() +
+  scale_color_brewer(palette = "Set1") +
+  geom_point(alpha = .75) +
+  geom_smooth(method = "lm", aes(group = 1)) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  scale_x_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  labs(x = "Abdullah Percent Preliminary Valid Vote in Second Round 2014", 
+       y = "Percent of Potential Polling Centers Planned for 2019",
+       title = "Planned Polling Center Closures and 2014 Candidate Share",
+       subtitle = "Points are districts; 2019 data has been reaggregated to match 2014 district boundaries.",
+       caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources: https://github.com/colincookman/afghanistan_presidential_election_2019/",
+       size = "District votes as % of 2019 national preliminary valid vote",
+       color = "Provincial capital district"
+   ) +
+  theme(
+    legend.position = "bottom",
+    legend.box = "vertical",
+    plot.caption = element_text(hjust = 0)
+  )
+
+aa_planned_closures
+ggsave("./graphics/aa_planned_closures_plot.png", plot = aa_planned_closures, dpi = 300, height = 215.9, width = 279.4, units = "mm")
+
+aa_unplanned_closures <- ggplot(data = district_pc_closures_data,
+       aes(x = aa_pct_R214, y = pct_closed, size = pct_natl_19, color = provincial_capital)) +
+  coord_equal() +
+  scale_color_brewer(palette = "Set1") +
+  geom_point(alpha = .75) +
+  geom_smooth(method = "lm", aes(group = 1)) +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  scale_x_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
+  labs(x = "Abdullah Percent Preliminary Valid Vote in Second Round 2014", 
+       y = "Percent of Planned Polling Centers Closed on Election Day 2019",
+       title = "Planned Polling Center Closures and 2014 Candidate Share",
+       subtitle = "Points are districts; 2019 data has been reaggregated to match 2014 district boundaries.",
+       caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources: https://github.com/colincookman/afghanistan_presidential_election_2019/",
+       size = "District votes as % of 2019 national preliminary valid vote",
+       color = "Provincial capital district"
+   ) +
+  theme(
+    legend.position = "bottom",
+    legend.box = "vertical",
+    plot.caption = element_text(hjust = 0)
+  )
+
+aa_unplanned_closures
+ggsave("./graphics/aa_unplanned_closures_plot.png", plot = aa_unplanned_closures, dpi = 300, height = 215.9, width = 279.4, units = "mm")
 
