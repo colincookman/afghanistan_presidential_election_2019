@@ -154,7 +154,74 @@ write.csv(province_key, "./past_elections/presidential_2014/keyfiles/province_ke
 write.csv(district_key, "./past_elections/presidential_2014/keyfiles/district_key_2014.csv", row.names = F)
 write.csv(pc_key, "./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", row.names = F)
 
+# correct 2014 pc key to account for PCs dropped from plans but captured by NDI Afghan Open Elections Data project
 
+ndi_first <- read_csv("https://raw.githubusercontent.com/nditech/af-elections-data/master/2014-presidential-firstround/downloads/2014_PollingCenters_First.csv")
+ndi_runoff <- read_csv("https://raw.githubusercontent.com/nditech/af-elections-data/master/2014-presidential-runoff/downloads/2014_PollingCenters_Runoff.csv")
+
+# key_missing <- pc_key_2014$pc_code[!(all_data_2014$pc_code %in% pc_key_2014$pc_code)] # none
+# ndi_runoff_missing <- ndi_runoff[!(ndi_runoff$pc_code %in% pc_key_2014$pc_code), ] # none
+ndi_first_missing <- ndi_first[!(ndi_first$pc_code %in% pc_key_2014$pc_code), ]
+
+pc_key_2014_new <- pc_key_2014
+pc_key_2014_new$planned_2014 = "YES"
+
+dropped_pcs <- ndi_first_missing %>%
+  dplyr::select(iec_prov_id, iec_district_id, pc_code, pc_name, ps_total, ps_male, ps_female, lat, lon) %>%
+  rename(province_code = iec_prov_id, district_code = iec_district_id, 
+         pc_name_eng = pc_name, ps_planned_count = ps_total, ps_fem = ps_female) %>%
+  mutate(district_code = paste0(province_code, district_code),
+         planned_2014 = "NO",
+         prelim_first_round_results_reporting = "NO",
+         final_first_round_results_reporting = "NO",
+         prelim_run_off_results_reporting = "NO",
+         final_run_off_results_reporting = "NO") %>%
+  left_join(
+    unique(dplyr::select(pc_key_2014, province_code, province_name_eng, province_name_dari,
+                         district_code, district_name_eng, district_name_dari, provincial_capital))
+  ) %>%
+  mutate(district_sub_code = district_code,
+         district_or_subdivision_name_eng = district_name_eng,
+         district_or_subdivision_name_dari = district_name_dari
+  ) %>%
+  arrange(pc_code)
+
+dropped_pcs$provincial_capital[is.na(dropped_pcs$provincial_capital)] <- "NOORISTAN"
+dropped_pcs$province_name_eng[is.na(dropped_pcs$province_name_eng)] <- "NOORISTAN"
+dropped_pcs$province_name_dari[is.na(dropped_pcs$province_name_dari)] <- "نورستان"
+dropped_pcs$district_name_eng[is.na(dropped_pcs$district_name_eng)] <- "MANDOL"
+dropped_pcs$district_name_dari[is.na(dropped_pcs$district_name_dari)] <- "منډول"
+dropped_pcs$district_or_subdivision_name_eng[is.na(dropped_pcs$district_or_subdivision_name_eng)] <- "MANDOL"
+dropped_pcs$district_or_subdivision_name_dari[is.na(dropped_pcs$district_or_subdivision_name_dari)] <- "منډول"
+
+district_key_2014_new <- district_key_2014 %>%
+  full_join(
+    tibble(
+      province_code = "16",
+      district_code = "1607",
+      district_sub_code = "1607",
+      province_name_eng = "NOORISTAN",
+      province_name_dari = "نورستان",
+      district_name_eng = "MANDOL",
+      district_name_dari = "منډول",
+      district_or_subdivision_name_eng = "MANDOL",
+      district_or_subdivision_name_dari = "منډول",
+      provincial_capital = "NO"
+    )
+  ) %>%
+  arrange(district_code, district_sub_code)
+
+write.csv(district_key_2014_new, "./past_elections/presidential_2014/keyfiles/district_key_2014.csv", row.names = F)
+
+pc_key_2014_updated <- pc_key_2014_new %>%
+  full_join(dropped_pcs) %>%
+  left_join(dplyr::select(ndi_first, pc_code, pc_location)) %>%
+  rename(pc_location_eng = pc_location) %>%
+  dplyr::select(1:12, 25, 13:14, 24, everything()
+    ) %>%
+  arrange(pc_code)
+  
+write.csv(pc_key_2014_updated, "./past_elections/presidential_2014/keyfiles/pc_key_2014.csv", row.names = F)
 
 # FIRST ROUND PRELIM AND FINAL RESULTS DATA -----------------------------------
 
@@ -1762,100 +1829,5 @@ tabulation_check <- tabulation_check %>% mutate(difference = calculated_vote_tot
 
 write.csv(tabulation_check, "./past_elections/presidential_2014/validity_checks/iec_tabulation_check.csv", row.names = F)
 
-
-# quick comparison of 2014 and 2018 coordinates ------------------
-
-district_code_keyfile_2019 <- read_csv("district_data/district_code_keyfile_2019.csv")
-pc_key_2018 <- read_csv("~/Google Drive/GitHub/afghanistan_election_results_2018/keyfiles/pc_key.csv")
-pc_key_2014 <- read_csv("past_elections/presidential_2014/keyfiles/pc_key_2014.csv")
-pc_gis <- read_csv("~/Google Drive/Afghan Elections Research/2018 Parliamentary/PC Data/pc_gis.csv")
-
-
-coord_2018 <- dplyr::select(pc_gis, pc_code, lat, lon) %>% 
-  rename(lon2 = lat, lat2 = lon) %>% 
-  rename(lon = lon2, lat = lat2) %>% 
-  rowwise %>% 
-  mutate(latlon = paste0(str_pad(round(lat, digits = 5), width = 8, side = "right", pad = 0), " ",
-                         str_pad(round(lon, digits = 5), width = 8, side = "right", pad = 0))) %>%
-  left_join(
-    dplyr::select(pc_key_2018,
-                  district_code, pc_code, pc_name_eng, pc_name_dari, assessment_status)) %>%
-  rename(pc_code_18 = pc_code,
-         `2018_IEC_district_code` = district_code,
-         pc_name_eng_18 = pc_name_eng,
-         pc_name_dari_18 = pc_name_dari) %>%
-  left_join(dplyr::select(
-    district_code_keyfile_2019, `2018_IEC_district_code`, `2019_matched_to_2014_IEC_district_code`))
-
-coord_2014 <- dplyr::select(pc_key_2014, district_code, pc_code, pc_name_eng, pc_name_dari, lat, lon) %>% 
-  rowwise %>% 
-  mutate(latlon = paste0(str_pad(round(lat, digits = 5), width = 8, side = "right", pad = 0), " ",
-                         str_pad(round(lon, digits = 5), width = 8, side = "right", pad = 0))) %>%
-  rename(pc_code_14 = pc_code,
-         pc_name_eng_14 = pc_name_eng,
-         pc_name_dari_14 = pc_name_dari,
-         `2019_matched_to_2014_IEC_district_code` = district_code)
-
-gis_matches <- coord_2018$pc_code_18[coord_2018$latlon %in% coord_2014$latlon]
-
-gis_matches <- as.data.frame(gis_matches) %>% rename(pc_code_18 = gis_matches) %>% 
-  left_join(coord_2018) %>% 
-  left_join(dplyr::select(coord_2014, pc_code_14, pc_name_eng_14, pc_name_dari_14, latlon)) %>% 
-  mutate(code_change = ifelse(pc_code_18 != pc_code_14, "YES", "NO"),
-         matched_by = "GIS MATCH")
-
-
-names_2018 <- dplyr::select(coord_2018, `2019_matched_to_2014_IEC_district_code`, pc_name_dari_18, pc_name_eng_18, pc_code_18) %>%
-  rename(pc_name_dari = pc_name_dari_18) %>%
-  left_join((dplyr::select(pc_key_2018, pc_code, district_sub_code)) %>% 
-              rename(pc_code_18 = pc_code)
-            ) %>%
-    mutate(`2019_matched_to_2014_sub_code` = ifelse(`2019_matched_to_2014_IEC_district_code` == "0101",
-                                                           district_sub_code, `2019_matched_to_2014_IEC_district_code`)) %>%
-  dplyr::select(-c(district_sub_code, `2019_matched_to_2014_IEC_district_code`))
-names_2018$`2019_matched_to_2014_sub_code`[names_2018$pc_code_18 == "0101555"] <- "0101-12"
-names_2018$`2019_matched_to_2014_sub_code`[names_2018$pc_code_18 == "0101556"] <- "0101-12"
-names_2018$`2019_matched_to_2014_sub_code`[names_2018$pc_code_18 == "0101559"] <- "0101-22"
-
-names_2014 <- dplyr::select(coord_2014, `2019_matched_to_2014_IEC_district_code`, pc_name_dari_14, pc_name_eng_14, pc_code_14) %>% 
-               rename(pc_name_dari = pc_name_dari_14) %>%
-               left_join(dplyr::select(pc_key_2014, pc_code, district_sub_code) %>%
-                           rename(pc_code_14 = pc_code)
-                         ) %>%
-  mutate(`2019_matched_to_2014_sub_code` = ifelse(`2019_matched_to_2014_IEC_district_code` == "0101",
-                                                           district_sub_code, `2019_matched_to_2014_IEC_district_code`)) %>%
-  dplyr::select(-c(district_sub_code, `2019_matched_to_2014_IEC_district_code`))
-
-name_matches <- left_join(names_2018, names_2014) %>% 
-  filter(!is.na(pc_code_14)) %>%
-  mutate(matched_by = "NAME AND DISTRICT MATCH",
-         code_change = ifelse(pc_code_18 != pc_code_14, "YES", "NO"))
-  
-
-known_matches <- gis_matches %>% dplyr::select(pc_code_18, pc_code_14, code_change,
-                                               pc_name_eng_18, pc_name_eng_14, pc_name_dari_18, matched_by) %>% 
-  rename(pc_name_dari = pc_name_dari_18) %>% 
-  full_join(filter(name_matches, !(pc_code_18 %in% gis_matches$pc_code_18))) %>% 
-  dplyr::select(-`2019_matched_to_2014_sub_code`) %>%
-  arrange(pc_code_18)
-
-write.csv(known_matches, "./pc_plan/pc_code_matching_2014_2018.csv", row.names = F)
-
-
-not_matched <- pc_key_2018$pc_code[!pc_key_2018$pc_code %in% c(gis_matches$pc_code_18, name_matches$pc_code_18)]
-
-not_matched <- as.data.frame(not_matched) %>% rename(pc_code = not_matched) %>% 
-  left_join(
-    dplyr::select(pc_key_2018,
-                  district_code, pc_code, pc_name_eng, pc_name_dari, assessment_status, planned_2018)) %>%
-  rename(pc_code_18 = pc_code,
-         pc_name_eng_18 = pc_name_eng,
-         pc_name_dari_18 = pc_name_dari,
-         `2018_IEC_district_code` = district_code) %>%
-  left_join(dplyr::select(
-    district_code_keyfile_2019, `2018_IEC_district_code`, `2019_matched_to_2014_IEC_district_code`)) %>%
-  mutate(matched_by = NA)
-
-write.csv(not_matched, "./pc_plan/unmatched_2018_pcs.csv", row.names = F)
 
 

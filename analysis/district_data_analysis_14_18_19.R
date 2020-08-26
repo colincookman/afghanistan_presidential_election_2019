@@ -69,6 +69,7 @@ collapse_18_19_to_14 <- merge_18_19 %>%
   summarize(votes = sum(votes, na.rm = T))
 
 merge_18_19_to_14 <- all_data_2014 %>%
+  filter(is.na(post_audit_status) | post_audit_status != "Invalidated") %>%
   rename(`2019_matched_to_2014_IEC_district_code` = district_code) %>%
   group_by(
     election_type, results_status, election_date, province_code, `2019_matched_to_2014_IEC_district_code`,
@@ -83,6 +84,7 @@ merge_18_19_to_14$winner[is.na(merge_18_19_to_14$winner)] <- "NO"
 merge_18_19_to_14$winner[merge_18_19_to_14$election_type == "PRESIDENTIAL RUNOFF" & merge_18_19_to_14$candidate_code == "101_1_13"] <- "YES"
 merge_18_19_to_14$winner[merge_18_19_to_14$election_type == "PRESIDENTIAL" & merge_18_19_to_14$election_date == "2014-06-14" & merge_18_19_to_14$candidate_code == "100_1_1"] <- "YES"
 
+# population data -------------
 pop_18_19 <- cso_district_population_estimates_2004_2020 %>% filter(
   gregorian_year == "2018-2019" | gregorian_year == "2019-2020") %>%
   dplyr::select(solar_year, gregorian_year, province_code, district_code, 7:17) %>%
@@ -139,31 +141,31 @@ pop_long <- pop_14_18_19 %>%
   )
 
 
-# SUMMARIZE DATA  
+# SUMMARIZE DATA  --------------
 
-district_summary_report <- merge_18_19_to_14 %>%
+district_comparison_2014_2019 <- merge_18_19_to_14 %>%
   group_by(`2019_matched_to_2014_IEC_district_code`) %>%
   summarize(
-    total_R114 = sum(votes[results_status == "PRELIMINARY" & election_date == "2014-04-05"], na.rm = T),
-    aa_R114 = sum(votes[results_status == "PRELIMINARY" & election_date == "2014-04-05" & candidate_code == "100_1_1"], na.rm = T),
+    total_R114 = sum(votes[results_status == "FINAL" & election_date == "2014-04-05"], na.rm = T),
+    aa_R114 = sum(votes[results_status == "FINAL" & election_date == "2014-04-05" & candidate_code == "100_1_1"], na.rm = T),
     aa_pct_R114 = aa_R114 / total_R114,
-    ag_R114 = sum(votes[results_status == "PRELIMINARY" & election_date == "2014-04-05" & candidate_code == "101_1_13"], na.rm = T),
+    ag_R114 = sum(votes[results_status == "FINAL" & election_date == "2014-04-05" & candidate_code == "101_1_13"], na.rm = T),
     ag_pct_R114 = ag_R114 / total_R114,
     other_R114 = total_R114 - (aa_R114 + ag_R114),
     other_pct_R114 = other_R114 / total_R114,
-    total_R214 = sum(votes[results_status == "PRELIMINARY" & election_date == "2014-06-14"], na.rm = T),
-    aa_R214 = sum(votes[results_status == "PRELIMINARY" & election_date == "2014-06-14" & candidate_code == "100_1_1"], na.rm = T),
+    total_R214 = sum(votes[results_status == "FINAL" & election_date == "2014-06-14"], na.rm = T),
+    aa_R214 = sum(votes[results_status == "FINAL" & election_date == "2014-06-14" & candidate_code == "100_1_1"], na.rm = T),
     aa_pct_R214 = aa_R214 / total_R214,
-    ag_R214 = sum(votes[results_status == "PRELIMINARY" & election_date == "2014-06-14" & candidate_code == "101_1_13"], na.rm = T),
+    ag_R214 = sum(votes[results_status == "FINAL" & election_date == "2014-06-14" & candidate_code == "101_1_13"], na.rm = T),
     ag_pct_R214 = ag_R214 / total_R214,
     aa_net_change_14 = aa_R214 - aa_R114,
     aa_pct_change_14 = (aa_R214 - aa_R114) / aa_R114,
     ag_net_change_14 = ag_R214 - ag_R114,
     aa_pct_change_14 = (ag_R214 - ag_R114) / ag_R114,
-    total_19 = sum(votes[results_status == "PRELIMINARY" & election_date == "2019-09-28"], na.rm = T),
-    aa_19 = sum(votes[results_status == "PRELIMINARY" & election_date == "2019-09-28" & candidate_code == "1052-1-14"], na.rm = T),
+    total_19 = sum(votes[results_status == "FINAL" & election_date == "2019-09-28"], na.rm = T),
+    aa_19 = sum(votes[results_status == "FINAL" & election_date == "2019-09-28" & candidate_code == "1052-1-14"], na.rm = T),
     aa_pct_19 = aa_19 / total_19,
-    ag_19 = sum(votes[results_status == "PRELIMINARY" & election_date == "2019-09-28" & candidate_code == "1055-5-15"], na.rm = T),
+    ag_19 = sum(votes[results_status == "FINAL" & election_date == "2019-09-28" & candidate_code == "1055-5-15"], na.rm = T),
     ag_pct_19 = ag_19 / total_19,
     other_19 = total_19 - (aa_19 + ag_19),
     other_pct_19 = other_19 / total_19,
@@ -196,24 +198,26 @@ district_summary_report <- merge_18_19_to_14 %>%
   ) %>% 
   dplyr::select(province_code, province_name_eng, district_code, district_name_eng, provincial_capital, everything())
 
-district_summary_report$province_code[is.na(district_summary_report$province_code)] <- "30"
-district_summary_report$province_name_eng[is.na(district_summary_report$province_name_eng)] <- "HELMAND"
-district_summary_report$district_name_eng[is.na(district_summary_report$district_name_eng)] <- "NAWAMISH"
-district_summary_report$provincial_capital[is.na(district_summary_report$provincial_capital)] <- "NO"
+district_comparison_2014_2019$province_code[is.na(district_comparison_2014_2019$province_code)] <- "30"
+district_comparison_2014_2019$province_name_eng[is.na(district_comparison_2014_2019$province_name_eng)] <- "HELMAND"
+district_comparison_2014_2019$district_name_eng[is.na(district_comparison_2014_2019$district_name_eng)] <- "NAWAMISH"
+district_comparison_2014_2019$provincial_capital[is.na(district_comparison_2014_2019$provincial_capital)] <- "NO"
 
-district_summary_report <- district_summary_report %>%
+district_comparison_2014_2019 <- district_comparison_2014_2019 %>%
   mutate(no_votes_R114 = ifelse(total_R114 == 0, "YES", "NO"),
          no_votes_R214 = ifelse(total_R214 == 0, "YES", "NO"),
          no_votes_18 = ifelse(total_18 == 0, "YES", "NO"),
          no_votes_19 = ifelse(total_19 == 0, "YES", "NO")
   )
 
-ag_q1_R214 <- quantile(district_summary_report$ag_pct_R214, .25, na.rm = T)
-ag_q4_R214 <- quantile(district_summary_report$ag_pct_R214, .65, na.rm = T)
-ag_q1_19 <- quantile(district_summary_report$ag_pct_19, .25, na.rm = T)
-ag_q4_19 <- quantile(district_summary_report$ag_pct_19, .65, na.rm = T)
+write_csv(district_comparison_2014_2019, "district_data_analysis_14_18_19.csv")
 
-ghani_district_change <- ggplot(data = subset(district_summary_report,
+ag_q1_R214 <- quantile(district_comparison_2014_2019$ag_pct_R214, .25, na.rm = T)
+ag_q4_R214 <- quantile(district_comparison_2014_2019$ag_pct_R214, .65, na.rm = T)
+ag_q1_19 <- quantile(district_comparison_2014_2019$ag_pct_19, .25, na.rm = T)
+ag_q4_19 <- quantile(district_comparison_2014_2019$ag_pct_19, .65, na.rm = T)
+
+ghani_district_change <- ggplot(data = subset(district_comparison_2014_2019,
                                               !is.na(province_code)),
        aes(x = ag_pct_R214, y = ag_pct_19, size = pct_natl_19, color = provincial_capital)) +
   coord_equal() +
@@ -222,21 +226,25 @@ ghani_district_change <- ggplot(data = subset(district_summary_report,
   geom_hline(yintercept = .5, size = 1, color = "gray80") +
   scale_color_brewer(palette = "Set1") +
   geom_point(alpha = .75) +
-  geom_text_repel(data = subset(district_summary_report,
-                                !is.na(province_code) &
-                                ((ag_pct_R214 >= ag_q4_R214) & (ag_pct_19 <= ag_q1_19)) |
-                                ((ag_pct_R214 <= ag_q1_R214) & (ag_pct_19 >= ag_q4_19))
-                                ),
-                  mapping = aes(label = paste0(district_name_eng, " - ", province_name_eng)),
-                  size = 3, 
-                  box.padding = unit(0.55, "lines")
+  geom_text_repel(
+    data = subset(district_comparison_2014_2019,
+                  !is.na(province_code) &
+                    ((ag_pct_R214 >= ag_q4_R214) & (ag_pct_19 <= ag_q1_19))# |
+#                    ((ag_pct_R214 <= ag_q1_R214) & (ag_pct_19 >= ag_q4_19))
+                  ),
+    mapping = aes(label = paste0(district_name_eng, " - ", province_name_eng)),
+    direction = "y",
+    hjust = 1,
+    size = 3, 
+    box.padding = unit(.75, "lines")
   ) +
   scale_y_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
   scale_x_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
-  labs(x = "Ghani Percent of Preliminary Valid Vote in Second Round 2014", 
-       y = "Ghani Percent of Preliminary Valid Vote in First Round 2019",
+  scale_size_continuous(labels = scales::percent_format(accuracy = 1, breaks = seq(0, 1, by = 0.005))) +
+  labs(x = "Ghani Percent of Valid Vote in 2014 Second Round Run-Off", 
+       y = "Ghani Percent of Valid Vote in 2019 Election",
        title = "Ghani Vote Share Changes by District 2014 - 2019",
-       subtitle = "Points are districts; 2019 data has been reaggregated to match 2014 district boundaries.\nPoints below the diagonal line are a loss in vote share in 2019 compared to 2014,\npoints above are an increase in vote share.\nCandidate received 50%+ support in both elections in points in the upper right quadrant,\nless than 50% in both elections in lower left quadrant.",
+       subtitle = str_wrap("Points are districts; 2019 data has been reaggregated to match 2014 district boundaries. Points below the diagonal line are a loss in vote share in 2019 compared to 2014, points above are an increase in vote share. Candidate received 50%+ support in both elections in points in the upper right quadrant, less than 50% in both elections in lower left quadrant."),
        caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources: https://github.com/colincookman/afghanistan_presidential_election_2019/",
        size = "District votes as % of 2019 national preliminary valid vote",
        color = "Provincial capital district"
@@ -244,17 +252,24 @@ ghani_district_change <- ggplot(data = subset(district_summary_report,
   theme(
     legend.position = "bottom",
     legend.box = "vertical",
-    plot.caption = element_text(hjust = 0)
+    plot.caption = element_text(hjust = .5),
+    axis.text.x = element_text(angle = 90)
+  ) +
+  guides(
+    color = guide_legend(title.position = "top", title.hjust = 0.5),
+    size = guide_legend(title.position = "top", title.hjust = 0.5)
   )
+
+ghani_district_change
 
 ggsave("./graphics/ghani_2014_to_2019_districts_plot.png", plot = ghani_district_change, dpi = 300, height = 215.9, width = 279.4, units = "mm")
 
-aa_q1_R214 <- quantile(district_summary_report$aa_pct_R214, .25, na.rm = T)
-aa_q4_R214 <- quantile(district_summary_report$aa_pct_R214, .65, na.rm = T)
-aa_q1_19 <- quantile(district_summary_report$aa_pct_19, .25, na.rm = T)
-aa_q4_19 <- quantile(district_summary_report$aa_pct_19, .65, na.rm = T)
+aa_q1_R214 <- quantile(district_comparison_2014_2019$aa_pct_R214, .25, na.rm = T)
+aa_q4_R214 <- quantile(district_comparison_2014_2019$aa_pct_R214, .65, na.rm = T)
+aa_q1_19 <- quantile(district_comparison_2014_2019$aa_pct_19, .25, na.rm = T)
+aa_q4_19 <- quantile(district_comparison_2014_2019$aa_pct_19, .65, na.rm = T)
 
-abdullah_district_change <- ggplot(data = subset(district_summary_report,
+abdullah_district_change <- ggplot(data = subset(district_comparison_2014_2019,
                                               !is.na(province_code)),
        aes(x = aa_pct_R214, y = aa_pct_19, size = pct_natl_19, color = provincial_capital)) +
   coord_equal() +
@@ -263,7 +278,7 @@ abdullah_district_change <- ggplot(data = subset(district_summary_report,
   geom_hline(yintercept = .5, size = 1, color = "gray80") +  
   scale_color_brewer(palette = "Set1") +
   geom_point(alpha = .75) +
-  geom_text_repel(data = subset(district_summary_report,
+  geom_text_repel(data = subset(district_comparison_2014_2019,
                                 !is.na(province_code) &
                                 ((aa_pct_R214 >= aa_q4_R214) & (aa_pct_19 <= aa_q1_19)) |
                                 ((aa_pct_R214 <= aa_q1_R214) & (aa_pct_19 >= aa_q4_19))
@@ -274,10 +289,11 @@ abdullah_district_change <- ggplot(data = subset(district_summary_report,
   ) +
   scale_y_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
   scale_x_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1), breaks=seq(0, 1, by=0.05)) +
-  labs(x = "Abdullah Percent of Preliminary Valid Vote in Second Round 2014", 
-       y = "Abdullah Percent of Preliminary Valid Vote in First Round 2019",
-       title = "Abdullah Vote Share Changes by District 2014 - 2019",
-       subtitle = "Points are districts; 2019 data has been reaggregated to match 2014 district boundaries.\nPoints below the diagonal line are a loss in vote share in 2019 compared to 2014,\npoints above are an increase in vote share.\nCandidate received 50%+ support in both elections in points in the upper right quadrant,\nless than 50% in both elections in lower left quadrant.",
+  scale_size_continuous(limits = c(0, 1), labels = scales::percent_format(accuracy = 1, breaks = seq(0, 1, by = 0.05))) +
+  labs(x = "Abdullah Percent of Valid Vote in 2014 Second Round Run-Off", 
+       y = "Abdullah Percent of Valid Vote in 2019 Election",
+       title = "Ghani Vote Share Changes by District 2014 - 2019",
+       subtitle = str_wrap("Points are districts; 2019 data has been reaggregated to match 2014 district boundaries. Points below the diagonal line are a loss in vote share in 2019 compared to 2014, points above are an increase in vote share. Candidate received 50%+ support in both elections in points in the upper right quadrant, less than 50% in both elections in lower left quadrant."),
        caption = "Author: Colin Cookman (Twitter: @colincookman / Email: ccookman@gmail.com or ccookman@usip.org)\nData Sources: https://github.com/colincookman/afghanistan_presidential_election_2019/",
        size = "District votes as % of 2019 national preliminary valid vote",
        color = "Provincial capital district"
@@ -285,7 +301,12 @@ abdullah_district_change <- ggplot(data = subset(district_summary_report,
   theme(
     legend.position = "bottom",
     legend.box = "vertical",
-    plot.caption = element_text(hjust = 0)
+    plot.caption = element_text(hjust = .5),
+    axis.text.x = element_text(angle = 90)
+  ) +
+  guides(
+    color = guide_legend(title.position = "top", title.hjust = 0.5),
+    size = guide_legend(title.position = "top", title.hjust = 0.5)
   )
 
 ggsave("./graphics/abdullah_2014_to_2019_districts_plot.png", plot = abdullah_district_change, dpi = 300, height = 215.9, width = 279.4, units = "mm")
@@ -310,7 +331,10 @@ province_turnout_18_19 <- merge_18_19 %>%
             province_code, province_name_eng, UN_OCHA_region_code)
   ) %>% mutate(
     pct_natl = total_19 / 1824401
-  )
+  ) %>% 
+  dplyr::select(province_code, province_name_eng, UN_OCHA_region_code, everything())
+
+write_csv(province_turnout_18_19, "province_turnout_18_19.csv")
 
 natl_med_turnout_18 <- median(province_turnout_18_19$turnout_18[!is.na(province_turnout_18_19$turnout_18)])
 natl_med_turnout_19 <- median(province_turnout_18_19$turnout_19)
@@ -349,21 +373,28 @@ ggsave("./graphics/turnout_18_19_comparison_plot.png", plot = turnout_comparison
 # -----------------
 # POLLING CENTER CLOSURES
 
-pc_closures <- ps_key_2019 %>% 
-  group_by(pc_code) %>% 
-  summarize(ps_planned = length(ps_code),
-            ps_open = length(ps_code[ps_open == "YES"]),
-            close_rate = (1 - ps_open/ps_planned)) %>%
-  mutate(pc_closed = ifelse(close_rate == 0, "NO",
-                            ifelse(close_rate != 1, "PARTIAL", "YES"))
-         )
+#pc_closures <- ps_key_2019 %>% 
+#  group_by(pc_code) %>% 
+#  summarize(ps_planned = length(ps_code),
+#            ps_open = length(ps_code[ps_open == "YES"]),
+#            close_rate = (1 - ps_open/ps_planned)) %>%
+#  mutate(pc_closed = ifelse(close_rate == 0, "NO",
+#                            ifelse(close_rate != 1, "PARTIAL", "YES"))
+#         )
+#
+#pc_key_2019 <- pc_key_2019 %>%
+#  left_join(dplyr::select(pc_closures, pc_code, pc_closed)) %>%
+#  dplyr::select(1:19, pc_closed, everything()
+#  )
+#
+# saved to file
 
 district_pc_closures <- pc_key_2019 %>%
-  left_join(dplyr::select(pc_closures, pc_code, pc_closed)) %>%
   group_by(district_code) %>%
   summarize(pc_total = length(pc_code),
             pc_planned = length(pc_code[planned_2019 == "YES"]),
-            pct_planned = pc_planned / pc_total, pc_open = length(pc_code[pc_closed == "NO" & !is.na(pc_closed)]),
+            pct_planned = pc_planned / pc_total, 
+            pc_open = length(pc_code[pc_closed == "NO" & !is.na(pc_closed)]),
             pct_closed = 1 - (pc_open / pc_planned)) %>%
   rename(`2018_IEC_district_code` = district_code) %>%
   left_join(dplyr::select(district_code_keyfile_2019, `2018_IEC_district_code`, `2019_matched_to_2014_IEC_district_code`))
