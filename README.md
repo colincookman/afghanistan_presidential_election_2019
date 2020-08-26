@@ -31,7 +31,7 @@ A detailed variable codebook will be released in the near future. If you have qu
 
 ## Summary of results data
 
-For a writeup of key findings from the election, see Colin Cookman, ***[Assessing Afghanistan’s 2019 Presidential Election]()***, U.S. Institute of Peace, August 2020, or the pre-proof copy of the report and accompanying source code in the [analysis subfolder](https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/analysis/) of this repository.
+For a writeup of key findings from the election, see Colin Cookman, ***[Assessing Afghanistan’s 2019 Presidential Election](https://www.usip.org/publications/2020/08/assessing-afghanistans-2019-presidential-election)***, U.S. Institute of Peace, August 2020, or the pre-proof copy of the report and accompanying source code in the [analysis subfolder](https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/analysis/) of this repository.
 
 See also **[this preliminary analysis writeup](https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/analysis/Preliminary_Results_Analysis.pdf)** (as of December 25 2019), or accompanying **[provincial](https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/analysis/provincial_summary_report.csv)** or **[polling-station](https://github.com/colincookman/afghanistan_presidential_election_2019/blob/master/analysis/ps_summary_report.csv)** level summary reports. 
 
